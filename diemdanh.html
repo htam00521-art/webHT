@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quản Lý & Điểm Danh Đoàn Sinh - Đoàn TNTT Phước Hảo</title>
+    <title>Điểm Danh Đội Thiếu Nhi - Đoàn TNTT Phước Hảo</title>
     
     <link rel="icon" type="image/jpeg" href="logo_app.jpg">
     <!-- Google Fonts & Font Awesome Icons -->
@@ -43,93 +43,76 @@
         .cls-nav-link { color: rgba(255,255,255,0.95); text-decoration: none; font-weight: 700; font-size: 0.88rem; padding: 0.5rem 1rem; border-radius: 999px; transition: 0.3s; font-family: 'Nunito', sans-serif; background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.3); }
         .cls-nav-link:hover, .cls-nav-link.active { background: rgba(255,255,255,0.35); color: #fff; transform: translateY(-2px); box-shadow: 0 6px 16px rgba(0,0,0,0.15); }
 
-        /* HEADER BANNER */
-        .dashboard-header {
-            background: rgba(255, 255, 255, 0.85); backdrop-filter: blur(20px); border: 1px solid rgba(255, 255, 255, 0.95);
-            border-radius: 24px; padding: 24px 28px; margin-bottom: 24px; box-shadow: 0 15px 40px rgba(0, 114, 255, 0.12);
+        /* AUTH BAR LIQUID GLASS (ĐỒNG BỘ VỚI CLASSES.HTML) */
+        .auth-bar {
+            display: flex; justify-content: space-between; align-items: center;
+            background: rgba(15, 23, 42, 0.65); backdrop-filter: blur(24px) saturate(190%);
+            -webkit-backdrop-filter: blur(24px) saturate(190%);
+            border: 1px solid rgba(255, 255, 255, 0.25); padding: 14px 22px; border-radius: 22px;
+            margin-bottom: 22px; box-shadow: 0 14px 38px rgba(0, 0, 0, 0.25), 0 1px 0 rgba(255, 255, 255, 0.2) inset;
+            flex-wrap: wrap; gap: 10px;
         }
-        .dashboard-header h2 { color: #0052d4; font-size: 24px; font-weight: 800; display: flex; align-items: center; gap: 10px; }
-        .dashboard-header p { color: #64748b; font-size: 14px; margin-top: 4px; }
+        .user-status { font-size: 14px; color: #f8fafc; display: flex; align-items: center; gap: 10px; font-weight: 600; text-shadow: 0 1px 3px rgba(0,0,0,0.5); }
+        .user-avatar-mini { width: 36px; height: 36px; border-radius: 50%; object-fit: cover; border: 2px solid #0072ff; box-shadow: 0 4px 10px rgba(0,114,255,0.3); }
+        .role-tag { padding: 4px 12px; border-radius: 12px; font-size: 12px; font-weight: 700; color: #fff; box-shadow: 0 2px 6px rgba(0,0,0,0.2); }
+        .role-admin { background: #d32f2f; }
+        .role-leader { background: #e65100; }
+        .role-doitruong { background: #059669; }
+        .role-viewer { background: #0072ff; }
 
-        /* 3 Ô THỐNG KÊ TỔNG QUAN */
-        .stats-overview-grid {
-            display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 18px; margin-bottom: 24px;
-        }
-        .overview-card {
-            background: rgba(255, 255, 255, 0.85); backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.95); border-radius: 20px; padding: 20px 24px;
-            box-shadow: 0 10px 30px rgba(0,114,255,0.08); display: flex; align-items: center; gap: 18px;
-            transition: transform 0.3s ease;
-        }
-        .overview-card:hover { transform: translateY(-4px); }
-        .overview-icon {
-            width: 58px; height: 58px; border-radius: 16px; background: linear-gradient(135deg, #0072ff, #00c6ff);
-            display: flex; align-items: center; justify-content: center; font-size: 24px; color: #fff;
-            box-shadow: 0 8px 20px rgba(0,114,255,0.3);
-        }
-        .overview-info .val { font-size: 26px; font-weight: 800; color: #0052d4; line-height: 1.1; }
-        .overview-info .lbl { font-size: 14px; color: #64748b; font-weight: 700; margin-top: 4px; }
+        .header-title { text-align: center; color: #ffffff; font-size: 28px; font-weight: 800; margin-bottom: 20px; text-transform: uppercase; text-shadow: 0 2px 12px rgba(0, 0, 0, 0.8); }
 
-        /* KHUNG TÌM KIẾM TOÀN ĐOÀN */
-        .search-panel-global {
-            background: rgba(255, 255, 255, 0.85); backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.95); border-radius: 20px; padding: 20px 24px;
-            margin-bottom: 24px; box-shadow: 0 10px 30px rgba(0,114,255,0.08);
+        /* THANH CHỌN 13 ĐỘI */
+        .doi-scroll {
+            display: flex; gap: 10px; overflow-x: auto; padding-bottom: 12px; margin-bottom: 20px;
+            scrollbar-width: thin;
         }
-        .search-bar-wrap { position: relative; max-width: 100%; }
-        .search-bar-wrap input {
-            width: 100%; padding: 12px 20px 12px 46px; border-radius: 30px; border: 1px solid #cbd5e1;
-            background: #f8fafc; font-size: 15px; outline: none; font-weight: 600; color: #0f172a;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.03); transition: 0.3s;
+        .doi-scroll::-webkit-scrollbar { height: 6px; }
+        .doi-scroll::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.3); border-radius: 10px; }
+        
+        .doi-chip {
+            flex-shrink: 0; background: rgba(15, 23, 42, 0.65); backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.25); color: #f8fafc; padding: 10px 20px;
+            border-radius: 30px; font-weight: 700; font-size: 14px; cursor: pointer; transition: 0.3s;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.15);
         }
-        .search-bar-wrap input:focus { border-color: #0072ff; background: #fff; box-shadow: 0 6px 20px rgba(0,114,255,0.15); }
-        .search-bar-wrap i { position: absolute; left: 18px; top: 50%; transform: translateY(-50%); color: #0072ff; font-size: 16px; }
+        .doi-chip:hover { background: rgba(56, 189, 248, 0.3); transform: translateY(-2px); }
+        .doi-chip.active {
+            background: linear-gradient(135deg, #0072ff, #00c6ff); border-color: transparent;
+            box-shadow: 0 8px 25px rgba(0, 114, 255, 0.4);
+        }
 
-        /* KẾT QUẢ TÌM KIẾM CHI TIẾT */
+        /* TOOLBAR TÌM KIẾM */
+        .toolbar-panel {
+            display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px;
+            background: rgba(15, 23, 42, 0.7); backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.25); border-radius: 20px; padding: 16px 22px;
+            margin-bottom: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.2); color: #f8fafc;
+        }
+        .search-box-custom { position: relative; flex: 1; min-width: 260px; }
+        .search-box-custom input {
+            width: 100%; padding: 10px 16px 10px 40px; border-radius: 20px; border: 1px solid rgba(255,255,255,0.3);
+            background: rgba(255,255,255,0.1); color: #fff; font-size: 14px; outline: none;
+        }
+        .search-box-custom input::placeholder { color: #cbd5e1; }
+        .search-box-custom i { position: absolute; left: 14px; top: 50%; transform: translateY(-50%); color: #38bdf8; }
+
         .search-result-card {
             background: #ffffff; border: 1px solid #e2e8f0; border-radius: 16px; padding: 16px 20px;
-            margin-top: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.04); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;
+            margin-top: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.04); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; color: #1e293b;
         }
-        .search-result-stats {
-            display: flex; gap: 8px; font-size: 13px; font-weight: 700; flex-wrap: wrap; align-items: center;
-        }
-        .badge-s-di { background: #dcfce7; color: #15803d; padding: 4px 10px; border-radius: 8px; }
-        .badge-s-khongp { background: #fee2e2; color: #b91c1c; padding: 4px 10px; border-radius: 8px; }
-        .badge-s-cop { background: #fef3c7; color: #b45309; padding: 4px 10px; border-radius: 8px; }
+        .search-result-stats { display: flex; gap: 8px; font-size: 13px; font-weight: 700; flex-wrap: wrap; align-items: center; margin-top: 4px; }
+        .badge-s-di { background: #dcfce7; color: #15803d; padding: 3px 8px; border-radius: 8px; }
+        .badge-s-khongp { background: #fee2e2; color: #b91c1c; padding: 3px 8px; border-radius: 8px; }
+        .badge-s-cop { background: #fef3c7; color: #b45309; padding: 3px 8px; border-radius: 8px; }
 
-        /* DANH SÁCH 13 ĐỘI */
-        .section-heading { color: #0052d4; font-size: 20px; font-weight: 800; margin-bottom: 16px; display: flex; align-items: center; gap: 8px; text-shadow: 0 1px 4px rgba(255,255,255,0.8); }
-        
-        .doi-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 18px; margin-bottom: 30px; }
-        .doi-card {
-            background: rgba(255, 255, 255, 0.85); backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.95); border-radius: 20px; padding: 22px;
-            text-align: center; cursor: pointer; box-shadow: 0 10px 30px rgba(0,114,255,0.08);
-            transition: all 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275); position: relative; overflow: hidden;
-        }
-        .doi-card::before {
-            content: ''; position: absolute; top: 0; left: 0; right: 0; height: 5px;
-            background: linear-gradient(90deg, #0072ff, #00c6ff); transform: scaleX(0); transition: transform 0.3s ease;
-        }
-        .doi-card:hover { transform: translateY(-6px); background: #ffffff; box-shadow: 0 18px 40px rgba(0,114,255,0.2); border-color: #93c5fd; }
-        .doi-card:hover::before { transform: scaleX(1); }
-        .doi-card h4 { color: #0052d4; font-size: 18px; font-weight: 800; margin-bottom: 6px; }
-        .doi-card p { color: #64748b; font-size: 13px; font-weight: 600; margin-bottom: 14px; }
-        .btn-chon-doi {
-            background: linear-gradient(135deg, #0072ff, #00c6ff); color: white; border: none;
-            padding: 8px 20px; border-radius: 20px; font-weight: 700; font-size: 13px; cursor: pointer;
-            box-shadow: 0 4px 12px rgba(0,114,255,0.3); transition: 0.2s;
-        }
-
-        /* KHUNG BẢNG ĐIỂM DANH CHI TIẾT ĐỘI */
-        .diemdanh-detail-section { display: none; }
-        .diemdanh-detail-section.active { display: block; animation: fadeIn 0.4s ease-out; }
-
+        /* KHUNG BẢNG CHÍNH */
         .diemdanh-container {
             background: rgba(15, 23, 42, 0.88); backdrop-filter: blur(26px);
             border: 1px solid rgba(255, 255, 255, 0.25); border-radius: 26px; padding: 28px;
             box-shadow: 0 25px 60px rgba(0, 0, 0, 0.45); color: #f8fafc;
         }
+
         .doi-header-bar {
             display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px;
             margin-bottom: 20px; padding-bottom: 15px; border-bottom: 1px dashed rgba(255,255,255,0.2);
@@ -142,6 +125,7 @@
         .thieunhi-table tr:hover { background: rgba(255, 255, 255, 0.04); }
 
         .sheet-checkbox { width: 22px; height: 22px; border: 2px solid #38bdf8; border-radius: 4px; background: rgba(255,255,255,0.1); cursor: pointer; accent-color: #0072ff; }
+        .sheet-checkbox:disabled { cursor: not-allowed; opacity: 0.5; }
 
         .btn-action-group { display: flex; gap: 10px; flex-wrap: wrap; }
         .btn-custom-action {
@@ -153,8 +137,20 @@
         .btn-custom-action.btn-quay-lai { background: linear-gradient(135deg, #475569, #64748b); }
         .btn-custom-action:hover { transform: translateY(-2px); filter: brightness(1.1); }
 
-        /* GHI CHÚ LÝ DO VẮNG CÓ PHÉP */
         .lydo-note { font-size: 11px; color: #fbbf24; font-style: italic; display: block; margin-top: 2px; }
+
+        /* THẺ ĐỘI & CẤU HÌNH ĐỘI TRƯỞNG */
+        .doi-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 18px; margin-bottom: 30px; }
+        .doi-card {
+            background: rgba(15, 23, 42, 0.7); backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.25); border-radius: 20px; padding: 22px;
+            text-align: center; cursor: pointer; box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            transition: all 0.35s ease; position: relative; overflow: hidden; color: #f8fafc;
+        }
+        .doi-card:hover { transform: translateY(-6px); background: rgba(15, 23, 42, 0.9); border-color: #38bdf8; }
+        .doi-card h4 { color: #38bdf8; font-size: 18px; font-weight: 800; margin-bottom: 4px; }
+        .doi-card .doitruong-lbl { color: #34d399; font-size: 12px; font-weight: 700; margin-bottom: 10px; display: block; }
+        .doi-card p { color: #cbd5e1; font-size: 13px; font-weight: 600; margin-bottom: 14px; }
 
         /* MODAL */
         .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(10, 25, 47, 0.8); backdrop-filter: blur(10px); display: flex; align-items: center; justify-content: center; z-index: 9999; opacity: 0; visibility: hidden; transition: 0.25s; padding: 16px; }
@@ -165,8 +161,6 @@
         }
         .form-control-custom { width: 100%; padding: 10px 14px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.2); background: rgba(255,255,255,0.08); color: #fff; font-size: 14px; outline: none; margin-bottom: 14px; }
         .form-control-custom:focus { border-color: #38bdf8; background: rgba(255,255,255,0.12); }
-
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
     </style>
 </head>
 <body>
@@ -185,40 +179,60 @@
             </nav>
         </div>
 
+        <!-- AUTH BAR (ĐỒNG BỘ VỚI CLASSES.HTML) -->
+        <div class="auth-bar">
+            <div class="user-status">
+                <img id="userAvatarMini" class="user-avatar-mini" src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="Avatar">
+                <div>
+                    <span id="userNameDisplay" style="font-weight: 600;">Khách</span>
+                    <span id="roleBadge" class="role-tag role-viewer">Người xem</span>
+                </div>
+            </div>
+            <div class="auth-actions">
+                <button id="adminConfigDoiBtn" class="btn-auth-action" style="display:none; background:#d97706;" onclick="moModalAdminDoi()">
+                    <i class="fa-solid fa-shield-halved"></i> Admin: Phân Công Đội Trưởng
+                </button>
+                <div id="googleBtnContainer"></div>
+                <button id="logoutBtn" class="btn-auth-action btn-logout" style="display:none;" onclick="xuLyDangXuat()">
+                    <i class="fa-solid fa-right-from-bracket"></i> Đăng xuất
+                </button>
+            </div>
+        </div>
+
         <!-- HEADER BANNER -->
-        <div class="dashboard-header">
-            <h2><i class="fa-solid fa-graduation-cap"></i> Quản Lý & Điểm Danh Đoàn Sinh</h2>
-            <p>Danh sách các đội, sĩ số tổng quan và tra cứu nhanh toàn đoàn</p>
+        <div class="dashboard-header" style="background: rgba(15, 23, 42, 0.75); color: #f8fafc; border: 1px solid rgba(255,255,255,0.25);">
+            <h2 style="color: #38bdf8;"><i class="fa-solid fa-graduation-cap"></i> Quản Lý & Điểm Danh Đoàn Sinh</h2>
+            <p style="color: #cbd5e1;">Danh sách các đội, sĩ số tổng quan và tra cứu nhanh toàn đoàn</p>
         </div>
 
         <!-- 3 Ô THỐNG KÊ TỔNG QUAN -->
         <div class="stats-overview-grid">
-            <div class="overview-card">
+            <div class="overview-card" style="background: rgba(15, 23, 42, 0.7); border: 1px solid rgba(255,255,255,0.25); color:#f8fafc;">
                 <div class="overview-icon"><i class="fa-solid fa-users"></i></div>
                 <div class="overview-info">
-                    <div class="val" id="statTongThieuNhi">0</div>
-                    <div class="lbl">TỔNG THIẾU NHI</div>
+                    <div class="val" id="statTongThieuNhi" style="color: #38bdf8;">0</div>
+                    <div class="lbl" style="color: #cbd5e1;">TỔNG THIẾU NHI</div>
                 </div>
             </div>
-            <div class="overview-card">
+            <div class="overview-card" style="background: rgba(15, 23, 42, 0.7); border: 1px solid rgba(255,255,255,0.25); color:#f8fafc;">
                 <div class="overview-icon" style="background: linear-gradient(135deg, #059669, #34d399);"><i class="fa-solid fa-layer-group"></i></div>
                 <div class="overview-info">
-                    <div class="val">3 Ngành</div>
-                    <div class="lbl">NGÀNH (Ấu - Thiếu - Nghĩa)</div>
+                    <div class="val" style="color: #4ade80;">3 Ngành</div>
+                    <div class="lbl" style="color: #cbd5e1;">Ấu - Thiếu - Nghĩa</div>
                 </div>
             </div>
-            <div class="overview-card">
+            <div class="overview-card" style="background: rgba(15, 23, 42, 0.7); border: 1px solid rgba(255,255,255,0.25); color:#f8fafc;">
                 <div class="overview-icon" style="background: linear-gradient(135deg, #d97706, #fbbf24);"><i class="fa-solid fa-shield-halved"></i></div>
                 <div class="overview-info">
-                    <div class="val">13 Đội</div>
-                    <div class="lbl">TỔNG SỐ ĐỘI</div>
+                    <div class="val" style="color: #fbbf24;">13 Đội</div>
+                    <div class="lbl" style="color: #cbd5e1;">TỔNG SỐ ĐỘI</div>
                 </div>
             </div>
         </div>
 
         <!-- Ô TÌM KIẾM TOÀN ĐOÀN -->
-        <div class="search-panel-global">
-            <h4 style="color: #0052d4; font-size: 16px; font-weight: 800; margin-bottom: 10px;"><i class="fa-solid fa-magnifying-glass me-1"></i> Tra cứu đoàn sinh toàn đoàn</h4>
+        <div class="search-panel-global" style="background: rgba(15, 23, 42, 0.7); border: 1px solid rgba(255,255,255,0.25); color:#f8fafc;">
+            <h4 style="color: #38bdf8; font-size: 16px; font-weight: 800; margin-bottom: 10px;"><i class="fa-solid fa-magnifying-glass me-1"></i> Tra cứu đoàn sinh toàn đoàn</h4>
             <div class="search-bar-wrap">
                 <i class="fa-solid fa-search"></i>
                 <input type="text" id="globalSearchInput" placeholder="Nhập tên thiếu nhi để tìm kiếm nhanh..." oninput="xuLyTimKiemToanDoan()">
@@ -228,7 +242,7 @@
 
         <!-- GIAO DIỆN CHÍNH: DANH SÁCH 13 ĐỘI -->
         <div id="danhSachDoiSection">
-            <div class="section-heading"><i class="fa-solid fa-list-check"></i> Danh Sách 13 Đội Trong Xứ Đoàn (Bấm vào đội để điểm danh)</div>
+            <div class="section-heading" style="color: #fde047;"><i class="fa-solid fa-list-check"></i> Danh Sách 13 Đội (Bấm vào đội để xem và điểm danh)</div>
             <div class="doi-grid" id="doiGridContainer"></div>
         </div>
 
@@ -238,9 +252,9 @@
                 <div class="doi-header-bar">
                     <h3 id="currentDoiName">Đội 1</h3>
                     <div class="btn-action-group">
-                        <button class="btn-custom-action btn-quay-lai" onclick="quayVeDanhSachDoi()"><i class="fa-solid fa-arrow-left me-1"></i> Quay lại danh sách đội</button>
-                        <button class="btn-custom-action btn-them-ngay" onclick="tuDongTaoNgayHienTai()"><i class="fa-solid fa-calendar-plus me-1"></i> Thêm Ngày Lễ (Hôm nay)</button>
-                        <button class="btn-custom-action" onclick="moModalThemThieuNhi()"><i class="fa-solid fa-user-plus me-1"></i> Thêm Thiếu Nhi</button>
+                        <button class="btn-custom-action btn-quay-lai" onclick="quayVeDanhSachDoi()"><i class="fa-solid fa-arrow-left me-1"></i> Quay lại</button>
+                        <button id="btnThemNgayLe" class="btn-custom-action btn-them-ngay" style="display:none;" onclick="tuDongTaoNgayHienTai()"><i class="fa-solid fa-calendar-plus me-1"></i> Thêm Ngày Lễ (Hôm nay)</button>
+                        <button id="btnThemThieuNhi" class="btn-custom-action" style="display:none;" onclick="moModalThemThieuNhi()"><i class="fa-solid fa-user-plus me-1"></i> Thêm Thiếu Nhi</button>
                     </div>
                 </div>
 
@@ -272,7 +286,6 @@
             <h3 style="color: #38bdf8; text-align: center; margin-bottom: 16px; font-weight: 800;">Thêm Thiếu Nhi Vào Đội</h3>
             <label style="font-size: 13px; font-weight: 700; margin-bottom: 4px; display: block; color: #cbd5e1;">Thánh Họ Và Tên:</label>
             <input type="text" id="inputTenEm" class="form-control-custom" placeholder="Ví dụ: Phêrô Đoàn Minh Phát">
-
             <div class="d-flex gap-3 mt-2">
                 <button class="btn btn-light flex-grow-1 fw-bold rounded-pill" onclick="dongModal('modalThemEm')">Hủy</button>
                 <button class="btn btn-primary flex-grow-1 fw-bold rounded-pill" style="background: linear-gradient(135deg, #0072ff, #00c6ff); border:none;" onclick="luuThieuNhiMoi()">Thêm mới</button>
@@ -280,15 +293,27 @@
         </div>
     </div>
 
-    <!-- MODAL NHẬP LÝ DO VẮNG CÓ PHÉP (KHI NHẤN GIỮ Ô ĐIỂM DANH) -->
+    <!-- MODAL NHẬP LÝ DO VẮNG CÓ PHÉP -->
     <div class="modal-overlay" id="modalLyDoVang" onclick="dongModal('modalLyDoVang')">
         <div class="modal-card" onclick="event.stopPropagation()">
             <h3 style="color: #fbbf24; text-align: center; margin-bottom: 12px; font-weight: 800;">Ghi Nhận Vắng Có Phép</h3>
             <p style="font-size: 13px; color: #cbd5e1; margin-bottom: 10px;" id="lyDoEmName">Đang chọn học sinh...</p>
-            <input type="text" id="inputLyDoPhep" class="form-control-custom" placeholder="Nhập lý do vắng (Ví dụ: Bận việc gia đình, đi khám bệnh...)">
+            <input type="text" id="inputLyDoPhep" class="form-control-custom" placeholder="Nhập lý do vắng (Bận việc, đi khám bệnh...)">
             <div class="d-flex gap-3 mt-2">
                 <button class="btn btn-light flex-grow-1 fw-bold rounded-pill" onclick="dongModal('modalLyDoVang')">Hủy</button>
-                <button class="btn btn-warning flex-grow-1 fw-bold rounded-pill" style="background: linear-gradient(135deg, #d97706, #fbbf24); border:none; color:#0f172a;" onclick="luuLyDoVang()">Lưu lý do phép</button>
+                <button class="btn btn-warning flex-grow-1 fw-bold rounded-pill" style="background: linear-gradient(135deg, #d97706, #fbbf24); border:none; color:#0f172a;" onclick="luuLyDoVang()">Lưu lý do</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL ADMIN PHÂN CÔNG ĐỘI TRƯỞNG CHO 13 ĐỘI -->
+    <div class="modal-overlay" id="modalAdminDoi" onclick="dongModal('modalAdminDoi')">
+        <div class="modal-card" style="max-width: 500px;" onclick="event.stopPropagation()">
+            <h3 style="color: #38bdf8; text-align: center; margin-bottom: 16px; font-weight: 800;">Phân Công Đội Trưởng Cho 13 Đội</h3>
+            <div id="adminDoiFormContainer" style="max-height: 350px; overflow-y: auto; padding-right: 5px;"></div>
+            <div class="d-flex gap-3 mt-3">
+                <button class="btn btn-light flex-grow-1 fw-bold rounded-pill" onclick="dongModal('modalAdminDoi')">Đóng</button>
+                <button class="btn btn-primary flex-grow-1 fw-bold rounded-pill" style="background: linear-gradient(135deg, #059669, #34d399); border:none;" onclick="luuPhanCongDoiAdmin()">Lưu cấu hình</button>
             </div>
         </div>
     </div>
@@ -308,6 +333,9 @@
         firebase.initializeApp(firebaseConfig);
         const db = firebase.database();
 
+        const ADMIN_EMAILS = ["htam00521@gmail.com", "yinsnhuw29@gmail.com"]; 
+        const GOOGLE_CLIENT_ID = "262126423881-einke9pok3r8at0d9hrnli04klf68s9q.apps.googleusercontent.com";
+
         const danhSach13Doi = [
             { id: 1, name: "Đội 1 (Giuse)", nganh: "Ngành Ấu" }, { id: 2, name: "Đội 2 (Maria)", nganh: "Ngành Ấu" },
             { id: 3, name: "Đội 3 (Pêrô)", nganh: "Ngành Ấu" }, { id: 4, name: "Đội 4 (Phao-lô)", nganh: "Ngành Thiếu" },
@@ -321,8 +349,14 @@
         let currentSelectedDoi = 1;
         let thieuNhiData = {};
         let danhSachNgayLe = ["CN 09/08/2026", "CN 16/08/2026"];
+        let doiTruongMap = {}; // Lưu email quản lý từng đội { 1: "email@gmail.com", ... }
         let editingLyDo = { emIdx: null, ngayKey: null };
 
+        let currentUser = JSON.parse(localStorage.getItem("ht_user_session")) || {
+            name: "Khách", email: "", picture: "https://cdn-icons-png.flaticon.com/512/3135/3135715.png", role: "viewer"
+        };
+
+        // Lắng nghe dữ liệu Firebase
         db.ref("danhSachNgayLe").on("value", (snapshot) => {
             if (snapshot.exists()) danhSachNgayLe = snapshot.val();
             capNhatGiaoDien();
@@ -332,6 +366,106 @@
             thieuNhiData = snapshot.val() || {};
             capNhatGiaoDien();
         });
+
+        db.ref("doiTruongMapping").on("value", (snapshot) => {
+            doiTruongMap = snapshot.val() || {};
+            xacDinhQuyenTruyCap();
+            capNhatGiaoDien();
+        });
+
+        function handleCredentialResponse(response) {
+            try {
+                const payload = jwt_decode(response.credential);
+                const email = payload.email.toLowerCase().trim();
+
+                let role = "viewer";
+                if (ADMIN_EMAILS.some(adm => adm.toLowerCase().trim() === email)) {
+                    role = "admin";
+                } else {
+                    // Kiểm tra xem email này có phải đội trưởng của đội nào không
+                    for (let id in doiTruongMap) {
+                        if (doiTruongMap[id] && doiTruongMap[id].toLowerCase().trim() === email) {
+                            role = "doitruong";
+                            break;
+                        }
+                    }
+                }
+
+                currentUser = { name: payload.name, email: email, picture: payload.picture, role: role };
+                localStorage.setItem("ht_user_session", JSON.stringify(currentUser));
+                xacDinhQuyenTruyCap();
+                alert(`Đăng nhập thành công! Chào ${payload.name}`);
+            } catch (e) { console.error(e); }
+        }
+
+        window.onload = function () {
+            if (window.google) {
+                google.accounts.id.initialize({ client_id: GOOGLE_CLIENT_ID, callback: handleCredentialResponse });
+                google.accounts.id.renderButton(document.getElementById("googleBtnContainer"), { theme: "outline", size: "medium", text: "signin_with", shape: "pill" });
+            }
+            xacDinhQuyenTruyCap();
+        };
+
+        function xuLyDangXuat() {
+            currentUser = { name: "Khách", email: "", picture: "https://cdn-icons-png.flaticon.com/512/3135/3135715.png", role: "viewer" };
+            localStorage.removeItem("ht_user_session");
+            xacDinhQuyenTruyCap();
+            alert("Đã đăng xuất!");
+        }
+
+        function xacDinhQuyenTruyCap() {
+            document.getElementById("userNameDisplay").innerText = currentUser.name;
+            document.getElementById("userAvatarMini").src = currentUser.picture;
+
+            const badge = document.getElementById("roleBadge");
+            const googleBtn = document.getElementById("googleBtnContainer");
+            const logoutBtn = document.getElementById("logoutBtn");
+            const adminConfigBtn = document.getElementById("adminConfigDoiBtn");
+
+            badge.className = "role-tag";
+            if (currentUser.role === "admin") {
+                badge.classList.add("role-admin"); badge.innerText = "Admin Toàn Quyền";
+                adminConfigBtn.style.display = "inline-flex";
+            } else if (currentUser.role === "doitruong") {
+                badge.classList.add("role-doitruong"); badge.innerText = "Đội Trưởng Điểm Danh";
+                adminConfigBtn.style.display = "none";
+            } else {
+                badge.classList.add("role-viewer"); badge.innerText = "Người xem";
+                adminConfigBtn.style.display = "none";
+            }
+
+            if (currentUser.email) {
+                googleBtn.style.display = "none"; logoutBtn.style.display = "inline-flex";
+            } else {
+                googleBtn.style.display = "block"; logoutBtn.style.display = "none";
+            }
+
+            kiemTraQuyenThaoTacDoi();
+        }
+
+        // Kiểm tra xem user hiện tại có quyền chỉnh sửa đội đang chọn hay không
+        function kiemTraQuyenThaoTacDoi() {
+            const btnThemNgay = document.getElementById("btnThemNgayLe");
+            const btnThemEm = document.getElementById("btnThemThieuNhi");
+
+            let duocPhepSua = false;
+            if (currentUser.role === "admin") {
+                duocPhepSua = true;
+            } else if (currentUser.role === "doitruong") {
+                const emailQuanLy = (doiTruongMap[currentSelectedDoi] || "").toLowerCase().trim();
+                if (emailQuanLy && emailQuanLy === currentUser.email.toLowerCase().trim()) {
+                    duocPhepSua = true;
+                }
+            }
+
+            if (duocPhepSua) {
+                btnThemNgay.style.display = "inline-block";
+                btnThemEm.style.display = "inline-block";
+            } else {
+                btnThemNgay.style.display = "none";
+                btnThemEm.style.display = "none";
+            }
+        }
 
         function capNhatGiaoDien() {
             khoiTaoTheDoi();
@@ -347,11 +481,13 @@
             danhSach13Doi.forEach(doi => {
                 const doiKey = `doi_${doi.id}`;
                 const siSo = (thieuNhiData[doiKey] || []).length;
+                const emailDT = doiTruongMap[doi.id] || "Chưa phân công";
 
                 const card = document.createElement("div");
                 card.className = "doi-card";
                 card.innerHTML = `
                     <h4>${doi.name}</h4>
+                    <span class="doitruong-lbl"><i class="fa-solid fa-user-tie me-1"></i> PT: ${emailDT}</span>
                     <p>${doi.nganh} • Sĩ số: <strong>${siSo} em</strong></p>
                     <button class="btn-chon-doi"><i class="fa-solid fa-clipboard-user me-1"></i> Điểm danh ngay</button>
                 `;
@@ -372,6 +508,7 @@
             currentSelectedDoi = doiId;
             document.getElementById("danhSachDoiSection").style.display = "none";
             document.getElementById("chiTietDoiSection").classList.add("active");
+            kiemTraQuyenThaoTacDoi();
             hienThiChiTietDoi();
         }
 
@@ -392,6 +529,10 @@
             headerHTML += `<th style="width: 150px; text-align: center; color: #fde047;">Tổng số ngày đi lễ</th>`;
             headerRow.innerHTML = headerHTML;
 
+            let duocPhepSua = false;
+            if (currentUser.role === "admin") duocPhepSua = true;
+            else if (currentUser.role === "doitruong" && (doiTruongMap[currentSelectedDoi] || "").toLowerCase().trim() === currentUser.email.toLowerCase().trim()) duocPhepSua = true;
+
             const tbody = document.getElementById("thieuNhiTableBody");
             tbody.innerHTML = "";
 
@@ -400,7 +541,7 @@
             let tongSoNguoiMoiNgay = new Array(danhSachNgayLe.length).fill(0);
 
             if (danhSachEm.length === 0) {
-                tbody.innerHTML = `<tr><td colspan="${danhSachNgayLe.length + 3}" class="text-center text-muted py-4">Chưa có thiếu nhi trong đội. Nhấn "Thêm Thiếu Nhi" để thêm!</td></tr>`;
+                tbody.innerHTML = `<tr><td colspan="${danhSachNgayLe.length + 3}" class="text-center text-muted py-4">Chưa có thiếu nhi trong đội.</td></tr>`;
             } else {
                 danhSachEm.forEach((em, idx) => {
                     const diemsDanhMap = em.diemDanh || {};
@@ -408,7 +549,7 @@
 
                     let colsHTML = "";
                     danhSachNgayLe.forEach((ngay, nIdx) => {
-                        const status = diemsDanhMap[ngay]; // true, "co_phep", hoặc undefined/false
+                        const status = diemsDanhMap[ngay];
                         const isCoMat = status === true;
                         const isCoPhep = status === "co_phep";
                         if (isCoMat) {
@@ -421,6 +562,7 @@
                         colsHTML += `
                             <td style="text-align: center;">
                                 <input type="checkbox" class="sheet-checkbox" ${isCoMat ? 'checked' : ''} 
+                                       ${!duocPhepSua ? 'disabled title="Bạn không có quyền điểm danh đội này"' : ''}
                                        onchange="toggleDiemDanh(${idx}, '${ngay}')"
                                        oncontextmenu="moModalLyDoVang(event, ${idx}, '${ngay}', '${em.hoTen}')"
                                        title="Nhấn chuột phải hoặc chạm giữ để ghi lý do vắng có phép">
@@ -457,16 +599,20 @@
             if (!thieuNhiData[doiKey][index].diemDanh) thieuNhiData[doiKey][index].diemDanh = {};
 
             const currentVal = thieuNhiData[doiKey][index].diemDanh[ngayKey];
-            // Nếu đang tích hoặc có phép -> chuyển thành chưa tích (false), ngược lại thành true
             const nextVal = (currentVal === true || currentVal === "co_phep") ? false : true;
             
             thieuNhiData[doiKey][index].diemDanh[ngayKey] = nextVal;
             db.ref(`diemDanhThieuNhi/${doiKey}`).set(thieuNhiData[doiKey]);
         }
 
-        // Nhấn chuột phải hoặc chạm giữ để mở modal ghi lý do vắng có phép
         function moModalLyDoVang(event, emIdx, ngayKey, tenEm) {
-            event.preventDefault(); // Chặn menu chuột phải mặc định
+            event.preventDefault();
+            let duocPhepSua = false;
+            if (currentUser.role === "admin") duocPhepSua = true;
+            else if (currentUser.role === "doitruong" && (doiTruongMap[currentSelectedDoi] || "").toLowerCase().trim() === currentUser.email.toLowerCase().trim()) duocPhepSua = true;
+
+            if (!duocPhepSua) { alert("Bạn không có quyền ghi lý do vắng cho đội này!"); return; }
+
             editingLyDo = { emIdx, ngayKey };
             document.getElementById("lyDoEmName").innerText = `Đoàn sinh: ${tenEm} (${ngayKey})`;
             document.getElementById("inputLyDoPhep").value = "";
@@ -490,7 +636,6 @@
             });
         }
 
-        // Tự động tạo ngày hiện tại khi bấm nút thêm ngày
         function tuDongTaoNgayHienTai() {
             const now = new Date();
             const dd = String(now.getDate()).padStart(2, '0');
@@ -499,13 +644,13 @@
             const tenNgayMoi = `CN ${dd}/${mm}/${yyyy}`;
 
             if (danhSachNgayLe.includes(tenNgayMoi)) {
-                alert(`Cột ngày "${tenNgayMoi}" đã tồn tại trong bảng điểm danh!`);
+                alert(`Cột ngày "${tenNgayMoi}" đã tồn tại!`);
                 return;
             }
 
             danhSachNgayLe.push(tenNgayMoi);
             db.ref("danhSachNgayLe").set(danhSachNgayLe).then(() => {
-                alert(`Đã tự động tạo cột điểm danh cho ngày hôm nay (${tenNgayMoi}) thành công!`);
+                alert(`Đã tạo cột ngày lễ (${tenNgayMoi}) thành công!`);
             });
         }
 
@@ -513,6 +658,40 @@
             document.getElementById("inputTenEm").value = "";
             document.getElementById("modalThemEm").classList.add("active");
         }
+
+        // Cấu hình đội trưởng cho admin
+        function moModalAdminDoi() {
+            const container = document.getElementById("adminDoiFormContainer");
+            container.innerHTML = "";
+
+            danhSach13Doi.forEach(doi => {
+                const currentEmail = doiTruongMap[doi.id] || "";
+                const div = document.createElement("div");
+                div.className = "mb-3";
+                div.innerHTML = `
+                    <label style="font-size:13px; font-weight:700; color:#38bdf8;">${doi.name}:</label>
+                    <input type="email" class="form-control-custom email-input-doi" data-doi-id="${doi.id}" value="${currentEmail}" placeholder="Nhập Gmail đội trưởng quản lý...">
+                `;
+                container.appendChild(div);
+            });
+
+            document.getElementById("modalAdminDoi").classList.add("active");
+        }
+
+        function luuPhanCongDoiAdmin() {
+            const inputs = document.querySelectorAll(".email-input-doi");
+            let newMap = {};
+            inputs.forEach(inp => {
+                const id = inp.getAttribute("data-doi-id");
+                newMap[id] = inp.value.toLowerCase().trim();
+            });
+
+            db.ref("doiTruongMapping").set(newMap).then(() => {
+                alert("Đã lưu phân công đội trưởng thành công!");
+                dongModal("modalAdminDoi");
+            });
+        }
+
         function dongModal(id) { document.getElementById(id).classList.remove("active"); }
 
         function luuThieuNhiMoi() {
@@ -529,7 +708,6 @@
             });
         }
 
-        // Tìm kiếm toàn đoàn và hiển thị số buổi đi lễ, vắng, có phép
         function xuLyTimKiemToanDoan() {
             const keyword = document.getElementById("globalSearchInput").value.toLowerCase().trim();
             const container = document.getElementById("globalSearchResultContainer");
@@ -572,7 +750,7 @@
                     <div>
                         <strong style="color: #0052d4; font-size: 16px;">${item.em.hoTen}</strong>
                         <div class="small text-muted">${item.doiInfo.name} (${item.doiInfo.nganh})</div>
-                        <div class="search-result-stats mt-1">
+                        <div class="search-result-stats">
                             <span class="badge-s-di">Đi lễ: ${item.stats.di} buổi</span>
                             <span class="badge-s-khongp">Vắng KP: ${item.stats.khongp} buổi</span>
                             <span class="badge-s-cop">Vắng CP: ${item.stats.cophep} buổi</span>
