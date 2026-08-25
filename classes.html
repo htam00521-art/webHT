@@ -56,7 +56,7 @@
 
         /* THANH CHỌN 13 ĐỘI (CHIP NGANG) */
         .doi-scroll {
-            display: flex; gap: 10px; overflow-x: auto; padding-bottom: 12px; margin-bottom: 22px;
+            display: flex; gap: 10px; overflow-x: auto; padding-bottom: 12px; margin-bottom: 20px;
             scrollbar-width: thin;
         }
         .doi-scroll::-webkit-scrollbar { height: 6px; }
@@ -74,26 +74,31 @@
             box-shadow: 0 8px 25px rgba(0, 114, 255, 0.4);
         }
 
-        /* KHUNG THỐNG KÊ TỔNG QUAN (LIQUID GLASS STATS CARDS) */
-        .stats-grid {
-            display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; margin-bottom: 22px;
-        }
-        .stat-card {
+        /* KHUNG TÌM KIẾM VÀ THỐNG KÊ CÁ NHÂN */
+        .toolbar-panel {
+            display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px;
             background: rgba(15, 23, 42, 0.7); backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.25); border-radius: 20px; padding: 18px 22px;
-            color: #f8fafc; box-shadow: 0 10px 30px rgba(0,0,0,0.2); display: flex; align-items: center; gap: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.25); border-radius: 20px; padding: 16px 22px;
+            margin-bottom: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.2); color: #f8fafc;
         }
-        .stat-icon {
-            width: 50px; height: 50px; border-radius: 14px; background: linear-gradient(135deg, #0072ff, #00c6ff);
-            display: flex; align-items: center; justify-content: center; font-size: 20px; color: #fff;
-            box-shadow: 0 6px 15px rgba(0,114,255,0.4);
+        .search-box-custom { position: relative; flex: 1; min-width: 260px; }
+        .search-box-custom input {
+            width: 100%; padding: 10px 16px 10px 40px; border-radius: 20px; border: 1px solid rgba(255,255,255,0.3);
+            background: rgba(255,255,255,0.1); color: #fff; font-size: 14px; outline: none;
         }
-        .stat-info .stat-value { font-size: 22px; font-weight: 800; color: #fde047; }
-        .stat-info .stat-label { font-size: 13px; color: #cbd5e1; font-weight: 600; }
+        .search-box-custom input::placeholder { color: #cbd5e1; }
+        .search-box-custom i { position: absolute; left: 14px; top: 50%; transform: translateY(-50%); color: #38bdf8; }
 
-        /* KHUNG DANH SÁCH THIẾU NHI TRONG ĐỘI */
+        /* KẾT QUẢ TÌM KIẾM NHANH 2 Ô */
+        .search-stats-box {
+            display: flex; gap: 12px; align-items: center; font-size: 14px; font-weight: 700;
+        }
+        .stat-badge-diem { background: rgba(56, 239, 125, 0.25); border: 1px solid #38ef7d; color: #a7f3d0; padding: 6px 14px; border-radius: 12px; }
+        .stat-badge-vang { background: rgba(239, 68, 68, 0.25); border: 1px solid #f87171; color: #fca5a5; padding: 6px 14px; border-radius: 12px; }
+
+        /* KHUNG BẢNG ĐIỂM DANH CHÍNH (LIQUID GLASS CONTAINER) */
         .diemdanh-container {
-            background: rgba(15, 23, 42, 0.85);
+            background: rgba(15, 23, 42, 0.88);
             backdrop-filter: blur(26px) saturate(190%);
             -webkit-backdrop-filter: blur(26px) saturate(190%);
             border: 1px solid rgba(255, 255, 255, 0.25);
@@ -107,17 +112,21 @@
             display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px;
             margin-bottom: 20px; padding-bottom: 15px; border-bottom: 1px dashed rgba(255,255,255,0.2);
         }
-        .doi-header-bar h3 { color: #38bdf8; font-size: 20px; font-weight: 800; text-shadow: 0 0 10px rgba(56,189,248,0.4); }
+        .doi-header-bar h3 { color: #fde047; font-size: 20px; font-weight: 800; text-shadow: 0 0 10px rgba(253,224,71,0.4); }
 
         .thieunhi-table { width: 100%; border-collapse: collapse; font-size: 15px; }
         .thieunhi-table th { background: rgba(255, 255, 255, 0.08); color: #38bdf8; font-weight: 700; padding: 12px 14px; text-align: left; border-bottom: 1px solid rgba(255,255,255,0.15); }
         .thieunhi-table td { padding: 12px 14px; border-bottom: 1px solid rgba(255, 255, 255, 0.06); vertical-align: middle; }
         .thieunhi-table tr:hover { background: rgba(255, 255, 255, 0.04); }
 
-        .diemdanh-checkbox { width: 20px; height: 20px; accent-color: #38ef7d; cursor: pointer; }
-        .badge-diemdanh { padding: 4px 10px; border-radius: 10px; font-size: 12px; font-weight: 700; }
-        .badge-co-mặt { background: rgba(56, 239, 125, 0.2); color: #4ade80; border: 1px solid rgba(56, 239, 125, 0.4); }
-        .badge-vang { background: rgba(239, 68, 68, 0.2); color: #f87171; border: 1px solid rgba(239, 68, 68, 0.4); }
+        /* CHECKBOX THEO KIỂU HÌNH ẢNH GOOGLE SHEET (Ô VUÔNG LỚN XANH) */
+        .sheet-checkbox-wrap {
+            display: flex; align-items: center; justify-content: center; width: 100%; cursor: pointer;
+        }
+        .sheet-checkbox {
+            width: 24px; height: 24px; border: 2px solid #38bdf8; border-radius: 4px;
+            background: rgba(255,255,255,0.1); cursor: pointer; accent-color: #0072ff;
+        }
 
         .btn-them-em {
             background: linear-gradient(135deg, #059669, #34d399); color: white; border: none;
@@ -153,30 +162,24 @@
             </nav>
         </div>
 
-        <h1 class="header-title">Quản Lý & Điểm Danh Thiếu Nhi Theo Đội</h1>
+        <h1 class="header-title">Bảng Điểm Danh Lễ Thiếu Nhi Theo Đội</h1>
 
         <!-- THANH CHỌN 13 ĐỘI -->
         <div class="doi-scroll" id="doiScrollContainer"></div>
 
-        <!-- KHUNG THỐNG KÊ TỔNG QUAN -->
-        <div class="stats-grid">
-            <div class="stat-card">
-                <div class="stat-icon"><i class="fa-solid fa-users"></i></div>
-                <div class="stat-info">
-                    <div class="stat-value" id="statTongSiSo">0</div>
-                    <div class="stat-label">Tổng số thiếu nhi trong đội</div>
-                </div>
+        <!-- THANH TÌM KIẾM VÀ HIỂN THỊ THỐNG KÊ NHANH 2 Ô -->
+        <div class="toolbar-panel">
+            <div class="search-box-custom">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <input type="text" id="searchInputEm" placeholder="Tìm kiếm tên thiếu nhi trong đội..." oninput="hienThiDanhSachThieuNhi()">
             </div>
-            <div class="stat-card">
-                <div class="stat-icon" style="background: linear-gradient(135deg, #059669, #34d399);"><i class="fa-solid fa-calendar-check"></i></div>
-                <div class="stat-info">
-                    <div class="stat-value" id="statTongBuoiLe">0</div>
-                    <div class="stat-label">Tổng số lượt / ngày đi lễ</div>
-                </div>
+            <div class="search-stats-box" id="searchStatsContainer" style="display: none;">
+                <div class="stat-badge-diem" id="searchEmDiLe">Đã đi: 0 buổi</div>
+                <div class="stat-badge-vang" id="searchEmVang">Vắng: 0 buổi</div>
             </div>
         </div>
 
-        <!-- KHUNG HIỂN THỊ DANH SÁCH THIẾU NHI -->
+        <!-- KHUNG BẢNG CHÍNH -->
         <div class="diemdanh-container">
             <div class="doi-header-bar">
                 <h3 id="currentDoiName">Đội 1</h3>
@@ -188,29 +191,32 @@
                     <thead>
                         <tr>
                             <th style="width: 50px;">STT</th>
-                            <th>Tên Thánh & Họ Tên Thiếu Nhi</th>
-                            <th>Ngày Sinh</th>
-                            <th style="width: 140px; text-align: center;">Điểm danh (Hôm nay)</th>
-                            <th style="width: 150px; text-align: center;">Tổng số buổi đi lễ</th>
+                            <th>Thánh Họ Và Tên</th>
+                            <th style="width: 140px; text-align: center;" id="thNgayLeLabel">CN 09/08/2026</th>
+                            <th style="width: 160px; text-align: center; color: #fde047;">Tổng số ngày đi lễ</th>
                         </tr>
                     </thead>
                     <tbody id="thieuNhiTableBody">
-                        <!-- Danh sách thiếu nhi render ở đây -->
+                        <!-- Render dynamic -->
                     </tbody>
+                    <tfoot>
+                        <tr style="background: rgba(255,255,255,0.05); font-weight: 800;">
+                            <td colspan="2" style="color: #fde047; text-align: right; padding: 14px;">TỔNG SỐ NGƯỜI ĐI LỄ:</td>
+                            <td style="text-align: center; color: #38ef7d; font-size: 18px;" id="tongSoNguoiDiLeFooter">0</td>
+                            <td></td>
+                        </tr>
+                    </tfoot>
                 </table>
             </div>
         </div>
     </div>
 
-    <!-- MODAL THÊM THIẾU NHI VÀO ĐỘI -->
+    <!-- MODAL THÊM THIẾU NHI -->
     <div class="modal-overlay" id="modalThemEm" onclick="dongModalThem()">
         <div class="modal-card" onclick="event.stopPropagation()">
             <h3 style="color: #38bdf8; text-align: center; margin-bottom: 16px; font-weight: 800;">Thêm Thiếu Nhi Mới</h3>
-            <label style="font-size: 13px; font-weight: 700; margin-bottom: 4px; display: block; color: #cbd5e1;">Tên Thánh & Họ Tên:</label>
-            <input type="text" id="inputTenEm" class="form-control-custom" placeholder="Ví dụ: Giuse Nguyễn Văn A">
-            
-            <label style="font-size: 13px; font-weight: 700; margin-bottom: 4px; display: block; color: #cbd5e1;">Ngày sinh (hoặc Năm sinh):</label>
-            <input type="text" id="inputNgaySinhEm" class="form-control-custom" placeholder="Ví dụ: 2012">
+            <label style="font-size: 13px; font-weight: 700; margin-bottom: 4px; display: block; color: #cbd5e1;">Thánh Họ Và Tên:</label>
+            <input type="text" id="inputTenEm" class="form-control-custom" placeholder="Ví dụ: Phêrô Đoàn Minh Phát">
 
             <div class="d-flex gap-3 mt-2">
                 <button class="btn btn-light flex-grow-1 fw-bold rounded-pill" onclick="dongModalThem()">Hủy</button>
@@ -253,7 +259,9 @@
 
         let currentSelectedDoi = 1;
         let thieuNhiData = {};
-        const homNayKey = new Date().toISOString().slice(0, 10); // Lấy ngày hiện tại YYYY-MM-DD
+        
+        // Khóa ngày điểm danh hiện tại theo định dạng chuẩn Chúa Nhật (hoặc ngày thực tế)
+        const ngayHienTaiKey = "CN_2026-08-25"; // Bạn có thể đổi key ngày ở đây hoặc lấy theo động `CN_${new Date().toISOString().slice(0,10)}`
 
         db.ref("diemDanhThieuNhi").on("value", (snapshot) => {
             thieuNhiData = snapshot.val() || {};
@@ -271,6 +279,8 @@
                     currentSelectedDoi = doi.id;
                     document.querySelectorAll(".doi-chip").forEach(c => c.classList.remove("active"));
                     btn.classList.add("active");
+                    document.getElementById("searchInputEm").value = "";
+                    document.getElementById("searchStatsContainer").style.display = "none";
                     hienThiDanhSachThieuNhi();
                 };
                 scrollContainer.appendChild(btn);
@@ -281,56 +291,72 @@
             const doiObj = danhSach13Doi.find(d => d.id === currentSelectedDoi);
             document.getElementById("currentDoiName").innerText = doiObj ? doiObj.name : `Đội ${currentSelectedDoi}`;
 
+            const keyword = document.getElementById("searchInputEm").value.toLowerCase().trim();
             const tbody = document.getElementById("thieuNhiTableBody");
             tbody.innerHTML = "";
 
             const doiKey = `doi_${currentSelectedDoi}`;
             const danhSachEm = thieuNhiData[doiKey] || [];
 
-            let soCoMatHomNay = 0;
-            let tongSoBuoiDiLeToanDoi = 0;
+            let tongSoNguoiDiLe = 0;
+            let foundEmForSearch = null;
 
             if (danhSachEm.length === 0) {
-                tbody.innerHTML = `<tr><td colspan="5" class="text-center text-muted py-4">Chưa có thiếu nhi nào trong đội này. Nhấn "Thêm Thiếu Nhi" để bắt đầu!</td></tr>`;
+                tbody.innerHTML = `<tr><td colspan="4" class="text-center text-muted py-4">Chưa có thiếu nhi nào trong đội này. Nhấn "Thêm Thiếu Nhi" để bắt đầu!</td></tr>`;
             } else {
                 danhSachEm.forEach((em, idx) => {
-                    const diemsDanhMap = em.diemDanh || {};
-                    const isCoMatHomNay = diemsDanhMap[homNayKey] === true;
-                    if (isCoMatHomNay) soCoMatHomNay++;
+                    if (keyword && !em.hoTen.toLowerCase().includes(keyword)) {
+                        return; // Bỏ qua nếu không khớp từ khóa tìm kiếm
+                    }
 
-                    // Tính tổng số buổi đi lễ (tổng số ngày có giá trị true)
-                    let tongBuoiCuaEm = 0;
-                    Object.values(diemsDanhMap).forEach(val => {
-                        if (val === true) {
-                            tongBuoiCuaEm++;
-                            tongSoBuoiDiLeToanDoi++;
-                        }
+                    const diemsDanhMap = em.diemDanh || {};
+                    const isCoMat = diemsDanhMap[ngayHienTaiKey] === true;
+                    if (isCoMat) tongSoNguoiDiLe++;
+
+                    // Tính tổng số ngày đi lễ và tổng số ngày vắng của em đó
+                    // Giả sử hệ thống đã lưu tổng cộng có N buổi điểm danh đã tạo
+                    let tongNgayDiLe = 0;
+                    let tongNgayVang = 0;
+                    
+                    // Thu thập tất cả các mốc ngày đã từng điểm danh trong dữ liệu của em
+                    const allKeys = Object.keys(diemsDanhMap);
+                    allKeys.forEach(k => {
+                        if (diemsDanhMap[k] === true) tongNgayDiLe++;
+                        else tongNgayVang++;
                     });
+
+                    if (keyword && em.hoTen.toLowerCase().includes(keyword)) {
+                        foundEmForSearch = { diLe: tongNgayDiLe, vang: allKeys.length - tongNgayDiLe };
+                    }
 
                     const tr = document.createElement("tr");
                     tr.innerHTML = `
                         <td class="fw-bold text-muted">${idx + 1}</td>
-                        <td><span class="fw-bold" style="color: #f8fafc;">${em.hoTen}</span></td>
-                        <td><span class="text-info">${em.ngaySinh || 'Chưa rõ'}</span></td>
+                        <td><span class="fw-bold" style="color: #f8fafc; font-size: 16px;">${em.hoTen}</span></td>
                         <td style="text-align: center;">
-                            <label class="person-check-badge">
-                                <input type="checkbox" class="diemdanh-checkbox" ${isCoMatHomNay ? 'checked' : ''} onchange="toggleDiemDanh(${idx})">
-                                <span class="badge-diemdanh ${isCoMatHomNay ? 'badge-co-mặt' : 'badge-vang'}">${isCoMatHomNay ? 'Có mặt' : 'Vắng'}</span>
-                            </label>
+                            <div class="sheet-checkbox-wrap">
+                                <input type="checkbox" class="sheet-checkbox" ${isCoMat ? 'checked' : ''} onchange="toggleDiemDanh(${idx})">
+                            </div>
                         </td>
                         <td style="text-align: center;">
-                            <span class="badge bg-primary px-3 py-2 rounded-pill fw-bold" style="font-size: 13px; background: linear-gradient(135deg, #0072ff, #00c6ff) !important;">
-                                <i class="fa-solid fa-fire me-1 text-warning"></i> ${tongBuoiCuaEm} buổi
-                            </span>
+                            <span style="color: #38bdf8; font-weight: 800; font-size: 18px;">${tongNgayDiLe}</span>
                         </td>
                     `;
                     tbody.appendChild(tr);
                 });
             }
 
-            // Cập nhật ô tổng số người và tổng số ngày đi lễ lên giao diện
-            document.getElementById("statTongSiSo").innerText = `${danhSachEm.length} em (Hôm nay: ${soCoMatHomNay} có mặt)`;
-            document.getElementById("statTongBuoiLe").innerText = `${tongSoBuoiDiLeToanDoi} lượt`;
+            document.getElementById("tongSoNguoiDiLeFooter").innerText = tongSoNguoiDiLe;
+
+            // Xử lý hiển thị 2 ô thống kê khi tìm kiếm
+            const statsBox = document.getElementById("searchStatsContainer");
+            if (keyword && foundEmForSearch) {
+                statsBox.style.display = "flex";
+                document.getElementById("searchEmDiLe").innerText = `Đã đi lễ: ${foundEmForSearch.diLe} buổi`;
+                document.getElementById("searchEmVang").innerText = `Vắng: ${foundEmForSearch.vang} buổi`;
+            } else {
+                statsBox.style.display = "none";
+            }
         }
 
         function toggleDiemDanh(index) {
@@ -341,15 +367,14 @@
                 thieuNhiData[doiKey][index].diemDanh = {};
             }
 
-            const currentStatus = thieuNhiData[doiKey][index].diemDanh[homNayKey] === true;
-            thieuNhiData[doiKey][index].diemDanh[homNayKey] = !currentStatus;
+            const currentStatus = thieuNhiData[doiKey][index].diemDanh[ngayHienTaiKey] === true;
+            thieuNhiData[doiKey][index].diemDanh[ngayHienTaiKey] = !currentStatus;
 
             db.ref(`diemDanhThieuNhi/${doiKey}`).set(thieuNhiData[doiKey]);
         }
 
         function moModalThemThieuNhi() {
             document.getElementById("inputTenEm").value = "";
-            document.getElementById("inputNgaySinhEm").value = "";
             document.getElementById("modalThemEm").classList.add("active");
         }
 
@@ -359,10 +384,9 @@
 
         function luuThieuNhiMoi() {
             const ten = document.getElementById("inputTenEm").value.trim();
-            const ns = document.getElementById("inputNgaySinhEm").value.trim();
 
             if (!ten) {
-                alert("Vui lòng nhập tên thánh và họ tên thiếu nhi!");
+                alert("Vui lòng nhập thánh họ và tên thiếu nhi!");
                 return;
             }
 
@@ -371,7 +395,6 @@
 
             thieuNhiData[doiKey].push({
                 hoTen: ten,
-                ngaySinh: ns,
                 diemDanh: {}
             });
 
