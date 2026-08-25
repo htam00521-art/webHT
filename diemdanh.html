@@ -41,7 +41,7 @@
         .cls-nav-link { color: rgba(255,255,255,.9); text-decoration: none; font-weight: 700; font-size: 0.88rem; padding: 0.45rem 0.85rem; border-radius: 999px; transition: 0.2s; font-family: 'Nunito', sans-serif; }
         .cls-nav-link:hover, .cls-nav-link.active { background: rgba(255,255,255,.22); color: #fff; }
 
-        /* AUTH BAR SÁNG TRONG SUỐT */
+        /* AUTH BAR */
         .auth-bar {
             display: flex; justify-content: space-between; align-items: center;
             background: rgba(255, 255, 255, 0.92); backdrop-filter: blur(10px);
@@ -63,7 +63,7 @@
         .btn-auth-action:hover { background: #1565C0; }
         .btn-logout { background: #546e7a; }
 
-        /* HEADER BANNER SÁNG TRẮNG ĐẸP NHƯ ẢNH MẪU */
+        /* HEADER BANNER */
         .dashboard-header {
             background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.8);
             border-radius: 20px; padding: 22px 26px; margin-bottom: 20px; box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
@@ -71,7 +71,7 @@
         .dashboard-header h2 { color: #0D47A1; font-size: 24px; font-weight: 800; display: flex; align-items: center; gap: 10px; }
         .dashboard-header p { color: #64748b; font-size: 14px; margin-top: 4px; }
 
-        /* 3 Ô THỐNG KÊ TỔNG QUAN GIỐNG ẢNH MẪU */
+        /* 3 Ô THỐNG KÊ TỔNG QUAN */
         .stats-overview-grid {
             display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 18px; margin-bottom: 20px;
         }
@@ -90,7 +90,7 @@
         .overview-info .val { font-size: 26px; font-weight: 800; color: #0D47A1; line-height: 1.1; }
         .overview-info .lbl { font-size: 13px; color: #64748b; font-weight: 700; margin-top: 4px; text-transform: uppercase; }
 
-        /* Ô TÌM KIẾM TOÀN ĐOÀN GIỐNG ẢNH MẪU */
+        /* Ô TÌM KIẾM TOÀN ĐOÀN */
         .search-panel-global {
             background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(12px);
             border: 1px solid rgba(255, 255, 255, 0.8); border-radius: 20px; padding: 20px 24px;
@@ -110,12 +110,8 @@
             margin-top: 12px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; color: #1e293b;
             box-shadow: 0 4px 12px rgba(0,0,0,0.03);
         }
-        .search-result-stats { display: flex; gap: 8px; font-size: 13px; font-weight: 700; flex-wrap: wrap; align-items: center; margin-top: 4px; }
-        .badge-s-di { background: #dcfce7; color: #15803d; padding: 3px 8px; border-radius: 8px; }
-        .badge-s-khongp { background: #fee2e2; color: #b91c1c; padding: 3px 8px; border-radius: 8px; }
-        .badge-s-cop { background: #fef3c7; color: #b45309; padding: 3px 8px; border-radius: 8px; }
 
-        /* THẺ 13 ĐỘI (GIỐNG ẢNH MẪU) */
+        /* THẺ 13 ĐỘI */
         .section-heading { color: #0D47A1; font-size: 20px; font-weight: 800; margin-bottom: 16px; display: flex; align-items: center; gap: 8px; text-shadow: 0 1px 3px rgba(255,255,255,0.9); }
         .doi-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 18px; margin-bottom: 30px; }
         .doi-card {
@@ -124,17 +120,12 @@
             text-align: center; cursor: pointer; box-shadow: 0 8px 24px rgba(0,0,0,0.08);
             transition: all 0.3s ease; position: relative; overflow: hidden; color: #1e293b;
         }
-        .doi-card::before {
-            content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px;
-            background: linear-gradient(90deg, #0072ff, #00c6ff); transform: scaleX(0); transition: transform 0.3s ease;
-        }
         .doi-card:hover { transform: translateY(-5px); background: #ffffff; box-shadow: 0 14px 35px rgba(0,114,255,0.18); border-color: #93c5fd; }
-        .doi-card:hover::before { transform: scaleX(1); }
         .doi-card h4 { color: #0052d4; font-size: 18px; font-weight: 800; margin-bottom: 4px; }
-        .doi-card .doitruong-lbl { color: #059669; font-size: 12px; font-weight: 700; margin-bottom: 8px; display: block; }
+        .doi-card .doitruong-lbl { color: #059669; font-size: 12px; font-weight: 700; display: block; }
+        .doi-card .doipho-lbl { color: #d97706; font-size: 12px; font-weight: 700; margin-bottom: 6px; display: block; }
         .doi-card p { color: #64748b; font-size: 13px; font-weight: 600; margin-bottom: 14px; }
         
-        /* NÚT XANH NỔI BẬT GIỐNG ẢNH MẪU */
         .btn-chon-doi {
             background: linear-gradient(135deg, #00c6ff, #0072ff); color: white; border: none;
             padding: 9px 24px; border-radius: 25px; font-weight: 700; font-size: 13px; cursor: pointer;
@@ -182,9 +173,9 @@
         .modal-overlay.active { opacity: 1; visibility: visible; }
         .modal-card {
             background: rgba(15, 23, 42, 0.95); backdrop-filter: blur(30px); border: 1px solid rgba(255, 255, 255, 0.3);
-            width: 100%; max-width: 450px; border-radius: 26px; padding: 26px; box-shadow: 0 25px 60px rgba(0,0,0,0.5); color: #f8fafc;
+            width: 100%; max-width: 480px; border-radius: 26px; padding: 26px; box-shadow: 0 25px 60px rgba(0,0,0,0.5); color: #f8fafc;
         }
-        .form-control-custom { width: 100%; padding: 10px 14px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.2); background: rgba(255,255,255,0.08); color: #fff; font-size: 14px; outline: none; margin-bottom: 14px; }
+        .form-control-custom { width: 100%; padding: 10px 14px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.2); background: rgba(255,255,255,0.08); color: #fff; font-size: 14px; outline: none; margin-bottom: 12px; }
         .form-control-custom:focus { border-color: #38bdf8; background: rgba(255,255,255,0.12); }
     </style>
 </head>
@@ -215,7 +206,7 @@
             </div>
             <div class="auth-actions">
                 <button id="adminConfigDoiBtn" class="btn-auth-action" style="display:none; background:#d97706;" onclick="moModalAdminDoi()">
-                    <i class="fa-solid fa-shield-halved"></i> Admin: Phân Công Đội Trưởng
+                    <i class="fa-solid fa-shield-halved"></i> Admin: Phân Công Đội Trưởng/Phó
                 </button>
                 <div id="googleBtnContainer"></div>
                 <button id="logoutBtn" class="btn-auth-action btn-logout" style="display:none;" onclick="xuLyDangXuat()">
@@ -224,13 +215,13 @@
             </div>
         </div>
 
-        <!-- HEADER BANNER GIỐNG ẢNH MẪU -->
+        <!-- HEADER BANNER -->
         <div class="dashboard-header">
             <h2><i class="fa-solid fa-graduation-cap" style="color: #0072ff;"></i> Quản Lý & Điểm Danh Đoàn Sinh</h2>
             <p>Danh sách các đội, sĩ số tổng quan và tra cứu nhanh toàn đoàn</p>
         </div>
 
-        <!-- 3 Ô THỐNG KÊ TỔNG QUAN GIỐNG ẢNH MẪU -->
+        <!-- 3 Ô THỐNG KÊ TỔNG QUAN -->
         <div class="stats-overview-grid">
             <div class="overview-card">
                 <div class="overview-icon"><i class="fa-solid fa-users"></i></div>
@@ -255,7 +246,7 @@
             </div>
         </div>
 
-        <!-- Ô TÌM KIẾM TOÀN ĐOÀN GIỐNG ẢNH MẪU -->
+        <!-- Ô TÌM KIẾM TOÀN ĐOÀN -->
         <div class="search-panel-global">
             <h4 style="color: #0052d4; font-size: 16px; font-weight: 800; margin-bottom: 10px;"><i class="fa-solid fa-magnifying-glass me-1"></i> Tra cứu đoàn sinh toàn đoàn</h4>
             <div class="search-bar-wrap">
@@ -267,7 +258,7 @@
 
         <!-- GIAO DIỆN CHÍNH: DANH SÁCH 13 ĐỘI -->
         <div id="danhSachDoiSection">
-            <div class="section-heading"><i class="fa-solid fa-list-check"></i> Danh Sách 13 Đội Trong Xứ Đoàn (Bấm vào đội để điểm danh)</div>
+            <div class="section-heading"><i class="fa-solid fa-list-check"></i> Danh Sách 13 Đội Trong Xứ Đoàn (Bấm vào đội để xem và điểm danh)</div>
             <div class="doi-grid" id="doiGridContainer"></div>
         </div>
 
@@ -275,7 +266,10 @@
         <div class="diemdanh-detail-section" id="chiTietDoiSection">
             <div class="diemdanh-container">
                 <div class="doi-header-bar">
-                    <h3 id="currentDoiName">Đội 1</h3>
+                    <div>
+                        <h3 id="currentDoiName">Đội 1</h3>
+                        <p class="small text-info mt-1" id="currentDoiBanCanSu" style="font-weight: 600;">Đội trưởng: ... | Đội phó: ...</p>
+                    </div>
                     <div class="btn-action-group">
                         <button class="btn-custom-action btn-quay-lai" onclick="quayVeDanhSachDoi()"><i class="fa-solid fa-arrow-left me-1"></i> Quay lại</button>
                         <button id="btnThemNgayLe" class="btn-custom-action btn-them-ngay" style="display:none;" onclick="tuDongTaoNgayHienTai()"><i class="fa-solid fa-calendar-plus me-1"></i> Thêm Ngày Lễ (Hôm nay)</button>
@@ -331,11 +325,11 @@
         </div>
     </div>
 
-    <!-- MODAL ADMIN PHÂN CÔNG ĐỘI TRƯỞNG CHO 13 ĐỘI -->
+    <!-- MODAL ADMIN PHÂN CÔNG ĐỘI TRƯỞNG / ĐỘI PHÓ -->
     <div class="modal-overlay" id="modalAdminDoi" onclick="dongModal('modalAdminDoi')">
-        <div class="modal-card" style="max-width: 500px;" onclick="event.stopPropagation()">
-            <h3 style="color: #38bdf8; text-align: center; margin-bottom: 16px; font-weight: 800;">Phân Công Đội Trưởng Cho 13 Đội</h3>
-            <div id="adminDoiFormContainer" style="max-height: 350px; overflow-y: auto; padding-right: 5px;"></div>
+        <div class="modal-card" style="max-width: 520px;" onclick="event.stopPropagation()">
+            <h3 style="color: #38bdf8; text-align: center; margin-bottom: 16px; font-weight: 800;">Phân Công Đội Trưởng & Đội Phó</h3>
+            <div id="adminDoiFormContainer" style="max-height: 380px; overflow-y: auto; padding-right: 5px;"></div>
             <div class="d-flex gap-3 mt-3">
                 <button class="btn btn-light flex-grow-1 fw-bold rounded-pill" onclick="dongModal('modalAdminDoi')">Đóng</button>
                 <button class="btn btn-primary flex-grow-1 fw-bold rounded-pill" style="background: linear-gradient(135deg, #059669, #34d399); border:none;" onclick="luuPhanCongDoiAdmin()">Lưu cấu hình</button>
@@ -371,10 +365,71 @@
             { id: 13, name: "Đội 13 (Phêrô & Phaolô)", nganh: "Ngành Nghĩa" }
         ];
 
+        // Danh sách 53 Huynh Trưởng (lấy từ dữ liệu hệ thống để khớp SĐT & Tên Thánh)
+        const danhSachGocHT = [
+            { thanhHoTen: "Patriciô Nguyễn Thiên Ân", sdt: "0395800581" },
+            { thanhHoTen: "Phêrô Lê Huỳnh Hiếu Tâm", sdt: "0921786312" },
+            { thanhHoTen: "Maria Nguyễn Thị Kiều Vy", sdt: "0834577510" },
+            { thanhHoTen: "Anê Nguyễn Bình Phương Nam", sdt: "0343351327" },
+            { thanhHoTen: "Maria Sơn Nguyễn Yến Như", sdt: "0366548104" },
+            { thanhHoTen: "Đôminicô Huỳnh Lê Hiếu Nghĩa", sdt: "0346328816" },
+            { thanhHoTen: "Phêrô Đoàn Minh Phát", sdt: "0364521171" },
+            { thanhHoTen: "Matta Trương Thị Diễm Hương", sdt: "0349356330" },
+            { thanhHoTen: "Phêrô Trần Bùi Thịnh Đạt", sdt: "0343481454" },
+            { thanhHoTen: "Têrêsa Nguyễn Lâm Phương Hà", sdt: "0338595144" },
+            { thanhHoTen: "Têrêsa Trần Thanh Uyên", sdt: "0357667730" },
+            { thanhHoTen: "Maria Nguyễn Bảo Thy", sdt: "0349735441" },
+            { thanhHoTen: "Maria Lê Nguyễn Hồng Châu", sdt: "0385966649" },
+            { thanhHoTen: "Maria Diệp Thanh Thoảng", sdt: "0948673652" },
+            { thanhHoTen: "Phêrô Nguyễn Minh Vũ", sdt: "0382961153" },
+            { thanhHoTen: "Matta Lê Thị Ngọc Trâm", sdt: "0337383298" },
+            { thanhHoTen: "Anê Nguyễn Thị Hồng Yến", sdt: "0792394746" },
+            { thanhHoTen: "Maria Nguyễn Lâm Cẩm Hướng", sdt: "0396462484" },
+            { thanhHoTen: "Phêrô Nguyễn Duy Tân", sdt: "0896416291" },
+            { thanhHoTen: "Phêrô Trần Tấn Tài", sdt: "0396191605" },
+            { thanhHoTen: "Phêrô Nguyễn Lê Tiến Khoa", sdt: "0972756505" },
+            { thanhHoTen: "Giuse Nguyễn Phúc Khang", sdt: "0368902575" },
+            { thanhHoTen: "Maria Hứa Thanh Thảo", sdt: "0972546881" },
+            { thanhHoTen: "Phanxica Lê Hoàng Gia Hân", sdt: "0799320036" },
+            { thanhHoTen: "Anna Nguyễn Thị Hoàng Uyên", sdt: "0345204809" },
+            { thanhHoTen: "Giuse Nguyễn Nhất Tâm", sdt: "0983525538" },
+            { thanhHoTen: "Maria Trương Anh Phong Nhi", sdt: "0363673929" },
+            { thanhHoTen: "Phêrô Nguyễn Huy Vũ", sdt: "0987974107" },
+            { thanhHoTen: "Maria Sơn Thị Thảo Vy", sdt: "0374246153" },
+            { thanhHoTen: "Raymonđô Trương Công Hậu", sdt: "0358319506" },
+            { thanhHoTen: "Rôsalima Nguyễn Thủy Hải Huỳnh", sdt: "0773913619" },
+            { thanhHoTen: "Matta Nguyễn Yến Lan", sdt: "0769640742" },
+            { thanhHoTen: "Anna Nguyễn Thị Tường Lam", sdt: "0382530494" },
+            { thanhHoTen: "Phêrô Lê Minh Tiến", sdt: "0966908232" },
+            { thanhHoTen: "Matta Nguyễn Ngọc Hương Giang", sdt: "0332183247" },
+            { thanhHoTen: "Phêrô Lê Huỳnh Sĩ Nguyên", sdt: "0949344205" },
+            { thanhHoTen: "Gioan Baotixita Lê Thái Hào", sdt: "0704964207" },
+            { thanhHoTen: "Maria Trần Huỳnh Trâm", sdt: "0704964207" },
+            { thanhHoTen: "Giuse Lựu Huỳnh Lâm Ngọc Tân", sdt: "0765993928" },
+            { thanhHoTen: "Maria Madalena Nguyễn Lê Thảo Vy", sdt: "0963981148" },
+            { thanhHoTen: "Maria Nguyễn Như Thùy", sdt: "0395382387" },
+            { thanhHoTen: "Maria Nguyễn Kiều Duyên", sdt: "0797852698" },
+            { thanhHoTen: "Maria Nguyễn Ngô Ngọc Hân", sdt: "0932471359" },
+            { thanhHoTen: "Đôminicô Lương Nguyễn Khang", sdt: "0785801705" },
+            { thanhHoTen: "Maria Nguyễn Huỳnh An Dy", sdt: "0909107132" },
+            { thanhHoTen: "Phêrô Nguyễn Nhất Trung", sdt: "0369902728" },
+            { thanhHoTen: "Tađêô Nguyễn Quang Lạc", sdt: "0966265200" },
+            { thanhHoTen: "Philipphe Nguyễn Duy Lữ", sdt: "0326271470" },
+            { thanhHoTen: "Matta Nguyễn Phương Thảo My", sdt: "0338158231" },
+            { thanhHoTen: "Giuse Nguyễn Thái Sơn", sdt: "0365656063" },
+            { thanhHoTen: "Đôminicô Trần Bùi Đạt Phú", sdt: "0345344063" },
+            { thanhHoTen: "Giuse Nguyễn Lâm Hồng Hải", sdt: "0326395940" },
+            { thanhHoTen: "Antôn Lê Hoàng Gia Huy", sdt: "0355749059", },
+            { thanhHoTen: "Maria Trần Thị Kiều Trang", sdt: "0385627732" },
+            { thanhHoTen: "Maria Nguyễn Ngọc Trâm Anh", sdt: "0586075828" },
+            { thanhHoTen: "Maria Lê Ngọc Huyền Trân", sdt: "0907037009" },
+            { thanhHoTen: "Phêrô Nguyễn Duy Nguyễn", sdt: "0814657029" }
+        ];
+
         let currentSelectedDoi = 1;
         let thieuNhiData = {};
         let danhSachNgayLe = ["CN 09/08/2026", "CN 16/08/2026"];
-        let doiTruongMap = {};
+        let doiTruongMap = {}; // Lưu thông tin Đội trưởng & Đội phó { 1: {dt: "...", sdtDt: "...", dp: "...", sdtDp: "..."}, ... }
         let editingLyDo = { emIdx: null, ngayKey: null };
 
         let currentUser = JSON.parse(localStorage.getItem("ht_user_session")) || {
@@ -407,7 +462,8 @@
                     role = "admin";
                 } else {
                     for (let id in doiTruongMap) {
-                        if (doiTruongMap[id] && doiTruongMap[id].toLowerCase().trim() === email) {
+                        const info = doiTruongMap[id] || {};
+                        if ((info.emailDt && info.emailDt.toLowerCase().trim() === email) || (info.emailDp && info.emailDp.toLowerCase().trim() === email)) {
                             role = "doitruong";
                             break;
                         }
@@ -450,7 +506,7 @@
                 badge.classList.add("role-admin"); badge.innerText = "Admin Toàn Quyền";
                 adminConfigBtn.style.display = "inline-flex";
             } else if (currentUser.role === "doitruong") {
-                badge.classList.add("role-doitruong"); badge.innerText = "Đội Trưởng Điểm Danh";
+                badge.classList.add("role-doitruong"); badge.innerText = "Đội Trưởng/Phó";
                 adminConfigBtn.style.display = "none";
             } else {
                 badge.classList.add("role-viewer"); badge.innerText = "Người xem";
@@ -474,8 +530,11 @@
             if (currentUser.role === "admin") {
                 duocPhepSua = true;
             } else if (currentUser.role === "doitruong") {
-                const emailQuanLy = (doiTruongMap[currentSelectedDoi] || "").toLowerCase().trim();
-                if (emailQuanLy && emailQuanLy === currentUser.email.toLowerCase().trim()) {
+                const info = doiTruongMap[currentSelectedDoi] || {};
+                const emailDt = (info.emailDt || "").toLowerCase().trim();
+                const emailDp = (info.emailDp || "").toLowerCase().trim();
+                const myEmail = currentUser.email.toLowerCase().trim();
+                if ((emailDt && emailDt === myEmail) || (emailDp && emailDp === myEmail)) {
                     duocPhepSua = true;
                 }
             }
@@ -503,13 +562,16 @@
             danhSach13Doi.forEach(doi => {
                 const doiKey = `doi_${doi.id}`;
                 const siSo = (thieuNhiData[doiKey] || []).length;
-                const emailDT = doiTruongMap[doi.id] || "Chưa phân công";
+                const info = doiTruongMap[doi.id] || {};
+                const tenDt = info.dt || "Chưa phân công";
+                const tenDp = info.dp || "Chưa phân công";
 
                 const card = document.createElement("div");
                 card.className = "doi-card";
                 card.innerHTML = `
                     <h4>${doi.name}</h4>
-                    <span class="doitruong-lbl"><i class="fa-solid fa-user-tie me-1"></i> PT: ${emailDT}</span>
+                    <span class="doitruong-lbl"><i class="fa-solid fa-user-tie me-1"></i> ĐT: ${tenDt}</span>
+                    <span class="doipho-lbl"><i class="fa-solid fa-user-shield me-1"></i> ĐP: ${tenDp}</span>
                     <p>${doi.nganh} • Sĩ số: <strong>${siSo} em</strong></p>
                     <button class="btn-chon-doi"><i class="fa-solid fa-clipboard-user me-1"></i> Điểm danh ngay</button>
                 `;
@@ -530,6 +592,13 @@
             currentSelectedDoi = doiId;
             document.getElementById("danhSachDoiSection").style.display = "none";
             document.getElementById("chiTietDoiSection").classList.add("active");
+            
+            // Hiển thị thông tin chi tiết đội trưởng / đội phó ở phần đầu bảng
+            const info = doiTruongMap[doiId] || {};
+            const dtText = info.dt ? `${info.dt} (${info.sdtDt || 'Chưa có SĐT'})` : 'Chưa phân công';
+            const dpText = info.dp ? `${info.dp} (${info.sdtDp || 'Chưa có SĐT'})` : 'Chưa phân công';
+            document.getElementById("currentDoiBanCanSu").innerHTML = `<i class="fa-solid fa-user-tie text-success me-1"></i> Đội trưởng: <strong>${dtText}</strong> &nbsp;|&nbsp; <i class="fa-solid fa-user-shield text-warning me-1"></i> Đội phó: <strong>${dpText}</strong>`;
+
             kiemTraQuyenThaoTacDoi();
             hienThiChiTietDoi();
         }
@@ -553,7 +622,13 @@
 
             let duocPhepSua = false;
             if (currentUser.role === "admin") duocPhepSua = true;
-            else if (currentUser.role === "doitruong" && (doiTruongMap[currentSelectedDoi] || "").toLowerCase().trim() === currentUser.email.toLowerCase().trim()) duocPhepSua = true;
+            else if (currentUser.role === "doitruong") {
+                const info = doiTruongMap[currentSelectedDoi] || {};
+                const myEmail = currentUser.email.toLowerCase().trim();
+                if ((info.emailDt && info.emailDt.toLowerCase().trim() === myEmail) || (info.emailDp && info.emailDp.toLowerCase().trim() === myEmail)) {
+                    duocPhepSua = true;
+                }
+            }
 
             const tbody = document.getElementById("thieuNhiTableBody");
             tbody.innerHTML = "";
@@ -631,7 +706,13 @@
             event.preventDefault();
             let duocPhepSua = false;
             if (currentUser.role === "admin") duocPhepSua = true;
-            else if (currentUser.role === "doitruong" && (doiTruongMap[currentSelectedDoi] || "").toLowerCase().trim() === currentUser.email.toLowerCase().trim()) duocPhepSua = true;
+            else if (currentUser.role === "doitruong") {
+                const info = doiTruongMap[currentSelectedDoi] || {};
+                const myEmail = currentUser.email.toLowerCase().trim();
+                if ((info.emailDt && info.emailDt.toLowerCase().trim() === myEmail) || (info.emailDp && info.emailDp.toLowerCase().trim() === myEmail)) {
+                    duocPhepSua = true;
+                }
+            }
 
             if (!duocPhepSua) { alert("Bạn không có quyền ghi lý do vắng cho đội này!"); return; }
 
@@ -681,17 +762,37 @@
             document.getElementById("modalThemEm").classList.add("active");
         }
 
+        // Giao diện cấu hình Đội trưởng / Đội phó cho Admin (có gợi ý chọn từ 53 Huynh Trưởng)
         function moModalAdminDoi() {
             const container = document.getElementById("adminDoiFormContainer");
             container.innerHTML = "";
 
             danhSach13Doi.forEach(doi => {
-                const currentEmail = doiTruongMap[doi.id] || "";
+                const info = doiTruongMap[doi.id] || {};
                 const div = document.createElement("div");
-                div.className = "mb-3";
+                div.className = "p-3 mb-3 rounded-3" + " style='background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.1);'";
                 div.innerHTML = `
-                    <label style="font-size:13px; font-weight:700; color:#38bdf8;">${doi.name}:</label>
-                    <input type="email" class="form-control-custom email-input-doi" data-doi-id="${doi.id}" value="${currentEmail}" placeholder="Nhập Gmail đội trưởng quản lý...">
+                    <strong style="color: #38bdf8; display:block; margin-bottom:8px;">${doi.name}</strong>
+                    <div class="row g-2">
+                        <div class="col-md-6">
+                            <label class="small fw-bold text-success">Đội trưởng:</label>
+                            <select class="form-control-custom select-dt" data-doi-id="${doi.id}" onchange="chonHtChoDoi(this, ${doi.id}, 'dt')">
+                                <option value="">-- Chọn Huynh Trưởng --</option>
+                                ${danhSachGocHT.map(ht => `<option value="${ht.thanhHoTen}" ${info.dt === ht.thanhHoTen ? 'selected' : ''}>${ht.thanhHoTen}</option>`).join('')}
+                            </select>
+                            <input type="email" class="form-control-custom email-dt-${doi.id}" value="${info.emailDt || ''}" placeholder="Gmail đăng nhập ĐT...">
+                            <input type="text" class="form-control-custom sdt-dt-${doi.id}" value="${info.sdtDt || ''}" placeholder="Số điện thoại ĐT...">
+                        </div>
+                        <div class="col-md-6">
+                            <label class="small fw-bold text-warning">Đội phó:</label>
+                            <select class="form-control-custom select-dp" data-doi-id="${doi.id}" onchange="chonHtChoDoi(this, ${doi.id}, 'dp')">
+                                <option value="">-- Chọn Huynh Trưởng --</option>
+                                ${danhSachGocHT.map(ht => `<option value="${ht.thanhHoTen}" ${info.dp === ht.thanhHoTen ? 'selected' : ''}>${ht.thanhHoTen}</option>`).join('')}
+                            </select>
+                            <input type="email" class="form-control-custom email-dp-${doi.id}" value="${info.emailDp || ''}" placeholder="Gmail đăng nhập ĐP...">
+                            <input type="text" class="form-control-custom sdt-dp-${doi.id}" value="${info.sdtDp || ''}" placeholder="Số điện thoại ĐP...">
+                        </div>
+                    </div>
                 `;
                 container.appendChild(div);
             });
@@ -699,16 +800,34 @@
             document.getElementById("modalAdminDoi").classList.add("active");
         }
 
+        function chonHtChoDoi(selectElem, doiId, type) {
+            const selectedName = selectElem.value;
+            const found = danhSachGocHT.find(h => h.thanhHoTen === selectedName);
+            if (found) {
+                if (type === 'dt') {
+                    document.querySelector(`.sdt-dt-${doiId}`).value = found.sdt;
+                } else {
+                    document.querySelector(`.sdt-dp-${doiId}`).value = found.sdt;
+                }
+            }
+        }
+
         function luuPhanCongDoiAdmin() {
-            const inputs = document.querySelectorAll(".email-input-doi");
             let newMap = {};
-            inputs.forEach(inp => {
-                const id = inp.getAttribute("data-doi-id");
-                newMap[id] = inp.value.toLowerCase().trim();
+            danhSach13Doi.forEach(doi => {
+                const dt = document.querySelector(`.select-dt[data-doi-id="${doi.id}"]`).value;
+                const emailDt = document.querySelector(`.email-dt-${doi.id}`).value.toLowerCase().trim();
+                const sdtDt = document.querySelector(`.sdt-dt-${doi.id}`).value.trim();
+
+                const dp = document.querySelector(`.select-dp[data-doi-id="${doi.id}"]`).value;
+                const emailDp = document.querySelector(`.email-dp-${doi.id}`).value.toLowerCase().trim();
+                const sdtDp = document.querySelector(`.sdt-dp-${doi.id}`).value.trim();
+
+                newMap[doi.id] = { dt, emailDt, sdtDt, dp, emailDp, sdtDp };
             });
 
             db.ref("doiTruongMapping").set(newMap).then(() => {
-                alert("Đã lưu phân công đội trưởng thành công!");
+                alert("Đã lưu phân công Đội trưởng & Đội phó thành công!");
                 dongModal("modalAdminDoi");
             });
         }
