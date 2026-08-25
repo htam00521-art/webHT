@@ -115,7 +115,7 @@
         .badge-s-khongp { background: #fee2e2; color: #b91c1c; padding: 3px 8px; border-radius: 8px; }
         .badge-s-cop { background: #fef3c7; color: #b45309; padding: 3px 8px; border-radius: 8px; }
 
-        /* THẺ 13 ĐỘI */
+        /* THẺ ĐỘI */
         .section-heading { color: #0D47A1; font-size: 20px; font-weight: 800; margin-bottom: 16px; display: flex; align-items: center; gap: 8px; text-shadow: 0 1px 3px rgba(255,255,255,0.9); }
         .doi-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 18px; margin-bottom: 30px; }
         .doi-card {
@@ -182,16 +182,11 @@
         .form-control-custom { width: 100%; padding: 10px 14px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.2); background: rgba(255,255,255,0.08); color: #fff; font-size: 14px; outline: none; margin-bottom: 12px; }
         .form-control-custom:focus { border-color: #38bdf8; background: rgba(255,255,255,0.12); }
 
-        /* ĐỒNG BỘ MÀU TỐI CHO DROPDOWN SELECT TRONG MODAL */
         select.form-control-custom, select.select-dt, select.select-dp {
-            background-color: rgba(15, 23, 42, 0.95) !important;
-            color: #f8fafc !important;
-            border: 1px solid rgba(255, 255, 255, 0.25) !important;
+            background-color: rgba(15, 23, 42, 0.95) !important; color: #f8fafc !important; border: 1px solid rgba(255, 255, 255, 0.25) !important;
         }
         select.form-control-custom option, select.select-dt option, select.select-dp option {
-            background-color: #0f172a !important;
-            color: #f8fafc !important;
-            padding: 10px !important;
+            background-color: #0f172a !important; color: #f8fafc !important; padding: 10px !important;
         }
     </style>
 </head>
@@ -222,7 +217,7 @@
             </div>
             <div class="auth-actions">
                 <button id="adminConfigDoiBtn" class="btn-auth-action" style="display:none; background:#d97706;" onclick="moModalAdminDoi()">
-                    <i class="fa-solid fa-shield-halved"></i> Admin: Phân Công Đội Trưởng/Phó
+                    <i class="fa-solid fa-shield-halved"></i> Admin: Quản Lý & Cấu Hình Đội
                 </button>
                 <div id="googleBtnContainer"></div>
                 <button id="logoutBtn" class="btn-auth-action btn-logout" style="display:none;" onclick="xuLyDangXuat()">
@@ -256,7 +251,7 @@
             <div class="overview-card">
                 <div class="overview-icon" style="background: linear-gradient(135deg, #d97706, #fbbf24);"><i class="fa-solid fa-shield-halved"></i></div>
                 <div class="overview-info">
-                    <div class="val" style="color: #d97706;">13 Đội</div>
+                    <div class="val" style="color: #d97706;" id="statTongSoDoi">13 Đội</div>
                     <div class="lbl">TỔNG SỐ ĐỘI</div>
                 </div>
             </div>
@@ -272,9 +267,9 @@
             <div id="globalSearchResultContainer"></div>
         </div>
 
-        <!-- GIAO DIỆN CHÍNH: DANH SÁCH 13 ĐỘI -->
+        <!-- GIAO DIỆN CHÍNH: DANH SÁCH CÁC ĐỘI -->
         <div id="danhSachDoiSection">
-            <div class="section-heading"><i class="fa-solid fa-list-check"></i> Danh Sách 13 Đội Trong Xứ Đoàn (Bấm vào đội để xem và điểm danh)</div>
+            <div class="section-heading"><i class="fa-solid fa-list-check"></i> Danh Sách Các Đội Trong Xứ Đoàn (Bấm vào đội để xem và điểm danh)</div>
             <div class="doi-grid" id="doiGridContainer"></div>
         </div>
 
@@ -341,14 +336,18 @@
         </div>
     </div>
 
-    <!-- MODAL ADMIN PHÂN CÔNG ĐỘI TRƯỞNG / ĐỘI PHÓ -->
+    <!-- MODAL ADMIN QUẢN LÝ DANH SÁCH ĐỘI & ĐỘI TRƯỞNG/PHÓ -->
     <div class="modal-overlay" id="modalAdminDoi" onclick="dongModal('modalAdminDoi')">
-        <div class="modal-card" style="max-width: 520px;" onclick="event.stopPropagation()">
-            <h3 style="color: #38bdf8; text-align: center; margin-bottom: 16px; font-weight: 800;">Phân Công Đội Trưởng & Đội Phó</h3>
+        <div class="modal-card" style="max-width: 580px;" onclick="event.stopPropagation()">
+            <h3 style="color: #38bdf8; text-align: center; margin-bottom: 16px; font-weight: 800;">Quản Lý & Phân Công Đội</h3>
+            <div class="d-flex justify-content-between mb-3">
+                <span class="small text-muted fw-bold">Danh sách các đội trong hệ thống:</span>
+                <button class="btn btn-sm btn-success rounded-pill px-3 fw-bold" onclick="themDoiMoiAdmin()"><i class="fa-solid fa-plus me-1"></i> Thêm đội mới</button>
+            </div>
             <div id="adminDoiFormContainer" style="max-height: 380px; overflow-y: auto; padding-right: 5px;"></div>
             <div class="d-flex gap-3 mt-3">
                 <button class="btn btn-light flex-grow-1 fw-bold rounded-pill" onclick="dongModal('modalAdminDoi')">Đóng</button>
-                <button class="btn btn-primary flex-grow-1 fw-bold rounded-pill" style="background: linear-gradient(135deg, #059669, #34d399); border:none;" onclick="luuPhanCongDoiAdmin()">Lưu cấu hình</button>
+                <button class="btn btn-primary flex-grow-1 fw-bold rounded-pill" style="background: linear-gradient(135deg, #059669, #34d399); border:none;" onclick="luuQuanLyDoiAdmin()">Lưu toàn bộ thay đổi</button>
             </div>
         </div>
     </div>
@@ -371,7 +370,8 @@
         const ADMIN_EMAILS = ["htam00521@gmail.com", "yinsnhuw29@gmail.com"]; 
         const GOOGLE_CLIENT_ID = "262126423881-einke9pok3r8at0d9hrnli04klf68s9q.apps.googleusercontent.com";
 
-        const danhSach13Doi = [
+        // Danh sách đội mặc định nếu trên Firebase chưa có
+        const defaultDanhSachDoi = [
             { id: 1, name: "Đội 1 (Giuse)", nganh: "Ngành Ấu" }, { id: 2, name: "Đội 2 (Maria)", nganh: "Ngành Ấu" },
             { id: 3, name: "Đội 3 (Pêrô)", nganh: "Ngành Ấu" }, { id: 4, name: "Đội 4 (Phao-lô)", nganh: "Ngành Thiếu" },
             { id: 5, name: "Đội 5 (An-tôn)", nganh: "Ngành Thiếu" }, { id: 6, name: "Đội 6 (Agnes)", nganh: "Ngành Thiếu" },
@@ -442,6 +442,7 @@
         ];
 
         let currentSelectedDoi = 1;
+        let danhSachDoi = defaultDanhSachDoi;
         let thieuNhiData = {};
         let danhSachNgayLe = ["CN 09/08/2026", "CN 16/08/2026"];
         let doiTruongMap = {}; 
@@ -450,6 +451,16 @@
         let currentUser = JSON.parse(localStorage.getItem("ht_user_session")) || {
             name: "Khách", email: "", picture: "https://cdn-icons-png.flaticon.com/512/3135/3135715.png", role: "viewer"
         };
+
+        db.ref("danhSachDoi").on("value", (snapshot) => {
+            if (snapshot.exists()) {
+                danhSachDoi = snapshot.val();
+            } else {
+                db.ref("danhSachDoi").set(defaultDanhSachDoi);
+                danhSachDoi = defaultDanhSachDoi;
+            }
+            capNhatGiaoDien();
+        });
 
         db.ref("danhSachNgayLe").on("value", (snapshot) => {
             if (snapshot.exists()) danhSachNgayLe = snapshot.val();
@@ -574,7 +585,9 @@
         function khoiTaoTheDoi() {
             const grid = document.getElementById("doiGridContainer");
             grid.innerHTML = "";
-            danhSach13Doi.forEach(doi => {
+            document.getElementById("statTongSoDoi").innerText = `${danhSachDoi.length} Đội`;
+
+            danhSachDoi.forEach(doi => {
                 const doiKey = `doi_${doi.id}`;
                 const siSo = (thieuNhiData[doiKey] || []).length;
                 const info = doiTruongMap[doi.id] || {};
@@ -587,7 +600,7 @@
                     <h4>${doi.name}</h4>
                     <span class="doitruong-lbl"><i class="fa-solid fa-user-tie me-1"></i> ĐT: ${tenDt}</span>
                     <span class="doipho-lbl"><i class="fa-solid fa-user-shield me-1"></i> ĐP: ${tenDp}</span>
-                    <p>${doi.nganh} • Sĩ số: <strong>${siSo} em</strong></p>
+                    <p>${doi.nganh || 'Chưa phân ngành'} • Sĩ số: <strong>${siSo} em</strong></p>
                     <button class="btn-chon-doi"><i class="fa-solid fa-clipboard-user me-1"></i> Điểm danh ngay</button>
                 `;
                 card.onclick = () => moChiTietDoi(doi.id);
@@ -597,9 +610,9 @@
 
         function tinhToanTongSoThieuNhi() {
             let total = 0;
-            for (let g = 1; g <= 13; g++) {
-                total += (thieuNhiData[`doi_${g}`] || []).length;
-            }
+            danhSachDoi.forEach(doi => {
+                total += (thieuNhiData[`doi_${doi.id}`] || []).length;
+            });
             document.getElementById("statTongThieuNhi").innerText = `${total} em`;
         }
 
@@ -623,8 +636,8 @@
         }
 
         function hienThiChiTietDoi() {
-            const doiObj = danhSach13Doi.find(d => d.id === currentSelectedDoi);
-            document.getElementById("currentDoiName").innerText = doiObj ? `${doiObj.name} (${doiObj.nganh})` : `Đội ${currentSelectedDoi}`;
+            const doiObj = danhSachDoi.find(d => d.id === currentSelectedDoi);
+            document.getElementById("currentDoiName").innerText = doiObj ? `${doiObj.name} (${doiObj.nganh || ''})` : `Đội ${currentSelectedDoi}`;
 
             const headerRow = document.getElementById("tableHeaderRow");
             let headerHTML = `<th style="width: 50px;">STT</th><th>Thánh Họ Và Tên</th>`;
@@ -776,17 +789,29 @@
             document.getElementById("modalThemEm").classList.add("active");
         }
 
+        // Modal cấu hình quản lý danh sách đội (đổi tên, thêm, xóa, phân công đội trưởng/phó)
         function moModalAdminDoi() {
+            renderAdminDoiForm();
+            document.getElementById("modalAdminDoi").classList.add("active");
+        }
+
+        function renderAdminDoiForm() {
             const container = document.getElementById("adminDoiFormContainer");
             container.innerHTML = "";
 
-            danhSach13Doi.forEach(doi => {
+            danhSachDoi.forEach((doi, index) => {
                 const info = doiTruongMap[doi.id] || {};
                 const div = document.createElement("div");
                 div.className = "p-3 mb-3 rounded-3";
                 div.style.cssText = "background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.1);";
                 div.innerHTML = `
-                    <strong style="color: #38bdf8; display:block; margin-bottom:8px;">${doi.name}</strong>
+                    <div class="d-flex justify-content-between align-items-center mb-2">
+                        <div class="d-flex gap-2 align-items-center flex-grow-1">
+                            <input type="text" class="form-control-custom name-doi-${doi.id}" value="${doi.name}" placeholder="Tên đội..." style="margin-bottom:0; font-weight:bold; color:#38bdf8;">
+                            <input type="text" class="form-control-custom nganh-doi-${doi.id}" value="${doi.nganh || ''}" placeholder="Ngành..." style="margin-bottom:0; width:130px;">
+                        </div>
+                        <button class="btn btn-sm btn-danger ms-2" onclick="xoaDoiAdmin(${doi.id})" title="Xóa đội này"><i class="fa-solid fa-trash"></i></button>
+                    </div>
                     <div class="row g-2">
                         <div class="col-md-6">
                             <label class="small fw-bold text-success">Đội trưởng:</label>
@@ -810,8 +835,19 @@
                 `;
                 container.appendChild(div);
             });
+        }
 
-            document.getElementById("modalAdminDoi").classList.add("active");
+        function themDoiMoiAdmin() {
+            const newId = danhSachDoi.length > 0 ? Math.max(...danhSachDoi.map(d => d.id)) + 1 : 1;
+            danhSachDoi.push({ id: newId, name: `Đội ${newId}`, nganh: "Ngành Thiếu" });
+            renderAdminDoiForm();
+        }
+
+        function xoaDoiAdmin(doiId) {
+            if (confirm("Bạn có chắc chắn muốn xóa đội này không?")) {
+                danhSachDoi = danhSachDoi.filter(d => d.id !== doiId);
+                renderAdminDoiForm();
+            }
         }
 
         function chonHtChoDoi(selectElem, doiId, type) {
@@ -826,22 +862,36 @@
             }
         }
 
-        function luuPhanCongDoiAdmin() {
+        function luuQuanLyDoiAdmin() {
+            let updatedDanhSachDoi = [];
             let newMap = {};
-            danhSach13Doi.forEach(doi => {
-                const dt = document.querySelector(`.select-dt[data-doi-id="${doi.id}"]`).value;
-                const emailDt = document.querySelector(`.email-dt-${doi.id}`).value.toLowerCase().trim();
-                const sdtDt = document.querySelector(`.sdt-dt-${doi.id}`).value.trim();
 
-                const dp = document.querySelector(`.select-dp[data-doi-id="${doi.id}"]`).value;
-                const emailDp = document.querySelector(`.email-dp-${doi.id}`).value.toLowerCase().trim();
-                const sdtDp = document.querySelector(`.sdt-dp-${doi.id}`).value.trim();
+            danhSachDoi.forEach(doi => {
+                const nameInput = document.querySelector(`.name-doi-${doi.id}`);
+                const nganhInput = document.querySelector(`.nganh-doi-${doi.id}`);
+                
+                if (nameInput) {
+                    updatedDanhSachDoi.push({
+                        id: doi.id,
+                        name: nameInput.value.trim() || `Đội ${doi.id}`,
+                        nganh: nganhInput.value.trim() || ""
+                    });
+                }
+
+                const dt = document.querySelector(`.select-dt[data-doi-id="${doi.id}"]`)?.value || "";
+                const emailDt = document.querySelector(`.email-dt-${doi.id}`)?.value.toLowerCase().trim() || "";
+                const sdtDt = document.querySelector(`.sdt-dt-${doi.id}`)?.value.trim() || "";
+
+                const dp = document.querySelector(`.select-dp[data-doi-id="${doi.id}"]`)?.value || "";
+                const emailDp = document.querySelector(`.email-dp-${doi.id}`)?.value.toLowerCase().trim() || "";
+                const sdtDp = document.querySelector(`.sdt-dp-${doi.id}`)?.value.trim() || "";
 
                 newMap[doi.id] = { dt, emailDt, sdtDt, dp, emailDp, sdtDp };
             });
 
+            db.ref("danhSachDoi").set(updatedDanhSachDoi);
             db.ref("doiTruongMapping").set(newMap).then(() => {
-                alert("Đã lưu phân công Đội trưởng & Đội phó thành công!");
+                alert("Đã cập nhật danh sách đội và phân công thành công!");
                 dongModal("modalAdminDoi");
             });
         }
@@ -870,10 +920,9 @@
             if (!keyword) return;
 
             let matches = [];
-            for (let g = 1; g <= 13; g++) {
-                const doiKey = `doi_${g}`;
+            danhSachDoi.forEach(doi => {
+                const doiKey = `doi_${doi.id}`;
                 const arr = thieuNhiData[doiKey] || [];
-                const doiInfo = danhSach13Doi.find(d => d.id === g);
 
                 arr.forEach(em => {
                     if (em.hoTen.toLowerCase().includes(keyword)) {
@@ -887,10 +936,10 @@
                             else khongp++;
                         });
 
-                        matches.push({ em, doiInfo, stats: { di, khongp, cophep } });
+                        matches.push({ em, doiInfo: doi, stats: { di, khongp, cophep } });
                     }
                 });
-            }
+            });
 
             if (matches.length === 0) {
                 container.innerHTML = `<div class="text-muted small mt-2">Không tìm thấy đoàn sinh nào phù hợp.</div>`;
@@ -903,7 +952,7 @@
                 card.innerHTML = `
                     <div>
                         <strong style="color: #0052d4; font-size: 16px;">${item.em.hoTen}</strong>
-                        <div class="small text-muted">${item.doiInfo.name} (${item.doiInfo.nganh})</div>
+                        <div class="small text-muted">${item.doiInfo.name} (${item.doiInfo.nganh || ''})</div>
                         <div class="search-result-stats">
                             <span class="badge-s-di">Đi lễ: ${item.stats.di} buổi</span>
                             <span class="badge-s-khongp">Vắng KP: ${item.stats.khongp} buổi</span>
