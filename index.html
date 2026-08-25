@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đoàn TNTT Phước Hảo - Trang Chủ</title>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Crimson+Text:wght@600;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Nunito', sans-serif; background: #f4f8fb; color: #263238; }
+        .cls-topbar {
+            background: linear-gradient(135deg, #0d47a1, #1565c0 50%, #42a5f5);
+            color: #fff; padding: 0.65rem 0; box-shadow: 0 8px 24px rgba(13,71,161,.22);
+            position: sticky; top: 0; z-index: 100;
+        }
+        .cls-brand { display: flex; align-items: center; gap: 0.65rem; color: #fff; text-decoration: none; font-weight: 800; font-size: 1rem; }
+        .cls-brand img { width: 40px; height: 40px; border-radius: 50%; object-fit: cover; }
+        .cls-nav-link {
+            color: rgba(255,255,255,.9); text-decoration: none; font-weight: 700; font-size: 0.88rem;
+            padding: 0.45rem 0.85rem; border-radius: 999px; transition: 0.2s;
+        }
+        .cls-nav-link:hover, .cls-nav-link.active { background: rgba(255,255,255,.22); color: #fff; }
+        .hero-section {
+            height: 85vh; min-height: 520px;
+            background: linear-gradient(rgba(0,0,0,0.45), rgba(13,71,161,0.65)), url('bg_church.jpg') center/cover no-repeat fixed;
+            display: flex; align-items: center; justify-content: center; text-align: center; color: white; padding: 0 20px;
+        }
+        .hero-title { font-family: 'Crimson Text', serif; font-size: 3.2rem; font-weight: 700; margin-bottom: 20px; text-shadow: 0 4px 20px rgba(0,0,0,0.6); }
+        .hero-subtitle { font-size: 1.15rem; max-width: 750px; margin: 0 auto 30px; opacity: 0.95; line-height: 1.6; }
+        .btn-hero { padding: 12px 30px; font-weight: 700; border-radius: 50px; text-decoration: none; display: inline-flex; align-items: center; gap: 8px; transition: 0.3s; }
+        .btn-hero.primary { background: #1565c0; color: #fff; border: 2px solid #1565c0; }
+        .btn-hero.primary:hover { background: transparent; color: #fff; border-color: #fff; }
+        .feature-card {
+            background: #fff; border-radius: 20px; padding: 35px 25px; text-align: center;
+            box-shadow: 0 10px 30px rgba(21, 101, 192, 0.08); border: 1px solid #e3eef6; transition: 0.3s; height: 100%;
+        }
+        .feature-card:hover { transform: translateY(-6px); box-shadow: 0 16px 36px rgba(21, 101, 192, 0.14); }
+        .feature-icon { width: 70px; height: 70px; border-radius: 50%; background: linear-gradient(135deg, #1565c0, #42a5f5); display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; font-size: 1.8rem; color: #fff; }
+        .modern-footer { background: linear-gradient(135deg, #0d47a1, #1565c0); color: white; padding: 45px 0 20px; margin-top: 60px; }
+        @media(max-width:768px){ .hero-title { font-size: 2.1rem; } .hero-section { background-attachment: scroll; } }
+    </style>
+</head>
+<body>
+    <header class="cls-topbar">
+        <div class="container d-flex justify-content-between align-items-center">
+            <a class="cls-brand" href="index.html">
+                <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="Logo">
+                <span>ĐOÀN TNTT PHƯỚC HẢO</span>
+            </a>
+            <nav class="d-flex gap-2">
+                <a href="index.html" class="cls-nav-link active"><i class="fas fa-home me-1"></i>Trang chủ</a>
+                <a href="classes.html" class="cls-nav-link"><i class="fas fa-users-gear me-1"></i>Huynh Trưởng & Lịch Trực</a>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero-section">
+        <div>
+            <h1 class="hero-title">ĐOÀN TNTT PHƯỚC HẢO</h1>
+            <p class="hero-subtitle">"Tôi không làm được những điều trọng đại. Nhưng tôi muốn tất cả những gì tôi làm, ngay cả những gì nhỏ nhặt nhất, là để vinh danh Thiên Chúa."</p>
+            <div class="d-flex justify-content-center gap-3 flex-wrap">
+                <a href="classes.html" class="btn-hero primary"><i class="fas fa-calendar-check"></i>Xem Danh Sách & Lịch Trực</a>
+            </div>
+        </div>
+    </section>
+
+    <main class="container py-5">
+        <div class="text-center mb-5">
+            <h2 style="font-weight: 800; color: #0d47a1;">Tính Năng Hệ Thống</h2>
+            <p class="text-muted">Cổng thông tin & Phân chia phiên trực Huynh Trưởng Xứ Đoàn</p>
+        </div>
+        <div class="row g-4 justify-content-center">
+            <div class="col-md-6 col-lg-5">
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-user-check"></i></div>
+                    <h4 class="fw-bold mb-3" style="color: #0d47a1;">Danh Sách Huynh Trưởng</h4>
+                    <p class="text-muted">Tra cứu hồ sơ, cấp bậc, chức vụ, ngày sinh và thông tin liên lạc của 53 Huynh Trưởng/Dự Trưởng trong Xứ Đoàn.</p>
+                    <a href="classes.html" class="btn btn-primary rounded-pill px-4 fw-bold">Xem Danh Sách</a>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-5">
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-calendar-alt"></i></div>
+                    <h4 class="fw-bold mb-3" style="color: #0d47a1;">Phân Chia Phiên Trực</h4>
+                    <p class="text-muted">Hệ thống xoay vòng tự động 4 nhóm theo 53 tuần phụng vụ GP Vĩnh Long, hỗ trợ điểm danh từng cá nhân theo thời gian thực.</p>
+                    <a href="classes.html" class="btn btn-primary rounded-pill px-4 fw-bold">Xem Phiên Trực</a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="modern-footer text-center">
+        <div class="container">
+            <h4 class="fw-bold">Xứ Đoàn Thiếu Nhi Thánh Thể Phước Hảo</h4>
+            <p class="opacity-75 small mb-1">Giáo Phận Vĩnh Long</p>
+            <p class="opacity-75 small mb-0">&copy; 2026 Đoàn TNTT Phước Hảo. Tất cả quyền được bảo lưu.</p>
+        </div>
+    </footer>
+</body>
+</html>
