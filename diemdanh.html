@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Điểm Danh Đội Thiếu Nhi - Đoàn TNTT Phước Hảo</title>
+    <title>Quản Lý & Điểm Danh Đoàn Sinh - Đoàn TNTT Phước Hảo</title>
     
     <link rel="icon" type="image/jpeg" href="logo_app.jpg">
     <!-- Google Fonts & Font Awesome Icons -->
@@ -22,7 +22,7 @@
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Roboto', sans-serif; }
 
         body {
-            background: linear-gradient(135deg, rgba(224, 242, 254, 0.75), rgba(240, 253, 250, 0.75)),
+            background: linear-gradient(rgba(255, 255, 255, 0.35), rgba(255, 255, 255, 0.35)),
                         url('nen1.jpg'), url('bg_church.jpg'), url('backgroud.jpg');
             background-position: center center; background-size: cover; background-repeat: no-repeat;
             background-attachment: fixed; min-height: 100vh; padding: 16px; color: #1e293b;
@@ -30,89 +30,127 @@
 
         .container { max-width: 1200px; margin: 0 auto; }
 
-        /* THANH ĐIỀU HƯỚNG LIQUID GLASS */
+        /* THANH ĐIỀU HƯỚNG SÁNG MÁT MẺ */
         .cls-topbar {
-            background: linear-gradient(135deg, rgba(0, 114, 255, 0.85), rgba(0, 198, 255, 0.85) 60%, rgba(56, 239, 125, 0.7));
-            backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); color: #fff; 
-            padding: 0.7rem 1.2rem; border-radius: 20px; margin-bottom: 20px;
-            box-shadow: 0 12px 35px rgba(0, 114, 255, 0.25), 0 1px 0 rgba(255, 255, 255, 0.4) inset;
-            display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;
+            background: linear-gradient(135deg, #0d47a1, #1565c0 50%, #42a5f5);
+            color: #fff; padding: 0.65rem 1rem; border-radius: 16px; margin-bottom: 20px;
+            box-shadow: 0 4px 14px rgba(13,71,161,.22); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;
         }
-        .cls-brand { display: flex; align-items: center; gap: 0.75rem; color: #fff; text-decoration: none; font-weight: 800; font-size: 1.05rem; font-family: 'Nunito', sans-serif; text-shadow: 0 2px 6px rgba(0,0,0,0.25); }
-        .cls-brand img { width: 40px; height: 40px; border-radius: 50%; object-fit: contain; background: #fff; padding: 2px; box-shadow: 0 4px 12px rgba(0,0,0,0.15); }
-        .cls-nav-link { color: rgba(255,255,255,0.95); text-decoration: none; font-weight: 700; font-size: 0.88rem; padding: 0.5rem 1rem; border-radius: 999px; transition: 0.3s; font-family: 'Nunito', sans-serif; background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.3); }
-        .cls-nav-link:hover, .cls-nav-link.active { background: rgba(255,255,255,0.35); color: #fff; transform: translateY(-2px); box-shadow: 0 6px 16px rgba(0,0,0,0.15); }
+        .cls-brand { display: flex; align-items: center; gap: 0.65rem; color: #fff; text-decoration: none; font-weight: 800; font-size: 1rem; font-family: 'Nunito', sans-serif; }
+        .cls-brand img { width: 38px; height: 38px; border-radius: 50%; object-fit: contain; background: #fff; padding: 2px; }
+        .cls-nav-link { color: rgba(255,255,255,.9); text-decoration: none; font-weight: 700; font-size: 0.88rem; padding: 0.45rem 0.85rem; border-radius: 999px; transition: 0.2s; font-family: 'Nunito', sans-serif; }
+        .cls-nav-link:hover, .cls-nav-link.active { background: rgba(255,255,255,.22); color: #fff; }
 
-        /* AUTH BAR LIQUID GLASS (ĐỒNG BỘ VỚI CLASSES.HTML) */
+        /* AUTH BAR SÁNG TRONG SUỐT */
         .auth-bar {
             display: flex; justify-content: space-between; align-items: center;
-            background: rgba(15, 23, 42, 0.65); backdrop-filter: blur(24px) saturate(190%);
-            -webkit-backdrop-filter: blur(24px) saturate(190%);
-            border: 1px solid rgba(255, 255, 255, 0.25); padding: 14px 22px; border-radius: 22px;
-            margin-bottom: 22px; box-shadow: 0 14px 38px rgba(0, 0, 0, 0.25), 0 1px 0 rgba(255, 255, 255, 0.2) inset;
-            flex-wrap: wrap; gap: 10px;
+            background: rgba(255, 255, 255, 0.92); backdrop-filter: blur(10px);
+            padding: 10px 18px; border-radius: 14px; margin-bottom: 20px;
+            box-shadow: 0 4px 14px rgba(0,0,0,0.08); flex-wrap: wrap; gap: 10px;
         }
-        .user-status { font-size: 14px; color: #f8fafc; display: flex; align-items: center; gap: 10px; font-weight: 600; text-shadow: 0 1px 3px rgba(0,0,0,0.5); }
-        .user-avatar-mini { width: 36px; height: 36px; border-radius: 50%; object-fit: cover; border: 2px solid #0072ff; box-shadow: 0 4px 10px rgba(0,114,255,0.3); }
-        .role-tag { padding: 4px 12px; border-radius: 12px; font-size: 12px; font-weight: 700; color: #fff; box-shadow: 0 2px 6px rgba(0,0,0,0.2); }
+        .user-status { font-size: 14px; color: #333; display: flex; align-items: center; gap: 8px; font-weight: 600; }
+        .user-avatar-mini { width: 32px; height: 32px; border-radius: 50%; object-fit: cover; border: 1px solid #0D47A1; }
+        .role-tag { padding: 3px 10px; border-radius: 12px; font-size: 12px; font-weight: 700; color: #fff; }
         .role-admin { background: #d32f2f; }
         .role-leader { background: #e65100; }
         .role-doitruong { background: #059669; }
-        .role-viewer { background: #0072ff; }
+        .role-viewer { background: #1976d2; }
 
-        .header-title { text-align: center; color: #ffffff; font-size: 28px; font-weight: 800; margin-bottom: 20px; text-transform: uppercase; text-shadow: 0 2px 12px rgba(0, 0, 0, 0.8); }
+        .btn-auth-action {
+            background: #0D47A1; color: #fff; border: none; padding: 7px 14px; border-radius: 20px;
+            cursor: pointer; font-size: 13px; font-weight: 500; display: inline-flex; align-items: center; gap: 6px; transition: 0.2s;
+        }
+        .btn-auth-action:hover { background: #1565C0; }
+        .btn-logout { background: #546e7a; }
 
-        /* THANH CHỌN 13 ĐỘI */
-        .doi-scroll {
-            display: flex; gap: 10px; overflow-x: auto; padding-bottom: 12px; margin-bottom: 20px;
-            scrollbar-width: thin;
+        /* HEADER BANNER SÁNG TRẮNG ĐẸP NHƯ ẢNH MẪU */
+        .dashboard-header {
+            background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.8);
+            border-radius: 20px; padding: 22px 26px; margin-bottom: 20px; box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
         }
-        .doi-scroll::-webkit-scrollbar { height: 6px; }
-        .doi-scroll::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.3); border-radius: 10px; }
-        
-        .doi-chip {
-            flex-shrink: 0; background: rgba(15, 23, 42, 0.65); backdrop-filter: blur(16px);
-            border: 1px solid rgba(255, 255, 255, 0.25); color: #f8fafc; padding: 10px 20px;
-            border-radius: 30px; font-weight: 700; font-size: 14px; cursor: pointer; transition: 0.3s;
-            box-shadow: 0 6px 20px rgba(0,0,0,0.15);
-        }
-        .doi-chip:hover { background: rgba(56, 189, 248, 0.3); transform: translateY(-2px); }
-        .doi-chip.active {
-            background: linear-gradient(135deg, #0072ff, #00c6ff); border-color: transparent;
-            box-shadow: 0 8px 25px rgba(0, 114, 255, 0.4);
-        }
+        .dashboard-header h2 { color: #0D47A1; font-size: 24px; font-weight: 800; display: flex; align-items: center; gap: 10px; }
+        .dashboard-header p { color: #64748b; font-size: 14px; margin-top: 4px; }
 
-        /* TOOLBAR TÌM KIẾM */
-        .toolbar-panel {
-            display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px;
-            background: rgba(15, 23, 42, 0.7); backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.25); border-radius: 20px; padding: 16px 22px;
-            margin-bottom: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.2); color: #f8fafc;
+        /* 3 Ô THỐNG KÊ TỔNG QUAN GIỐNG ẢNH MẪU */
+        .stats-overview-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 18px; margin-bottom: 20px;
         }
-        .search-box-custom { position: relative; flex: 1; min-width: 260px; }
-        .search-box-custom input {
-            width: 100%; padding: 10px 16px 10px 40px; border-radius: 20px; border: 1px solid rgba(255,255,255,0.3);
-            background: rgba(255,255,255,0.1); color: #fff; font-size: 14px; outline: none;
+        .overview-card {
+            background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.8); border-radius: 20px; padding: 20px 24px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.08); display: flex; align-items: center; gap: 18px;
+            transition: transform 0.3s ease;
         }
-        .search-box-custom input::placeholder { color: #cbd5e1; }
-        .search-box-custom i { position: absolute; left: 14px; top: 50%; transform: translateY(-50%); color: #38bdf8; }
+        .overview-card:hover { transform: translateY(-4px); }
+        .overview-icon {
+            width: 56px; height: 56px; border-radius: 14px; background: linear-gradient(135deg, #0072ff, #00c6ff);
+            display: flex; align-items: center; justify-content: center; font-size: 22px; color: #fff; flex-shrink: 0;
+            box-shadow: 0 6px 16px rgba(0,114,255,0.3);
+        }
+        .overview-info .val { font-size: 26px; font-weight: 800; color: #0D47A1; line-height: 1.1; }
+        .overview-info .lbl { font-size: 13px; color: #64748b; font-weight: 700; margin-top: 4px; text-transform: uppercase; }
+
+        /* Ô TÌM KIẾM TOÀN ĐOÀN GIỐNG ẢNH MẪU */
+        .search-panel-global {
+            background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.8); border-radius: 20px; padding: 20px 24px;
+            margin-bottom: 24px; box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+        }
+        .search-bar-wrap { position: relative; max-width: 100%; }
+        .search-bar-wrap input {
+            width: 100%; padding: 12px 20px 12px 46px; border-radius: 30px; border: 1px solid #cbd5e1;
+            background: #f8fafc; font-size: 15px; outline: none; font-weight: 600; color: #0f172a;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.02); transition: 0.3s;
+        }
+        .search-bar-wrap input:focus { border-color: #0072ff; background: #fff; box-shadow: 0 4px 15px rgba(0,114,255,0.15); }
+        .search-bar-wrap i { position: absolute; left: 18px; top: 50%; transform: translateY(-50%); color: #0072ff; font-size: 16px; }
 
         .search-result-card {
             background: #ffffff; border: 1px solid #e2e8f0; border-radius: 16px; padding: 16px 20px;
-            margin-top: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.04); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; color: #1e293b;
+            margin-top: 12px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; color: #1e293b;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.03);
         }
         .search-result-stats { display: flex; gap: 8px; font-size: 13px; font-weight: 700; flex-wrap: wrap; align-items: center; margin-top: 4px; }
         .badge-s-di { background: #dcfce7; color: #15803d; padding: 3px 8px; border-radius: 8px; }
         .badge-s-khongp { background: #fee2e2; color: #b91c1c; padding: 3px 8px; border-radius: 8px; }
         .badge-s-cop { background: #fef3c7; color: #b45309; padding: 3px 8px; border-radius: 8px; }
 
-        /* KHUNG BẢNG CHÍNH */
+        /* THẺ 13 ĐỘI (GIỐNG ẢNH MẪU) */
+        .section-heading { color: #0D47A1; font-size: 20px; font-weight: 800; margin-bottom: 16px; display: flex; align-items: center; gap: 8px; text-shadow: 0 1px 3px rgba(255,255,255,0.9); }
+        .doi-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 18px; margin-bottom: 30px; }
+        .doi-card {
+            background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.8); border-radius: 20px; padding: 22px;
+            text-align: center; cursor: pointer; box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+            transition: all 0.3s ease; position: relative; overflow: hidden; color: #1e293b;
+        }
+        .doi-card::before {
+            content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px;
+            background: linear-gradient(90deg, #0072ff, #00c6ff); transform: scaleX(0); transition: transform 0.3s ease;
+        }
+        .doi-card:hover { transform: translateY(-5px); background: #ffffff; box-shadow: 0 14px 35px rgba(0,114,255,0.18); border-color: #93c5fd; }
+        .doi-card:hover::before { transform: scaleX(1); }
+        .doi-card h4 { color: #0052d4; font-size: 18px; font-weight: 800; margin-bottom: 4px; }
+        .doi-card .doitruong-lbl { color: #059669; font-size: 12px; font-weight: 700; margin-bottom: 8px; display: block; }
+        .doi-card p { color: #64748b; font-size: 13px; font-weight: 600; margin-bottom: 14px; }
+        
+        /* NÚT XANH NỔI BẬT GIỐNG ẢNH MẪU */
+        .btn-chon-doi {
+            background: linear-gradient(135deg, #00c6ff, #0072ff); color: white; border: none;
+            padding: 9px 24px; border-radius: 25px; font-weight: 700; font-size: 13px; cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0, 114, 255, 0.35); transition: 0.2s;
+        }
+        .doi-card:hover .btn-chon-doi { transform: scale(1.05); filter: brightness(1.05); }
+
+        /* KHUNG BẢNG ĐIỂM DANH CHI TIẾT ĐỘI */
+        .diemdanh-detail-section { display: none; }
+        .diemdanh-detail-section.active { display: block; }
+
         .diemdanh-container {
             background: rgba(15, 23, 42, 0.88); backdrop-filter: blur(26px);
             border: 1px solid rgba(255, 255, 255, 0.25); border-radius: 26px; padding: 28px;
             box-shadow: 0 25px 60px rgba(0, 0, 0, 0.45); color: #f8fafc;
         }
-
         .doi-header-bar {
             display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px;
             margin-bottom: 20px; padding-bottom: 15px; border-bottom: 1px dashed rgba(255,255,255,0.2);
@@ -138,19 +176,6 @@
         .btn-custom-action:hover { transform: translateY(-2px); filter: brightness(1.1); }
 
         .lydo-note { font-size: 11px; color: #fbbf24; font-style: italic; display: block; margin-top: 2px; }
-
-        /* THẺ ĐỘI & CẤU HÌNH ĐỘI TRƯỞNG */
-        .doi-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 18px; margin-bottom: 30px; }
-        .doi-card {
-            background: rgba(15, 23, 42, 0.7); backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.25); border-radius: 20px; padding: 22px;
-            text-align: center; cursor: pointer; box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-            transition: all 0.35s ease; position: relative; overflow: hidden; color: #f8fafc;
-        }
-        .doi-card:hover { transform: translateY(-6px); background: rgba(15, 23, 42, 0.9); border-color: #38bdf8; }
-        .doi-card h4 { color: #38bdf8; font-size: 18px; font-weight: 800; margin-bottom: 4px; }
-        .doi-card .doitruong-lbl { color: #34d399; font-size: 12px; font-weight: 700; margin-bottom: 10px; display: block; }
-        .doi-card p { color: #cbd5e1; font-size: 13px; font-weight: 600; margin-bottom: 14px; }
 
         /* MODAL */
         .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(10, 25, 47, 0.8); backdrop-filter: blur(10px); display: flex; align-items: center; justify-content: center; z-index: 9999; opacity: 0; visibility: hidden; transition: 0.25s; padding: 16px; }
@@ -179,7 +204,7 @@
             </nav>
         </div>
 
-        <!-- AUTH BAR (ĐỒNG BỘ VỚI CLASSES.HTML) -->
+        <!-- AUTH BAR -->
         <div class="auth-bar">
             <div class="user-status">
                 <img id="userAvatarMini" class="user-avatar-mini" src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="Avatar">
@@ -199,40 +224,40 @@
             </div>
         </div>
 
-        <!-- HEADER BANNER -->
-        <div class="dashboard-header" style="background: rgba(15, 23, 42, 0.75); color: #f8fafc; border: 1px solid rgba(255,255,255,0.25);">
-            <h2 style="color: #38bdf8;"><i class="fa-solid fa-graduation-cap"></i> Quản Lý & Điểm Danh Đoàn Sinh</h2>
-            <p style="color: #cbd5e1;">Danh sách các đội, sĩ số tổng quan và tra cứu nhanh toàn đoàn</p>
+        <!-- HEADER BANNER GIỐNG ẢNH MẪU -->
+        <div class="dashboard-header">
+            <h2><i class="fa-solid fa-graduation-cap" style="color: #0072ff;"></i> Quản Lý & Điểm Danh Đoàn Sinh</h2>
+            <p>Danh sách các đội, sĩ số tổng quan và tra cứu nhanh toàn đoàn</p>
         </div>
 
-        <!-- 3 Ô THỐNG KÊ TỔNG QUAN -->
+        <!-- 3 Ô THỐNG KÊ TỔNG QUAN GIỐNG ẢNH MẪU -->
         <div class="stats-overview-grid">
-            <div class="overview-card" style="background: rgba(15, 23, 42, 0.7); border: 1px solid rgba(255,255,255,0.25); color:#f8fafc;">
+            <div class="overview-card">
                 <div class="overview-icon"><i class="fa-solid fa-users"></i></div>
                 <div class="overview-info">
-                    <div class="val" id="statTongThieuNhi" style="color: #38bdf8;">0</div>
-                    <div class="lbl" style="color: #cbd5e1;">TỔNG THIẾU NHI</div>
+                    <div class="val" id="statTongThieuNhi">0 em</div>
+                    <div class="lbl">TỔNG THIẾU NHI</div>
                 </div>
             </div>
-            <div class="overview-card" style="background: rgba(15, 23, 42, 0.7); border: 1px solid rgba(255,255,255,0.25); color:#f8fafc;">
+            <div class="overview-card">
                 <div class="overview-icon" style="background: linear-gradient(135deg, #059669, #34d399);"><i class="fa-solid fa-layer-group"></i></div>
                 <div class="overview-info">
-                    <div class="val" style="color: #4ade80;">3 Ngành</div>
-                    <div class="lbl" style="color: #cbd5e1;">Ấu - Thiếu - Nghĩa</div>
+                    <div class="val" style="color: #059669;">3 Ngành</div>
+                    <div class="lbl">NGÀNH (Ấu - Thiếu - Nghĩa)</div>
                 </div>
             </div>
-            <div class="overview-card" style="background: rgba(15, 23, 42, 0.7); border: 1px solid rgba(255,255,255,0.25); color:#f8fafc;">
+            <div class="overview-card">
                 <div class="overview-icon" style="background: linear-gradient(135deg, #d97706, #fbbf24);"><i class="fa-solid fa-shield-halved"></i></div>
                 <div class="overview-info">
-                    <div class="val" style="color: #fbbf24;">13 Đội</div>
-                    <div class="lbl" style="color: #cbd5e1;">TỔNG SỐ ĐỘI</div>
+                    <div class="val" style="color: #d97706;">13 Đội</div>
+                    <div class="lbl">TỔNG SỐ ĐỘI</div>
                 </div>
             </div>
         </div>
 
-        <!-- Ô TÌM KIẾM TOÀN ĐOÀN -->
-        <div class="search-panel-global" style="background: rgba(15, 23, 42, 0.7); border: 1px solid rgba(255,255,255,0.25); color:#f8fafc;">
-            <h4 style="color: #38bdf8; font-size: 16px; font-weight: 800; margin-bottom: 10px;"><i class="fa-solid fa-magnifying-glass me-1"></i> Tra cứu đoàn sinh toàn đoàn</h4>
+        <!-- Ô TÌM KIẾM TOÀN ĐOÀN GIỐNG ẢNH MẪU -->
+        <div class="search-panel-global">
+            <h4 style="color: #0052d4; font-size: 16px; font-weight: 800; margin-bottom: 10px;"><i class="fa-solid fa-magnifying-glass me-1"></i> Tra cứu đoàn sinh toàn đoàn</h4>
             <div class="search-bar-wrap">
                 <i class="fa-solid fa-search"></i>
                 <input type="text" id="globalSearchInput" placeholder="Nhập tên thiếu nhi để tìm kiếm nhanh..." oninput="xuLyTimKiemToanDoan()">
@@ -242,7 +267,7 @@
 
         <!-- GIAO DIỆN CHÍNH: DANH SÁCH 13 ĐỘI -->
         <div id="danhSachDoiSection">
-            <div class="section-heading" style="color: #fde047;"><i class="fa-solid fa-list-check"></i> Danh Sách 13 Đội (Bấm vào đội để xem và điểm danh)</div>
+            <div class="section-heading"><i class="fa-solid fa-list-check"></i> Danh Sách 13 Đội Trong Xứ Đoàn (Bấm vào đội để điểm danh)</div>
             <div class="doi-grid" id="doiGridContainer"></div>
         </div>
 
@@ -349,14 +374,13 @@
         let currentSelectedDoi = 1;
         let thieuNhiData = {};
         let danhSachNgayLe = ["CN 09/08/2026", "CN 16/08/2026"];
-        let doiTruongMap = {}; // Lưu email quản lý từng đội { 1: "email@gmail.com", ... }
+        let doiTruongMap = {};
         let editingLyDo = { emIdx: null, ngayKey: null };
 
         let currentUser = JSON.parse(localStorage.getItem("ht_user_session")) || {
             name: "Khách", email: "", picture: "https://cdn-icons-png.flaticon.com/512/3135/3135715.png", role: "viewer"
         };
 
-        // Lắng nghe dữ liệu Firebase
         db.ref("danhSachNgayLe").on("value", (snapshot) => {
             if (snapshot.exists()) danhSachNgayLe = snapshot.val();
             capNhatGiaoDien();
@@ -382,7 +406,6 @@
                 if (ADMIN_EMAILS.some(adm => adm.toLowerCase().trim() === email)) {
                     role = "admin";
                 } else {
-                    // Kiểm tra xem email này có phải đội trưởng của đội nào không
                     for (let id in doiTruongMap) {
                         if (doiTruongMap[id] && doiTruongMap[id].toLowerCase().trim() === email) {
                             role = "doitruong";
@@ -443,7 +466,6 @@
             kiemTraQuyenThaoTacDoi();
         }
 
-        // Kiểm tra xem user hiện tại có quyền chỉnh sửa đội đang chọn hay không
         function kiemTraQuyenThaoTacDoi() {
             const btnThemNgay = document.getElementById("btnThemNgayLe");
             const btnThemEm = document.getElementById("btnThemThieuNhi");
@@ -650,7 +672,7 @@
 
             danhSachNgayLe.push(tenNgayMoi);
             db.ref("danhSachNgayLe").set(danhSachNgayLe).then(() => {
-                alert(`Đã tạo cột ngày lễ (${tenNgayMoi}) thành công!`);
+                alert(`Đã tự động tạo cột ngày lễ (${tenNgayMoi}) thành công!`);
             });
         }
 
@@ -659,7 +681,6 @@
             document.getElementById("modalThemEm").classList.add("active");
         }
 
-        // Cấu hình đội trưởng cho admin
         function moModalAdminDoi() {
             const container = document.getElementById("adminDoiFormContainer");
             container.innerHTML = "";
