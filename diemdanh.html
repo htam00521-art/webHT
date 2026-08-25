@@ -110,6 +110,10 @@
             margin-top: 12px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; color: #1e293b;
             box-shadow: 0 4px 12px rgba(0,0,0,0.03);
         }
+        .search-result-stats { display: flex; gap: 8px; font-size: 13px; font-weight: 700; flex-wrap: wrap; align-items: center; margin-top: 4px; }
+        .badge-s-di { background: #dcfce7; color: #15803d; padding: 3px 8px; border-radius: 8px; }
+        .badge-s-khongp { background: #fee2e2; color: #b91c1c; padding: 3px 8px; border-radius: 8px; }
+        .badge-s-cop { background: #fef3c7; color: #b45309; padding: 3px 8px; border-radius: 8px; }
 
         /* THẺ 13 ĐỘI */
         .section-heading { color: #0D47A1; font-size: 20px; font-weight: 800; margin-bottom: 16px; display: flex; align-items: center; gap: 8px; text-shadow: 0 1px 3px rgba(255,255,255,0.9); }
@@ -177,6 +181,18 @@
         }
         .form-control-custom { width: 100%; padding: 10px 14px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.2); background: rgba(255,255,255,0.08); color: #fff; font-size: 14px; outline: none; margin-bottom: 12px; }
         .form-control-custom:focus { border-color: #38bdf8; background: rgba(255,255,255,0.12); }
+
+        /* ĐỒNG BỘ MÀU TỐI CHO DROPDOWN SELECT TRONG MODAL */
+        select.form-control-custom, select.select-dt, select.select-dp {
+            background-color: rgba(15, 23, 42, 0.95) !important;
+            color: #f8fafc !important;
+            border: 1px solid rgba(255, 255, 255, 0.25) !important;
+        }
+        select.form-control-custom option, select.select-dt option, select.select-dp option {
+            background-color: #0f172a !important;
+            color: #f8fafc !important;
+            padding: 10px !important;
+        }
     </style>
 </head>
 <body>
@@ -365,7 +381,6 @@
             { id: 13, name: "Đội 13 (Phêrô & Phaolô)", nganh: "Ngành Nghĩa" }
         ];
 
-        // Danh sách 53 Huynh Trưởng (lấy từ dữ liệu hệ thống để khớp SĐT & Tên Thánh)
         const danhSachGocHT = [
             { thanhHoTen: "Patriciô Nguyễn Thiên Ân", sdt: "0395800581" },
             { thanhHoTen: "Phêrô Lê Huỳnh Hiếu Tâm", sdt: "0921786312" },
@@ -419,7 +434,7 @@
             { thanhHoTen: "Giuse Nguyễn Thái Sơn", sdt: "0365656063" },
             { thanhHoTen: "Đôminicô Trần Bùi Đạt Phú", sdt: "0345344063" },
             { thanhHoTen: "Giuse Nguyễn Lâm Hồng Hải", sdt: "0326395940" },
-            { thanhHoTen: "Antôn Lê Hoàng Gia Huy", sdt: "0355749059", },
+            { thanhHoTen: "Antôn Lê Hoàng Gia Huy", sdt: "0355749059" },
             { thanhHoTen: "Maria Trần Thị Kiều Trang", sdt: "0385627732" },
             { thanhHoTen: "Maria Nguyễn Ngọc Trâm Anh", sdt: "0586075828" },
             { thanhHoTen: "Maria Lê Ngọc Huyền Trân", sdt: "0907037009" },
@@ -429,7 +444,7 @@
         let currentSelectedDoi = 1;
         let thieuNhiData = {};
         let danhSachNgayLe = ["CN 09/08/2026", "CN 16/08/2026"];
-        let doiTruongMap = {}; // Lưu thông tin Đội trưởng & Đội phó { 1: {dt: "...", sdtDt: "...", dp: "...", sdtDp: "..."}, ... }
+        let doiTruongMap = {}; 
         let editingLyDo = { emIdx: null, ngayKey: null };
 
         let currentUser = JSON.parse(localStorage.getItem("ht_user_session")) || {
@@ -593,7 +608,6 @@
             document.getElementById("danhSachDoiSection").style.display = "none";
             document.getElementById("chiTietDoiSection").classList.add("active");
             
-            // Hiển thị thông tin chi tiết đội trưởng / đội phó ở phần đầu bảng
             const info = doiTruongMap[doiId] || {};
             const dtText = info.dt ? `${info.dt} (${info.sdtDt || 'Chưa có SĐT'})` : 'Chưa phân công';
             const dpText = info.dp ? `${info.dp} (${info.sdtDp || 'Chưa có SĐT'})` : 'Chưa phân công';
@@ -762,7 +776,6 @@
             document.getElementById("modalThemEm").classList.add("active");
         }
 
-        // Giao diện cấu hình Đội trưởng / Đội phó cho Admin (có gợi ý chọn từ 53 Huynh Trưởng)
         function moModalAdminDoi() {
             const container = document.getElementById("adminDoiFormContainer");
             container.innerHTML = "";
@@ -770,7 +783,8 @@
             danhSach13Doi.forEach(doi => {
                 const info = doiTruongMap[doi.id] || {};
                 const div = document.createElement("div");
-                div.className = "p-3 mb-3 rounded-3" + " style='background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.1);'";
+                div.className = "p-3 mb-3 rounded-3";
+                div.style.cssText = "background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.1);";
                 div.innerHTML = `
                     <strong style="color: #38bdf8; display:block; margin-bottom:8px;">${doi.name}</strong>
                     <div class="row g-2">
@@ -780,8 +794,8 @@
                                 <option value="">-- Chọn Huynh Trưởng --</option>
                                 ${danhSachGocHT.map(ht => `<option value="${ht.thanhHoTen}" ${info.dt === ht.thanhHoTen ? 'selected' : ''}>${ht.thanhHoTen}</option>`).join('')}
                             </select>
-                            <input type="email" class="form-control-custom email-dt-${doi.id}" value="${info.emailDt || ''}" placeholder="Gmail đăng nhập ĐT...">
-                            <input type="text" class="form-control-custom sdt-dt-${doi.id}" value="${info.sdtDt || ''}" placeholder="Số điện thoại ĐT...">
+                            <input type="email" class="form-control-custom email-dt-${doi.id}" value="${info.emailDt || ''}" placeholder="Gmail ĐT...">
+                            <input type="text" class="form-control-custom sdt-dt-${doi.id}" value="${info.sdtDt || ''}" placeholder="SĐT ĐT...">
                         </div>
                         <div class="col-md-6">
                             <label class="small fw-bold text-warning">Đội phó:</label>
@@ -789,8 +803,8 @@
                                 <option value="">-- Chọn Huynh Trưởng --</option>
                                 ${danhSachGocHT.map(ht => `<option value="${ht.thanhHoTen}" ${info.dp === ht.thanhHoTen ? 'selected' : ''}>${ht.thanhHoTen}</option>`).join('')}
                             </select>
-                            <input type="email" class="form-control-custom email-dp-${doi.id}" value="${info.emailDp || ''}" placeholder="Gmail đăng nhập ĐP...">
-                            <input type="text" class="form-control-custom sdt-dp-${doi.id}" value="${info.sdtDp || ''}" placeholder="Số điện thoại ĐP...">
+                            <input type="email" class="form-control-custom email-dp-${doi.id}" value="${info.emailDp || ''}" placeholder="Gmail ĐP...">
+                            <input type="text" class="form-control-custom sdt-dp-${doi.id}" value="${info.sdtDp || ''}" placeholder="SĐT ĐP...">
                         </div>
                     </div>
                 `;
