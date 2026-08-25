@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Điểm Danh Đội Thiếu Nhi - Đoàn TNTT Phước Hảo</title>
+    <title>Quản Lý & Điểm Danh Đoàn Sinh - Đoàn TNTT Phước Hảo</title>
     
     <link rel="icon" type="image/jpeg" href="logo_app.jpg">
     <!-- Google Fonts & Font Awesome Icons -->
@@ -24,13 +24,8 @@
         body {
             background: linear-gradient(135deg, rgba(224, 242, 254, 0.75), rgba(240, 253, 250, 0.75)),
                         url('nen1.jpg'), url('bg_church.jpg'), url('backgroud.jpg');
-            background-position: center center;
-            background-size: cover;
-            background-repeat: no-repeat;
-            background-attachment: fixed;
-            min-height: 100vh;
-            padding: 16px;
-            color: #1e293b;
+            background-position: center center; background-size: cover; background-repeat: no-repeat;
+            background-attachment: fixed; min-height: 100vh; padding: 16px; color: #1e293b;
         }
 
         .container { max-width: 1200px; margin: 0 auto; }
@@ -38,12 +33,8 @@
         /* THANH ĐIỀU HƯỚNG LIQUID GLASS */
         .cls-topbar {
             background: linear-gradient(135deg, rgba(0, 114, 255, 0.85), rgba(0, 198, 255, 0.85) 60%, rgba(56, 239, 125, 0.7));
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            color: #fff; 
-            padding: 0.7rem 1.2rem; 
-            border-radius: 20px; 
-            margin-bottom: 20px;
+            backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); color: #fff; 
+            padding: 0.7rem 1.2rem; border-radius: 20px; margin-bottom: 20px;
             box-shadow: 0 12px 35px rgba(0, 114, 255, 0.25), 0 1px 0 rgba(255, 255, 255, 0.4) inset;
             display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;
         }
@@ -52,90 +43,120 @@
         .cls-nav-link { color: rgba(255,255,255,0.95); text-decoration: none; font-weight: 700; font-size: 0.88rem; padding: 0.5rem 1rem; border-radius: 999px; transition: 0.3s; font-family: 'Nunito', sans-serif; background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.3); }
         .cls-nav-link:hover, .cls-nav-link.active { background: rgba(255,255,255,0.35); color: #fff; transform: translateY(-2px); box-shadow: 0 6px 16px rgba(0,0,0,0.15); }
 
-        .header-title { text-align: center; color: #ffffff; font-size: 28px; font-weight: 800; margin-bottom: 20px; text-transform: uppercase; text-shadow: 0 2px 12px rgba(0, 0, 0, 0.8); }
-
-        /* THANH CHỌN 13 ĐỘI (CHIP NGANG) */
-        .doi-scroll {
-            display: flex; gap: 10px; overflow-x: auto; padding-bottom: 12px; margin-bottom: 20px;
-            scrollbar-width: thin;
+        /* HEADER BANNER */
+        .dashboard-header {
+            background: rgba(255, 255, 255, 0.85); backdrop-filter: blur(20px); border: 1px solid rgba(255, 255, 255, 0.95);
+            border-radius: 24px; padding: 24px 28px; margin-bottom: 24px; box-shadow: 0 15px 40px rgba(0, 114, 255, 0.12);
         }
-        .doi-scroll::-webkit-scrollbar { height: 6px; }
-        .doi-scroll::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.3); border-radius: 10px; }
+        .dashboard-header h2 { color: #0052d4; font-size: 24px; font-weight: 800; display: flex; align-items: center; gap: 10px; }
+        .dashboard-header p { color: #64748b; font-size: 14px; margin-top: 4px; }
+
+        /* 3 Ô THỐNG KÊ TỔNG QUAN */
+        .stats-overview-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 18px; margin-bottom: 24px;
+        }
+        .overview-card {
+            background: rgba(255, 255, 255, 0.85); backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.95); border-radius: 20px; padding: 20px 24px;
+            box-shadow: 0 10px 30px rgba(0,114,255,0.08); display: flex; align-items: center; gap: 18px;
+            transition: transform 0.3s ease;
+        }
+        .overview-card:hover { transform: translateY(-4px); }
+        .overview-icon {
+            width: 58px; height: 58px; border-radius: 16px; background: linear-gradient(135deg, #0072ff, #00c6ff);
+            display: flex; align-items: center; justify-content: center; font-size: 24px; color: #fff;
+            box-shadow: 0 8px 20px rgba(0,114,255,0.3);
+        }
+        .overview-info .val { font-size: 26px; font-weight: 800; color: #0052d4; line-height: 1.1; }
+        .overview-info .lbl { font-size: 14px; color: #64748b; font-weight: 700; margin-top: 4px; }
+
+        /* KHUNG TÌM KIẾM TOÀN ĐOÀN */
+        .search-panel-global {
+            background: rgba(255, 255, 255, 0.85); backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.95); border-radius: 20px; padding: 20px 24px;
+            margin-bottom: 24px; box-shadow: 0 10px 30px rgba(0,114,255,0.08);
+        }
+        .search-bar-wrap { position: relative; max-width: 100%; }
+        .search-bar-wrap input {
+            width: 100%; padding: 12px 20px 12px 46px; border-radius: 30px; border: 1px solid #cbd5e1;
+            background: #f8fafc; font-size: 15px; outline: none; font-weight: 600; color: #0f172a;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.03); transition: 0.3s;
+        }
+        .search-bar-wrap input:focus { border-color: #0072ff; background: #fff; box-shadow: 0 6px 20px rgba(0,114,255,0.15); }
+        .search-bar-wrap i { position: absolute; left: 18px; top: 50%; transform: translateY(-50%); color: #0072ff; font-size: 16px; }
+
+        /* KẾT QUẢ TÌM KIẾM CHI TIẾT */
+        .search-result-card {
+            background: #ffffff; border: 1px solid #e2e8f0; border-radius: 16px; padding: 16px 20px;
+            margin-top: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.04); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;
+        }
+        .search-result-stats {
+            display: flex; gap: 8px; font-size: 13px; font-weight: 700; flex-wrap: wrap; align-items: center;
+        }
+        .badge-s-di { background: #dcfce7; color: #15803d; padding: 4px 10px; border-radius: 8px; }
+        .badge-s-khongp { background: #fee2e2; color: #b91c1c; padding: 4px 10px; border-radius: 8px; }
+        .badge-s-cop { background: #fef3c7; color: #b45309; padding: 4px 10px; border-radius: 8px; }
+
+        /* DANH SÁCH 13 ĐỘI */
+        .section-heading { color: #0052d4; font-size: 20px; font-weight: 800; margin-bottom: 16px; display: flex; align-items: center; gap: 8px; text-shadow: 0 1px 4px rgba(255,255,255,0.8); }
         
-        .doi-chip {
-            flex-shrink: 0; background: rgba(15, 23, 42, 0.65); backdrop-filter: blur(16px);
-            border: 1px solid rgba(255, 255, 255, 0.25); color: #f8fafc; padding: 10px 20px;
-            border-radius: 30px; font-weight: 700; font-size: 14px; cursor: pointer; transition: 0.3s;
-            box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+        .doi-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 18px; margin-bottom: 30px; }
+        .doi-card {
+            background: rgba(255, 255, 255, 0.85); backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.95); border-radius: 20px; padding: 22px;
+            text-align: center; cursor: pointer; box-shadow: 0 10px 30px rgba(0,114,255,0.08);
+            transition: all 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275); position: relative; overflow: hidden;
         }
-        .doi-chip:hover { background: rgba(56, 189, 248, 0.3); transform: translateY(-2px); }
-        .doi-chip.active {
-            background: linear-gradient(135deg, #0072ff, #00c6ff); border-color: transparent;
-            box-shadow: 0 8px 25px rgba(0, 114, 255, 0.4);
+        .doi-card::before {
+            content: ''; position: absolute; top: 0; left: 0; right: 0; height: 5px;
+            background: linear-gradient(90deg, #0072ff, #00c6ff); transform: scaleX(0); transition: transform 0.3s ease;
+        }
+        .doi-card:hover { transform: translateY(-6px); background: #ffffff; box-shadow: 0 18px 40px rgba(0,114,255,0.2); border-color: #93c5fd; }
+        .doi-card:hover::before { transform: scaleX(1); }
+        .doi-card h4 { color: #0052d4; font-size: 18px; font-weight: 800; margin-bottom: 6px; }
+        .doi-card p { color: #64748b; font-size: 13px; font-weight: 600; margin-bottom: 14px; }
+        .btn-chon-doi {
+            background: linear-gradient(135deg, #0072ff, #00c6ff); color: white; border: none;
+            padding: 8px 20px; border-radius: 20px; font-weight: 700; font-size: 13px; cursor: pointer;
+            box-shadow: 0 4px 12px rgba(0,114,255,0.3); transition: 0.2s;
         }
 
-        /* KHUNG TÌM KIẾM VÀ THỐNG KÊ CÁ NHÂN */
-        .toolbar-panel {
-            display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px;
-            background: rgba(15, 23, 42, 0.7); backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.25); border-radius: 20px; padding: 16px 22px;
-            margin-bottom: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.2); color: #f8fafc;
-        }
-        .search-box-custom { position: relative; flex: 1; min-width: 260px; }
-        .search-box-custom input {
-            width: 100%; padding: 10px 16px 10px 40px; border-radius: 20px; border: 1px solid rgba(255,255,255,0.3);
-            background: rgba(255,255,255,0.1); color: #fff; font-size: 14px; outline: none;
-        }
-        .search-box-custom input::placeholder { color: #cbd5e1; }
-        .search-box-custom i { position: absolute; left: 14px; top: 50%; transform: translateY(-50%); color: #38bdf8; }
+        /* KHUNG BẢNG ĐIỂM DANH CHI TIẾT ĐỘI */
+        .diemdanh-detail-section { display: none; }
+        .diemdanh-detail-section.active { display: block; animation: fadeIn 0.4s ease-out; }
 
-        /* KẾT QUẢ TÌM KIẾM NHANH 2 Ô */
-        .search-stats-box {
-            display: flex; gap: 12px; align-items: center; font-size: 14px; font-weight: 700;
-        }
-        .stat-badge-diem { background: rgba(56, 239, 125, 0.25); border: 1px solid #38ef7d; color: #a7f3d0; padding: 6px 14px; border-radius: 12px; }
-        .stat-badge-vang { background: rgba(239, 68, 68, 0.25); border: 1px solid #f87171; color: #fca5a5; padding: 6px 14px; border-radius: 12px; }
-
-        /* KHUNG BẢNG ĐIỂM DANH CHÍNH (LIQUID GLASS CONTAINER) */
         .diemdanh-container {
-            background: rgba(15, 23, 42, 0.88);
-            backdrop-filter: blur(26px) saturate(190%);
-            -webkit-backdrop-filter: blur(26px) saturate(190%);
-            border: 1px solid rgba(255, 255, 255, 0.25);
-            border-radius: 26px;
-            padding: 28px;
-            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.45);
-            color: #f8fafc;
+            background: rgba(15, 23, 42, 0.88); backdrop-filter: blur(26px);
+            border: 1px solid rgba(255, 255, 255, 0.25); border-radius: 26px; padding: 28px;
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.45); color: #f8fafc;
         }
-
         .doi-header-bar {
             display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px;
             margin-bottom: 20px; padding-bottom: 15px; border-bottom: 1px dashed rgba(255,255,255,0.2);
         }
-        .doi-header-bar h3 { color: #fde047; font-size: 20px; font-weight: 800; text-shadow: 0 0 10px rgba(253,224,71,0.4); }
+        .doi-header-bar h3 { color: #fde047; font-size: 20px; font-weight: 800; }
 
         .thieunhi-table { width: 100%; border-collapse: collapse; font-size: 15px; }
         .thieunhi-table th { background: rgba(255, 255, 255, 0.08); color: #38bdf8; font-weight: 700; padding: 12px 14px; text-align: left; border-bottom: 1px solid rgba(255,255,255,0.15); }
         .thieunhi-table td { padding: 12px 14px; border-bottom: 1px solid rgba(255, 255, 255, 0.06); vertical-align: middle; }
         .thieunhi-table tr:hover { background: rgba(255, 255, 255, 0.04); }
 
-        /* CHECKBOX THEO KIỂU HÌNH ẢNH GOOGLE SHEET (Ô VUÔNG LỚN XANH) */
-        .sheet-checkbox-wrap {
-            display: flex; align-items: center; justify-content: center; width: 100%; cursor: pointer;
-        }
-        .sheet-checkbox {
-            width: 24px; height: 24px; border: 2px solid #38bdf8; border-radius: 4px;
-            background: rgba(255,255,255,0.1); cursor: pointer; accent-color: #0072ff;
-        }
+        .sheet-checkbox { width: 22px; height: 22px; border: 2px solid #38bdf8; border-radius: 4px; background: rgba(255,255,255,0.1); cursor: pointer; accent-color: #0072ff; }
 
-        .btn-them-em {
+        .btn-action-group { display: flex; gap: 10px; flex-wrap: wrap; }
+        .btn-custom-action {
             background: linear-gradient(135deg, #059669, #34d399); color: white; border: none;
-            padding: 9px 18px; border-radius: 20px; font-weight: 700; font-size: 13px; cursor: pointer;
+            padding: 9px 16px; border-radius: 20px; font-weight: 700; font-size: 13px; cursor: pointer;
             box-shadow: 0 4px 12px rgba(5, 150, 105, 0.3); transition: 0.2s;
         }
-        .btn-them-em:hover { transform: translateY(-2px); filter: brightness(1.1); }
+        .btn-custom-action.btn-them-ngay { background: linear-gradient(135deg, #d97706, #fbbf24); }
+        .btn-custom-action.btn-quay-lai { background: linear-gradient(135deg, #475569, #64748b); }
+        .btn-custom-action:hover { transform: translateY(-2px); filter: brightness(1.1); }
 
-        /* MODAL THÊM THIẾU NHI */
+        /* GHI CHÚ LÝ DO VẮNG CÓ PHÉP */
+        .lydo-note { font-size: 11px; color: #fbbf24; font-style: italic; display: block; margin-top: 2px; }
+
+        /* MODAL */
         .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(10, 25, 47, 0.8); backdrop-filter: blur(10px); display: flex; align-items: center; justify-content: center; z-index: 9999; opacity: 0; visibility: hidden; transition: 0.25s; padding: 16px; }
         .modal-overlay.active { opacity: 1; visibility: visible; }
         .modal-card {
@@ -144,6 +165,8 @@
         }
         .form-control-custom { width: 100%; padding: 10px 14px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.2); background: rgba(255,255,255,0.08); color: #fff; font-size: 14px; outline: none; margin-bottom: 14px; }
         .form-control-custom:focus { border-color: #38bdf8; background: rgba(255,255,255,0.12); }
+
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
     </style>
 </head>
 <body>
@@ -162,65 +185,110 @@
             </nav>
         </div>
 
-        <h1 class="header-title">Bảng Điểm Danh Lễ Thiếu Nhi Theo Đội</h1>
+        <!-- HEADER BANNER -->
+        <div class="dashboard-header">
+            <h2><i class="fa-solid fa-graduation-cap"></i> Quản Lý & Điểm Danh Đoàn Sinh</h2>
+            <p>Danh sách các đội, sĩ số tổng quan và tra cứu nhanh toàn đoàn</p>
+        </div>
 
-        <!-- THANH CHỌN 13 ĐỘI -->
-        <div class="doi-scroll" id="doiScrollContainer"></div>
-
-        <!-- THANH TÌM KIẾM VÀ HIỂN THỊ THỐNG KÊ NHANH 2 Ô -->
-        <div class="toolbar-panel">
-            <div class="search-box-custom">
-                <i class="fa-solid fa-magnifying-glass"></i>
-                <input type="text" id="searchInputEm" placeholder="Tìm kiếm tên thiếu nhi trong đội..." oninput="hienThiDanhSachThieuNhi()">
+        <!-- 3 Ô THỐNG KÊ TỔNG QUAN -->
+        <div class="stats-overview-grid">
+            <div class="overview-card">
+                <div class="overview-icon"><i class="fa-solid fa-users"></i></div>
+                <div class="overview-info">
+                    <div class="val" id="statTongThieuNhi">0</div>
+                    <div class="lbl">TỔNG THIẾU NHI</div>
+                </div>
             </div>
-            <div class="search-stats-box" id="searchStatsContainer" style="display: none;">
-                <div class="stat-badge-diem" id="searchEmDiLe">Đã đi: 0 buổi</div>
-                <div class="stat-badge-vang" id="searchEmVang">Vắng: 0 buổi</div>
+            <div class="overview-card">
+                <div class="overview-icon" style="background: linear-gradient(135deg, #059669, #34d399);"><i class="fa-solid fa-layer-group"></i></div>
+                <div class="overview-info">
+                    <div class="val">3 Ngành</div>
+                    <div class="lbl">NGÀNH (Ấu - Thiếu - Nghĩa)</div>
+                </div>
+            </div>
+            <div class="overview-card">
+                <div class="overview-icon" style="background: linear-gradient(135deg, #d97706, #fbbf24);"><i class="fa-solid fa-shield-halved"></i></div>
+                <div class="overview-info">
+                    <div class="val">13 Đội</div>
+                    <div class="lbl">TỔNG SỐ ĐỘI</div>
+                </div>
             </div>
         </div>
 
-        <!-- KHUNG BẢNG CHÍNH -->
-        <div class="diemdanh-container">
-            <div class="doi-header-bar">
-                <h3 id="currentDoiName">Đội 1</h3>
-                <button class="btn-them-em" onclick="moModalThemThieuNhi()"><i class="fa-solid fa-user-plus me-1"></i> Thêm Thiếu Nhi</button>
+        <!-- Ô TÌM KIẾM TOÀN ĐOÀN -->
+        <div class="search-panel-global">
+            <h4 style="color: #0052d4; font-size: 16px; font-weight: 800; margin-bottom: 10px;"><i class="fa-solid fa-magnifying-glass me-1"></i> Tra cứu đoàn sinh toàn đoàn</h4>
+            <div class="search-bar-wrap">
+                <i class="fa-solid fa-search"></i>
+                <input type="text" id="globalSearchInput" placeholder="Nhập tên thiếu nhi để tìm kiếm nhanh..." oninput="xuLyTimKiemToanDoan()">
             </div>
+            <div id="globalSearchResultContainer"></div>
+        </div>
 
-            <div class="table-responsive">
-                <table class="thieunhi-table">
-                    <thead>
-                        <tr>
-                            <th style="width: 50px;">STT</th>
-                            <th>Thánh Họ Và Tên</th>
-                            <th style="width: 140px; text-align: center;" id="thNgayLeLabel">CN 09/08/2026</th>
-                            <th style="width: 160px; text-align: center; color: #fde047;">Tổng số ngày đi lễ</th>
-                        </tr>
-                    </thead>
-                    <tbody id="thieuNhiTableBody">
-                        <!-- Render dynamic -->
-                    </tbody>
-                    <tfoot>
-                        <tr style="background: rgba(255,255,255,0.05); font-weight: 800;">
-                            <td colspan="2" style="color: #fde047; text-align: right; padding: 14px;">TỔNG SỐ NGƯỜI ĐI LỄ:</td>
-                            <td style="text-align: center; color: #38ef7d; font-size: 18px;" id="tongSoNguoiDiLeFooter">0</td>
-                            <td></td>
-                        </tr>
-                    </tfoot>
-                </table>
+        <!-- GIAO DIỆN CHÍNH: DANH SÁCH 13 ĐỘI -->
+        <div id="danhSachDoiSection">
+            <div class="section-heading"><i class="fa-solid fa-list-check"></i> Danh Sách 13 Đội Trong Xứ Đoàn (Bấm vào đội để điểm danh)</div>
+            <div class="doi-grid" id="doiGridContainer"></div>
+        </div>
+
+        <!-- GIAO DIỆN CHI TIẾT ĐIỂM DANH TỪNG ĐỘI -->
+        <div class="diemdanh-detail-section" id="chiTietDoiSection">
+            <div class="diemdanh-container">
+                <div class="doi-header-bar">
+                    <h3 id="currentDoiName">Đội 1</h3>
+                    <div class="btn-action-group">
+                        <button class="btn-custom-action btn-quay-lai" onclick="quayVeDanhSachDoi()"><i class="fa-solid fa-arrow-left me-1"></i> Quay lại danh sách đội</button>
+                        <button class="btn-custom-action btn-them-ngay" onclick="tuDongTaoNgayHienTai()"><i class="fa-solid fa-calendar-plus me-1"></i> Thêm Ngày Lễ (Hôm nay)</button>
+                        <button class="btn-custom-action" onclick="moModalThemThieuNhi()"><i class="fa-solid fa-user-plus me-1"></i> Thêm Thiếu Nhi</button>
+                    </div>
+                </div>
+
+                <div class="table-responsive">
+                    <table class="thieunhi-table">
+                        <thead>
+                            <tr id="tableHeaderRow">
+                                <th style="width: 50px;">STT</th>
+                                <th>Thánh Họ Và Tên</th>
+                                <th style="width: 150px; text-align: center; color: #fde047;">Tổng số ngày đi lễ</th>
+                            </tr>
+                        </thead>
+                        <tbody id="thieuNhiTableBody"></tbody>
+                        <tfoot>
+                            <tr style="background: rgba(255,255,255,0.05); font-weight: 800;" id="tableFooterRow">
+                                <td colspan="2" style="color: #fde047; text-align: right; padding: 14px;">TỔNG SỐ NGƯỜI ĐI LỄ:</td>
+                                <td></td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
             </div>
         </div>
     </div>
 
     <!-- MODAL THÊM THIẾU NHI -->
-    <div class="modal-overlay" id="modalThemEm" onclick="dongModalThem()">
+    <div class="modal-overlay" id="modalThemEm" onclick="dongModal('modalThemEm')">
         <div class="modal-card" onclick="event.stopPropagation()">
-            <h3 style="color: #38bdf8; text-align: center; margin-bottom: 16px; font-weight: 800;">Thêm Thiếu Nhi Mới</h3>
+            <h3 style="color: #38bdf8; text-align: center; margin-bottom: 16px; font-weight: 800;">Thêm Thiếu Nhi Vào Đội</h3>
             <label style="font-size: 13px; font-weight: 700; margin-bottom: 4px; display: block; color: #cbd5e1;">Thánh Họ Và Tên:</label>
             <input type="text" id="inputTenEm" class="form-control-custom" placeholder="Ví dụ: Phêrô Đoàn Minh Phát">
 
             <div class="d-flex gap-3 mt-2">
-                <button class="btn btn-light flex-grow-1 fw-bold rounded-pill" onclick="dongModalThem()">Hủy</button>
-                <button class="btn btn-primary flex-grow-1 fw-bold rounded-pill" style="background: linear-gradient(135deg, #0072ff, #00c6ff); border:none;" onclick="luuThieuNhiMoi()">Thêm vào đội</button>
+                <button class="btn btn-light flex-grow-1 fw-bold rounded-pill" onclick="dongModal('modalThemEm')">Hủy</button>
+                <button class="btn btn-primary flex-grow-1 fw-bold rounded-pill" style="background: linear-gradient(135deg, #0072ff, #00c6ff); border:none;" onclick="luuThieuNhiMoi()">Thêm mới</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL NHẬP LÝ DO VẮNG CÓ PHÉP (KHI NHẤN GIỮ Ô ĐIỂM DANH) -->
+    <div class="modal-overlay" id="modalLyDoVang" onclick="dongModal('modalLyDoVang')">
+        <div class="modal-card" onclick="event.stopPropagation()">
+            <h3 style="color: #fbbf24; text-align: center; margin-bottom: 12px; font-weight: 800;">Ghi Nhận Vắng Có Phép</h3>
+            <p style="font-size: 13px; color: #cbd5e1; margin-bottom: 10px;" id="lyDoEmName">Đang chọn học sinh...</p>
+            <input type="text" id="inputLyDoPhep" class="form-control-custom" placeholder="Nhập lý do vắng (Ví dụ: Bận việc gia đình, đi khám bệnh...)">
+            <div class="d-flex gap-3 mt-2">
+                <button class="btn btn-light flex-grow-1 fw-bold rounded-pill" onclick="dongModal('modalLyDoVang')">Hủy</button>
+                <button class="btn btn-warning flex-grow-1 fw-bold rounded-pill" style="background: linear-gradient(135deg, #d97706, #fbbf24); border:none; color:#0f172a;" onclick="luuLyDoVang()">Lưu lý do phép</button>
             </div>
         </div>
     </div>
@@ -240,175 +308,283 @@
         firebase.initializeApp(firebaseConfig);
         const db = firebase.database();
 
-        // 13 Đội chuẩn trong Xứ Đoàn
         const danhSach13Doi = [
-            { id: 1, name: "Đội 1 (Giuse)" },
-            { id: 2, name: "Đội 2 (Maria)" },
-            { id: 3, name: "Đội 3 (Pêrô)" },
-            { id: 4, name: "Đội 4 (Phao-lô)" },
-            { id: 5, name: "Đội 5 (An-tôn)" },
-            { id: 6, name: "Đội 6 (Agnes)" },
-            { id: 7, name: "Đội 7 (Dominicô)" },
-            { id: 8, name: "Đội 8 (Tê-rê-sa)" },
-            { id: 9, name: "Đội 9 (Gioan)" },
-            { id: 10, name: "Đội 10 (Matta)" },
-            { id: 11, name: "Đội 11 (Phanxicô)" },
-            { id: 12, name: "Đội 12 (Anna)" },
-            { id: 13, name: "Đội 13 (Phêrô & Phaolô)" }
+            { id: 1, name: "Đội 1 (Giuse)", nganh: "Ngành Ấu" }, { id: 2, name: "Đội 2 (Maria)", nganh: "Ngành Ấu" },
+            { id: 3, name: "Đội 3 (Pêrô)", nganh: "Ngành Ấu" }, { id: 4, name: "Đội 4 (Phao-lô)", nganh: "Ngành Thiếu" },
+            { id: 5, name: "Đội 5 (An-tôn)", nganh: "Ngành Thiếu" }, { id: 6, name: "Đội 6 (Agnes)", nganh: "Ngành Thiếu" },
+            { id: 7, name: "Đội 7 (Dominicô)", nganh: "Ngành Thiếu" }, { id: 8, name: "Đội 8 (Tê-rê-sa)", nganh: "Ngành Nghĩa" },
+            { id: 9, name: "Đội 9 (Gioan)", nganh: "Ngành Nghĩa" }, { id: 10, name: "Đội 10 (Matta)", nganh: "Ngành Nghĩa" },
+            { id: 11, name: "Đội 11 (Phanxicô)", nganh: "Ngành Nghĩa" }, { id: 12, name: "Đội 12 (Anna)", nganh: "Ngành Nghĩa" },
+            { id: 13, name: "Đội 13 (Phêrô & Phaolô)", nganh: "Ngành Nghĩa" }
         ];
 
         let currentSelectedDoi = 1;
         let thieuNhiData = {};
-        
-        // Khóa ngày điểm danh hiện tại theo định dạng chuẩn Chúa Nhật (hoặc ngày thực tế)
-        const ngayHienTaiKey = "CN_2026-08-25"; // Bạn có thể đổi key ngày ở đây hoặc lấy theo động `CN_${new Date().toISOString().slice(0,10)}`
+        let danhSachNgayLe = ["CN 09/08/2026", "CN 16/08/2026"];
+        let editingLyDo = { emIdx: null, ngayKey: null };
+
+        db.ref("danhSachNgayLe").on("value", (snapshot) => {
+            if (snapshot.exists()) danhSachNgayLe = snapshot.val();
+            capNhatGiaoDien();
+        });
 
         db.ref("diemDanhThieuNhi").on("value", (snapshot) => {
             thieuNhiData = snapshot.val() || {};
-            hienThiDanhSachThieuNhi();
+            capNhatGiaoDien();
         });
 
-        function khoiTaoGiaoDienDoi() {
-            const scrollContainer = document.getElementById("doiScrollContainer");
-            scrollContainer.innerHTML = "";
+        function capNhatGiaoDien() {
+            khoiTaoTheDoi();
+            tinhToanTongSoThieuNhi();
+            if (document.getElementById("chiTietDoiSection").classList.contains("active")) {
+                hienThiChiTietDoi();
+            }
+        }
+
+        function khoiTaoTheDoi() {
+            const grid = document.getElementById("doiGridContainer");
+            grid.innerHTML = "";
             danhSach13Doi.forEach(doi => {
-                const btn = document.createElement("button");
-                btn.className = `doi-chip ${doi.id === currentSelectedDoi ? 'active' : ''}`;
-                btn.innerHTML = `<i class="fa-solid fa-shield-halved me-1"></i> ${doi.name}`;
-                btn.onclick = () => {
-                    currentSelectedDoi = doi.id;
-                    document.querySelectorAll(".doi-chip").forEach(c => c.classList.remove("active"));
-                    btn.classList.add("active");
-                    document.getElementById("searchInputEm").value = "";
-                    document.getElementById("searchStatsContainer").style.display = "none";
-                    hienThiDanhSachThieuNhi();
-                };
-                scrollContainer.appendChild(btn);
+                const doiKey = `doi_${doi.id}`;
+                const siSo = (thieuNhiData[doiKey] || []).length;
+
+                const card = document.createElement("div");
+                card.className = "doi-card";
+                card.innerHTML = `
+                    <h4>${doi.name}</h4>
+                    <p>${doi.nganh} • Sĩ số: <strong>${siSo} em</strong></p>
+                    <button class="btn-chon-doi"><i class="fa-solid fa-clipboard-user me-1"></i> Điểm danh ngay</button>
+                `;
+                card.onclick = () => moChiTietDoi(doi.id);
+                grid.appendChild(card);
             });
         }
 
-        function hienThiDanhSachThieuNhi() {
-            const doiObj = danhSach13Doi.find(d => d.id === currentSelectedDoi);
-            document.getElementById("currentDoiName").innerText = doiObj ? doiObj.name : `Đội ${currentSelectedDoi}`;
+        function tinhToanTongSoThieuNhi() {
+            let total = 0;
+            for (let g = 1; g <= 13; g++) {
+                total += (thieuNhiData[`doi_${g}`] || []).length;
+            }
+            document.getElementById("statTongThieuNhi").innerText = `${total} em`;
+        }
 
-            const keyword = document.getElementById("searchInputEm").value.toLowerCase().trim();
+        function moChiTietDoi(doiId) {
+            currentSelectedDoi = doiId;
+            document.getElementById("danhSachDoiSection").style.display = "none";
+            document.getElementById("chiTietDoiSection").classList.add("active");
+            hienThiChiTietDoi();
+        }
+
+        function quayVeDanhSachDoi() {
+            document.getElementById("chiTietDoiSection").classList.remove("active");
+            document.getElementById("danhSachDoiSection").style.display = "block";
+        }
+
+        function hienThiChiTietDoi() {
+            const doiObj = danhSach13Doi.find(d => d.id === currentSelectedDoi);
+            document.getElementById("currentDoiName").innerText = doiObj ? `${doiObj.name} (${doiObj.nganh})` : `Đội ${currentSelectedDoi}`;
+
+            const headerRow = document.getElementById("tableHeaderRow");
+            let headerHTML = `<th style="width: 50px;">STT</th><th>Thánh Họ Và Tên</th>`;
+            danhSachNgayLe.forEach(ngay => {
+                headerHTML += `<th style="width: 140px; text-align: center; font-size: 13px;">${ngay}</th>`;
+            });
+            headerHTML += `<th style="width: 150px; text-align: center; color: #fde047;">Tổng số ngày đi lễ</th>`;
+            headerRow.innerHTML = headerHTML;
+
             const tbody = document.getElementById("thieuNhiTableBody");
             tbody.innerHTML = "";
 
             const doiKey = `doi_${currentSelectedDoi}`;
             const danhSachEm = thieuNhiData[doiKey] || [];
-
-            let tongSoNguoiDiLe = 0;
-            let foundEmForSearch = null;
+            let tongSoNguoiMoiNgay = new Array(danhSachNgayLe.length).fill(0);
 
             if (danhSachEm.length === 0) {
-                tbody.innerHTML = `<tr><td colspan="4" class="text-center text-muted py-4">Chưa có thiếu nhi nào trong đội này. Nhấn "Thêm Thiếu Nhi" để bắt đầu!</td></tr>`;
+                tbody.innerHTML = `<tr><td colspan="${danhSachNgayLe.length + 3}" class="text-center text-muted py-4">Chưa có thiếu nhi trong đội. Nhấn "Thêm Thiếu Nhi" để thêm!</td></tr>`;
             } else {
                 danhSachEm.forEach((em, idx) => {
-                    if (keyword && !em.hoTen.toLowerCase().includes(keyword)) {
-                        return; // Bỏ qua nếu không khớp từ khóa tìm kiếm
-                    }
-
                     const diemsDanhMap = em.diemDanh || {};
-                    const isCoMat = diemsDanhMap[ngayHienTaiKey] === true;
-                    if (isCoMat) tongSoNguoiDiLe++;
+                    let tongNgayDiLeEm = 0;
 
-                    // Tính tổng số ngày đi lễ và tổng số ngày vắng của em đó
-                    // Giả sử hệ thống đã lưu tổng cộng có N buổi điểm danh đã tạo
-                    let tongNgayDiLe = 0;
-                    let tongNgayVang = 0;
-                    
-                    // Thu thập tất cả các mốc ngày đã từng điểm danh trong dữ liệu của em
-                    const allKeys = Object.keys(diemsDanhMap);
-                    allKeys.forEach(k => {
-                        if (diemsDanhMap[k] === true) tongNgayDiLe++;
-                        else tongNgayVang++;
+                    let colsHTML = "";
+                    danhSachNgayLe.forEach((ngay, nIdx) => {
+                        const status = diemsDanhMap[ngay]; // true, "co_phep", hoặc undefined/false
+                        const isCoMat = status === true;
+                        const isCoPhep = status === "co_phep";
+                        if (isCoMat) {
+                            tongNgayDiLeEm++;
+                            tongSoNguoiMoiNgay[nIdx]++;
+                        }
+
+                        let lydoText = (isCoPhep && em.lyDoVang && em.lyDoVang[ngay]) ? `<span class="lydo-note">Phép: ${em.lyDoVang[ngay]}</span>` : '';
+
+                        colsHTML += `
+                            <td style="text-align: center;">
+                                <input type="checkbox" class="sheet-checkbox" ${isCoMat ? 'checked' : ''} 
+                                       onchange="toggleDiemDanh(${idx}, '${ngay}')"
+                                       oncontextmenu="moModalLyDoVang(event, ${idx}, '${ngay}', '${em.hoTen}')"
+                                       title="Nhấn chuột phải hoặc chạm giữ để ghi lý do vắng có phép">
+                                ${lydoText}
+                            </td>
+                        `;
                     });
-
-                    if (keyword && em.hoTen.toLowerCase().includes(keyword)) {
-                        foundEmForSearch = { diLe: tongNgayDiLe, vang: allKeys.length - tongNgayDiLe };
-                    }
 
                     const tr = document.createElement("tr");
                     tr.innerHTML = `
                         <td class="fw-bold text-muted">${idx + 1}</td>
                         <td><span class="fw-bold" style="color: #f8fafc; font-size: 16px;">${em.hoTen}</span></td>
+                        ${colsHTML}
                         <td style="text-align: center;">
-                            <div class="sheet-checkbox-wrap">
-                                <input type="checkbox" class="sheet-checkbox" ${isCoMat ? 'checked' : ''} onchange="toggleDiemDanh(${idx})">
-                            </div>
-                        </td>
-                        <td style="text-align: center;">
-                            <span style="color: #38bdf8; font-weight: 800; font-size: 18px;">${tongNgayDiLe}</span>
+                            <span style="color: #38bdf8; font-weight: 800; font-size: 18px;">${tongNgayDiLeEm}</span>
                         </td>
                     `;
                     tbody.appendChild(tr);
                 });
             }
 
-            document.getElementById("tongSoNguoiDiLeFooter").innerText = tongSoNguoiDiLe;
-
-            // Xử lý hiển thị 2 ô thống kê khi tìm kiếm
-            const statsBox = document.getElementById("searchStatsContainer");
-            if (keyword && foundEmForSearch) {
-                statsBox.style.display = "flex";
-                document.getElementById("searchEmDiLe").innerText = `Đã đi lễ: ${foundEmForSearch.diLe} buổi`;
-                document.getElementById("searchEmVang").innerText = `Vắng: ${foundEmForSearch.vang} buổi`;
-            } else {
-                statsBox.style.display = "none";
-            }
+            const footerRow = document.getElementById("tableFooterRow");
+            let footerHTML = `<td colspan="2" style="color: #fde047; text-align: right; padding: 14px;">TỔNG SỐ NGƯỜI ĐI LỄ:</td>`;
+            tongSoNguoiMoiNgay.forEach(sum => {
+                footerHTML += `<td style="text-align: center; color: #38ef7d; font-size: 16px; font-weight: 800;">${sum}</td>`;
+            });
+            footerHTML += `<td></td>`;
+            footerRow.innerHTML = footerHTML;
         }
 
-        function toggleDiemDanh(index) {
+        function toggleDiemDanh(index, ngayKey) {
             const doiKey = `doi_${currentSelectedDoi}`;
             if (!thieuNhiData[doiKey]) thieuNhiData[doiKey] = [];
+            if (!thieuNhiData[doiKey][index].diemDanh) thieuNhiData[doiKey][index].diemDanh = {};
+
+            const currentVal = thieuNhiData[doiKey][index].diemDanh[ngayKey];
+            // Nếu đang tích hoặc có phép -> chuyển thành chưa tích (false), ngược lại thành true
+            const nextVal = (currentVal === true || currentVal === "co_phep") ? false : true;
             
-            if (!thieuNhiData[doiKey][index].diemDanh) {
-                thieuNhiData[doiKey][index].diemDanh = {};
+            thieuNhiData[doiKey][index].diemDanh[ngayKey] = nextVal;
+            db.ref(`diemDanhThieuNhi/${doiKey}`).set(thieuNhiData[doiKey]);
+        }
+
+        // Nhấn chuột phải hoặc chạm giữ để mở modal ghi lý do vắng có phép
+        function moModalLyDoVang(event, emIdx, ngayKey, tenEm) {
+            event.preventDefault(); // Chặn menu chuột phải mặc định
+            editingLyDo = { emIdx, ngayKey };
+            document.getElementById("lyDoEmName").innerText = `Đoàn sinh: ${tenEm} (${ngayKey})`;
+            document.getElementById("inputLyDoPhep").value = "";
+            document.getElementById("modalLyDoVang").classList.add("active");
+        }
+
+        function luuLyDoVang() {
+            const lydo = document.getElementById("inputLyDoPhep").value.trim();
+            if (!lydo) { alert("Vui lòng nhập lý do vắng!"); return; }
+
+            const doiKey = `doi_${currentSelectedDoi}`;
+            const em = thieuNhiData[doiKey][editingLyDo.emIdx];
+
+            em.diemDanh[editingLyDo.ngayKey] = "co_phep";
+            if (!em.lyDoVang) em.lyDoVang = {};
+            em.lyDoVang[editingLyDo.ngayKey] = lydo;
+
+            db.ref(`diemDanhThieuNhi/${doiKey}`).set(thieuNhiData[doiKey]).then(() => {
+                alert("Đã lưu lý do vắng có phép!");
+                dongModal('modalLyDoVang');
+            });
+        }
+
+        // Tự động tạo ngày hiện tại khi bấm nút thêm ngày
+        function tuDongTaoNgayHienTai() {
+            const now = new Date();
+            const dd = String(now.getDate()).padStart(2, '0');
+            const mm = String(now.getMonth() + 1).padStart(2, '0');
+            const yyyy = now.getFullYear();
+            const tenNgayMoi = `CN ${dd}/${mm}/${yyyy}`;
+
+            if (danhSachNgayLe.includes(tenNgayMoi)) {
+                alert(`Cột ngày "${tenNgayMoi}" đã tồn tại trong bảng điểm danh!`);
+                return;
             }
 
-            const currentStatus = thieuNhiData[doiKey][index].diemDanh[ngayHienTaiKey] === true;
-            thieuNhiData[doiKey][index].diemDanh[ngayHienTaiKey] = !currentStatus;
-
-            db.ref(`diemDanhThieuNhi/${doiKey}`).set(thieuNhiData[doiKey]);
+            danhSachNgayLe.push(tenNgayMoi);
+            db.ref("danhSachNgayLe").set(danhSachNgayLe).then(() => {
+                alert(`Đã tự động tạo cột điểm danh cho ngày hôm nay (${tenNgayMoi}) thành công!`);
+            });
         }
 
         function moModalThemThieuNhi() {
             document.getElementById("inputTenEm").value = "";
             document.getElementById("modalThemEm").classList.add("active");
         }
-
-        function dongModalThem() {
-            document.getElementById("modalThemEm").classList.remove("active");
-        }
+        function dongModal(id) { document.getElementById(id).classList.remove("active"); }
 
         function luuThieuNhiMoi() {
             const ten = document.getElementById("inputTenEm").value.trim();
-
-            if (!ten) {
-                alert("Vui lòng nhập thánh họ và tên thiếu nhi!");
-                return;
-            }
+            if (!ten) { alert("Vui lòng nhập họ tên thiếu nhi!"); return; }
 
             const doiKey = `doi_${currentSelectedDoi}`;
             if (!thieuNhiData[doiKey]) thieuNhiData[doiKey] = [];
 
-            thieuNhiData[doiKey].push({
-                hoTen: ten,
-                diemDanh: {}
-            });
-
+            thieuNhiData[doiKey].push({ hoTen: ten, diemDanh: {}, lyDoVang: {} });
             db.ref(`diemDanhThieuNhi/${doiKey}`).set(thieuNhiData[doiKey]).then(() => {
-                alert("Đã thêm thiếu nhi thành công!");
-                dongModalThem();
-            }).catch(err => {
-                alert("Lỗi: " + err.message);
+                alert("Đã thêm thành công!");
+                dongModal('modalThemEm');
             });
         }
 
-        window.onload = function() {
-            khoiTaoGiaoDienDoi();
-        };
+        // Tìm kiếm toàn đoàn và hiển thị số buổi đi lễ, vắng, có phép
+        function xuLyTimKiemToanDoan() {
+            const keyword = document.getElementById("globalSearchInput").value.toLowerCase().trim();
+            const container = document.getElementById("globalSearchResultContainer");
+            container.innerHTML = "";
+
+            if (!keyword) return;
+
+            let matches = [];
+            for (let g = 1; g <= 13; g++) {
+                const doiKey = `doi_${g}`;
+                const arr = thieuNhiData[doiKey] || [];
+                const doiInfo = danhSach13Doi.find(d => d.id === g);
+
+                arr.forEach(em => {
+                    if (em.hoTen.toLowerCase().includes(keyword)) {
+                        const diemsDanhMap = em.diemDanh || {};
+                        let di = 0, khongp = 0, cophep = 0;
+
+                        danhSachNgayLe.forEach(ngay => {
+                            const stt = diemsDanhMap[ngay];
+                            if (stt === true) di++;
+                            else if (stt === "co_phep") cophep++;
+                            else khongp++;
+                        });
+
+                        matches.push({ em, doiInfo, stats: { di, khongp, cophep } });
+                    }
+                });
+            }
+
+            if (matches.length === 0) {
+                container.innerHTML = `<div class="text-muted small mt-2">Không tìm thấy đoàn sinh nào phù hợp.</div>`;
+                return;
+            }
+
+            matches.forEach(item => {
+                const card = document.createElement("div");
+                card.className = "search-result-card";
+                card.innerHTML = `
+                    <div>
+                        <strong style="color: #0052d4; font-size: 16px;">${item.em.hoTen}</strong>
+                        <div class="small text-muted">${item.doiInfo.name} (${item.doiInfo.nganh})</div>
+                        <div class="search-result-stats mt-1">
+                            <span class="badge-s-di">Đi lễ: ${item.stats.di} buổi</span>
+                            <span class="badge-s-khongp">Vắng KP: ${item.stats.khongp} buổi</span>
+                            <span class="badge-s-cop">Vắng CP: ${item.stats.cophep} buổi</span>
+                        </div>
+                    </div>
+                    <button class="btn btn-sm btn-primary rounded-pill px-3 fw-bold" onclick="moChiTietDoi(${item.doiInfo.id})">
+                        <i class="fa-solid fa-eye me-1"></i> Xem đội
+                    </button>
+                `;
+                container.appendChild(card);
+            });
+        }
     </script>
 </body>
 </html>
