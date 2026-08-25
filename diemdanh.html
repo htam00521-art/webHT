@@ -23,7 +23,7 @@
 
         body {
             background: linear-gradient(rgba(255, 255, 255, 0.35), rgba(255, 255, 255, 0.35)),
-                        url('nen1.jpg'), url('bg_church.jpg'), url('backgroud.jpg');
+                       url('bg_church.jpg'), url('backgroud.jpg');
             background-position: center center; background-size: cover; background-repeat: no-repeat;
             background-attachment: fixed; min-height: 100vh; padding: 16px; color: #1e293b;
         }
@@ -115,9 +115,9 @@
         .badge-s-khongp { background: #fee2e2; color: #b91c1c; padding: 3px 8px; border-radius: 8px; }
         .badge-s-cop { background: #fef3c7; color: #b45309; padding: 3px 8px; border-radius: 8px; }
 
-        /* THẺ ĐỘI VỚI 2 NÚT BẤM (XEM DANH SÁCH & ĐIỂM DANH) */
+        /* THẺ ĐỘI */
         .section-heading { color: #0D47A1; font-size: 20px; font-weight: 800; margin-bottom: 16px; display: flex; align-items: center; gap: 8px; text-shadow: 0 1px 3px rgba(255,255,255,0.9); }
-        .doi-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 18px; margin-bottom: 30px; }
+        .doi-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 18px; margin-bottom: 30px; }
         .doi-card {
             background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(12px);
             border: 1px solid rgba(255, 255, 255, 0.8); border-radius: 20px; padding: 22px;
@@ -140,7 +140,7 @@
         .btn-diem-danh { background: linear-gradient(135deg, #00c6ff, #0072ff); color: #fff; }
         .btn-diem-danh:hover { transform: translateY(-2px); filter: brightness(1.05); }
 
-        /* KHUNG BẢNG ĐIỂM DANH & HỒ SƠ CHI TIẾT ĐỘI */
+        /* KHUNG BẢNG ĐIỂM DANH CHI TIẾT ĐỘI */
         .diemdanh-detail-section { display: none; }
         .diemdanh-detail-section.active { display: block; }
 
@@ -292,7 +292,7 @@
             <div class="doi-grid" id="doiGridContainer"></div>
         </div>
 
-        <!-- GIAO DIỆN CHI TIẾT ĐIỂM DANH & HỒ SƠ TỪNG ĐỘI -->
+        <!-- GIAO DIỆN CHI TIẾT ĐIỂM DANH TỪNG ĐỘI -->
         <div class="diemdanh-detail-section" id="chiTietDoiSection">
             <div class="diemdanh-container">
                 <div class="doi-header-bar">
@@ -329,11 +329,11 @@
         </div>
     </div>
 
-    <!-- MODAL XEM DANH SÁCH CHI TIẾT HỒ SƠ THÀNH VIÊN TRONG ĐỘI -->
+    <!-- MODAL XEM DANH SÁCH HỒ SƠ CHI TIẾT & NÚT THÊM THÀNH VIÊN NGANG HÀNG -->
     <div class="modal-overlay" id="modalXemDanhSach" onclick="dongModal('modalXemDanhSach')">
-        <div class="modal-card" style="max-width: 750px;" onclick="event.stopPropagation()">
-            <div class="d-flex justify-content-between align-items-center mb-3">
-                <h3 id="modalXemDsTitle" style="color: #38bdf8; font-weight: 800; margin: 0;">Danh Sách Hồ Sơ Thành Viên</h3>
+        <div class="modal-card" style="max-width: 800px;" onclick="event.stopPropagation()">
+            <div class="d-flex justify-content-between align-items-center mb-3 pb-2 border-bottom border-secondary flex-wrap gap-2">
+                <h3 id="modalXemDsTitle" style="color: #38bdf8; font-weight: 800; margin: 0; font-size: 20px;">Hồ Sơ Thành Viên</h3>
                 <button class="btn btn-sm btn-success rounded-pill px-3 fw-bold" id="btnModalThemThanhVien" onclick="moModalThemThieuNhiTuModal()"><i class="fa-solid fa-user-plus me-1"></i> Thêm Thành Viên</button>
             </div>
             <div class="table-responsive" style="max-height: 400px; overflow-y: auto;">
@@ -345,7 +345,7 @@
                             <th>Ngày Sinh</th>
                             <th>Ngành</th>
                             <th>SĐT Phụ Huynh</th>
-                            <th style="width: 70px; text-align: center;">Xóa</th>
+                            <th style="width: 100px; text-align: center;">Hành động</th>
                         </tr>
                     </thead>
                     <tbody id="modalHosoTableBody"></tbody>
@@ -357,10 +357,10 @@
         </div>
     </div>
 
-    <!-- MODAL THÊM THÀNH VIÊN (BẮT BUỘC ĐẦY ĐỦ THÔNG TIN) -->
+    <!-- MODAL THÊM / CẬP NHẬT THÀNH VIÊN -->
     <div class="modal-overlay" id="modalThemEm" onclick="dongModal('modalThemEm')">
         <div class="modal-card" onclick="event.stopPropagation()">
-            <h3 style="color: #38bdf8; text-align: center; margin-bottom: 16px; font-weight: 800;">Thêm Thành Viên Mới</h3>
+            <h3 id="modalThemEmTitle" style="color: #38bdf8; text-align: center; margin-bottom: 16px; font-weight: 800;">Thêm Thành Viên Mới</h3>
             
             <label style="font-size: 13px; font-weight: 700; margin-bottom: 4px; display: block; color: #cbd5e1;">Thánh Họ Và Tên (*):</label>
             <input type="text" id="inputTenEm" class="form-control-custom" placeholder="Ví dụ: Phêrô Đoàn Minh Phát">
@@ -369,14 +369,19 @@
             <input type="text" id="inputNgaySinhEm" class="form-control-custom" placeholder="Ví dụ: 15/05/2012">
 
             <label style="font-size: 13px; font-weight: 700; margin-bottom: 4px; display: block; color: #cbd5e1;">Ngành (*):</label>
-            <input type="text" id="inputNganhEm" class="form-control-custom" placeholder="Ví dụ: Ngành Thiếu">
+            <select id="inputNganhEm" class="form-control-custom">
+                <option value="">-- Chọn Ngành --</option>
+                <option value="Ngành Ấu">Ngành Ấu</option>
+                <option value="Ngành Thiếu">Ngành Thiếu</option>
+                <option value="Ngành Nghĩa">Ngành Nghĩa</option>
+            </select>
 
             <label style="font-size: 13px; font-weight: 700; margin-bottom: 4px; display: block; color: #cbd5e1;">Số Điện Thoại Phụ Huynh (*):</label>
             <input type="text" id="inputSdtEm" class="form-control-custom" placeholder="Ví dụ: 0912345678">
 
             <div class="d-flex gap-3 mt-4">
                 <button class="btn-modal-action btn-dismiss" onclick="dongModal('modalThemEm')">Hủy</button>
-                <button class="btn-modal-action btn-confirm" onclick="luuThieuNhiMoi()">Lưu thành viên</button>
+                <button class="btn-modal-action btn-confirm" id="btnLuuThanhVien" onclick="luuThieuNhiMoi()">Lưu thành viên</button>
             </div>
         </div>
     </div>
@@ -503,6 +508,7 @@
         let danhSachNgayLe = ["CN 09/08/2026", "CN 16/08/2026"];
         let doiTruongMap = {}; 
         let editingLyDo = { emIdx: null, ngayKey: null };
+        let editingEmIdx = null; // Dùng để xác định đang thêm mới hay cập nhật thành viên
 
         let currentUser = JSON.parse(localStorage.getItem("ht_user_session")) || {
             name: "Khách", email: "", picture: "https://cdn-icons-png.flaticon.com/512/3135/3135715.png", role: "viewer"
@@ -639,6 +645,9 @@
             if (document.getElementById("chiTietDoiSection").classList.contains("active")) {
                 hienThiChiTietDoi();
             }
+            if (document.getElementById("modalXemDanhSach").classList.contains("active")) {
+                renderModalHosoTable();
+            }
         }
 
         function khoiTaoTheDoi() {
@@ -718,7 +727,10 @@
                     <td class="text-warning">${em.nganh || 'Chưa cập nhật'}</td>
                     <td class="text-success">${em.sdtPhuHuynh || 'Chưa cập nhật'}</td>
                     <td style="text-align: center;">
-                        ${duocPhepSua ? `<button class="btn btn-sm btn-danger px-2 py-1" onclick="xoaThieuNhi(${idx})"><i class="fa-solid fa-trash"></i></button>` : '<span class="text-muted">-</span>'}
+                        ${duocPhepSua ? `
+                            <button class="btn btn-sm btn-primary px-2 py-1 me-1" onclick="moModalSuaThieuNhi(${idx})" title="Cập nhật thông tin"><i class="fa-solid fa-pen-to-square"></i></button>
+                            <button class="btn btn-sm btn-danger px-2 py-1" onclick="xoaThieuNhi(${idx})" title="Xóa"><i class="fa-solid fa-trash"></i></button>
+                        ` : '<span class="text-muted">-</span>'}
                     </td>
                 `;
                 tbody.appendChild(tr);
@@ -740,6 +752,75 @@
         function moModalThemThieuNhiTuModal() {
             dongModal('modalXemDanhSach');
             moModalThemThieuNhi();
+        }
+
+        function moModalThemThieuNhi() {
+            editingEmIdx = null; // Chế độ thêm mới
+            document.getElementById("modalThemEmTitle").innerText = "Thêm Thành Viên Mới";
+            document.getElementById("inputTenEm").value = "";
+            document.getElementById("inputNgaySinhEm").value = "";
+            document.getElementById("inputNganhEm").value = "";
+            document.getElementById("inputSdtEm").value = "";
+            document.getElementById("modalThemEm").classList.add("active");
+        }
+
+        function moModalSuaThieuNhi(idx) {
+            editingEmIdx = idx; // Chế độ cập nhật
+            const doiKey = `doi_${currentSelectedDoi}`;
+            const em = thieuNhiData[doiKey][idx];
+
+            document.getElementById("modalThemEmTitle").innerText = "Cập Nhật Thông Tin Thành Viên";
+            document.getElementById("inputTenEm").value = em.hoTen || "";
+            document.getElementById("inputNgaySinhEm").value = em.ngaySinh || "";
+            document.getElementById("inputNganhEm").value = em.nganh || "";
+            document.getElementById("inputSdtEm").value = em.sdtPhuHuynh || "";
+            document.getElementById("modalThemEm").classList.add("active");
+        }
+
+        function luuThieuNhiMoi() {
+            const ten = document.getElementById("inputTenEm").value.trim();
+            const ngaySinh = document.getElementById("inputNgaySinhEm").value.trim();
+            const nganh = document.getElementById("inputNganhEm").value.trim();
+            const sdt = document.getElementById("inputSdtEm").value.trim();
+
+            if (!ten || !ngaySinh || !nganh || !sdt) {
+                alert("Vui lòng nhập đầy đủ tất cả các thông tin bắt buộc (*): Thánh họ tên, Ngày sinh, Ngành, SĐT phụ huynh!");
+                return;
+            }
+
+            const doiKey = `doi_${currentSelectedDoi}`;
+            if (!thieuNhiData[doiKey]) thieuNhiData[doiKey] = [];
+
+            if (editingEmIdx !== null) {
+                // Cập nhật thông tin em hiện tại
+                thieuNhiData[doiKey][editingEmIdx].hoTen = ten;
+                thieuNhiData[doiKey][editingEmIdx].ngaySinh = ngaySinh;
+                thieuNhiData[doiKey][editingEmIdx].nganh = nganh;
+                thieuNhiData[doiKey][editingEmIdx].sdtPhuHuynh = sdt;
+            } else {
+                // Thêm mới
+                thieuNhiData[doiKey].push({
+                    hoTen: ten,
+                    ngaySinh: ngaySinh,
+                    nganh: nganh,
+                    sdtPhuHuynh: sdt,
+                    diemDanh: {},
+                    lyDoVang: {}
+                });
+            }
+
+            db.ref(`diemDanhThieuNhi/${doiKey}`).set(thieuNhiData[doiKey]).then(() => {
+                alert("Đã lưu thông tin thành công và đồng bộ dữ liệu!");
+                dongModal('modalThemEm');
+                if (document.getElementById("chiTietDoiSection").classList.contains("active")) {
+                    hienThiChiTietDoi();
+                }
+                if (document.getElementById("modalXemDanhSach").classList.contains("active")) {
+                    renderModalHosoTable();
+                }
+                tinhToanTongSoThieuNhi();
+                khoiTaoTheDoi();
+            });
         }
 
         // 2. Mở bảng điểm danh chi tiết đội
@@ -909,48 +990,6 @@
             danhSachNgayLe.push(tenNgayMoi);
             db.ref("danhSachNgayLe").set(danhSachNgayLe).then(() => {
                 alert(`Đã tự động tạo cột ngày lễ (${tenNgayMoi}) thành công!`);
-            });
-        }
-
-        function moModalThemThieuNhi() {
-            document.getElementById("inputTenEm").value = "";
-            document.getElementById("inputNgaySinhEm").value = "";
-            document.getElementById("inputNganhEm").value = "";
-            document.getElementById("inputSdtEm").value = "";
-            document.getElementById("modalThemEm").classList.add("active");
-        }
-
-        function luuThieuNhiMoi() {
-            const ten = document.getElementById("inputTenEm").value.trim();
-            const ngaySinh = document.getElementById("inputNgaySinhEm").value.trim();
-            const nganh = document.getElementById("inputNganhEm").value.trim();
-            const sdt = document.getElementById("inputSdtEm").value.trim();
-
-            if (!ten || !ngaySinh || !nganh || !sdt) {
-                alert("Vui lòng nhập đầy đủ tất cả các thông tin bắt buộc (*): Thánh họ tên, Ngày sinh, Ngành, SĐT phụ huynh!");
-                return;
-            }
-
-            const doiKey = `doi_${currentSelectedDoi}`;
-            if (!thieuNhiData[doiKey]) thieuNhiData[doiKey] = [];
-
-            thieuNhiData[doiKey].push({
-                hoTen: ten,
-                ngaySinh: ngaySinh,
-                nganh: nganh,
-                sdtPhuHuynh: sdt,
-                diemDanh: {},
-                lyDoVang: {}
-            });
-
-            db.ref(`diemDanhThieuNhi/${doiKey}`).set(thieuNhiData[doiKey]).then(() => {
-                alert("Đã thêm thành viên mới thành công và đồng bộ dữ liệu!");
-                dongModal('modalThemEm');
-                if (document.getElementById("chiTietDoiSection").classList.contains("active")) {
-                    hienThiChiTietDoi();
-                }
-                tinhToanTongSoThieuNhi();
-                khoiTaoTheDoi();
             });
         }
 
