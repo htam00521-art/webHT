@@ -115,13 +115,13 @@
         .badge-s-khongp { background: #fee2e2; color: #b91c1c; padding: 3px 8px; border-radius: 8px; }
         .badge-s-cop { background: #fef3c7; color: #b45309; padding: 3px 8px; border-radius: 8px; }
 
-        /* THẺ ĐỘI */
+        /* THẺ ĐỘI VỚI 2 NÚT BẤM (XEM DANH SÁCH & ĐIỂM DANH) */
         .section-heading { color: #0D47A1; font-size: 20px; font-weight: 800; margin-bottom: 16px; display: flex; align-items: center; gap: 8px; text-shadow: 0 1px 3px rgba(255,255,255,0.9); }
-        .doi-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 18px; margin-bottom: 30px; }
+        .doi-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 18px; margin-bottom: 30px; }
         .doi-card {
             background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(12px);
             border: 1px solid rgba(255, 255, 255, 0.8); border-radius: 20px; padding: 22px;
-            text-align: center; cursor: pointer; box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+            text-align: center; box-shadow: 0 8px 24px rgba(0,0,0,0.08);
             transition: all 0.3s ease; position: relative; overflow: hidden; color: #1e293b;
         }
         .doi-card:hover { transform: translateY(-5px); background: #ffffff; box-shadow: 0 14px 35px rgba(0,114,255,0.18); border-color: #93c5fd; }
@@ -130,14 +130,17 @@
         .doi-card .doipho-lbl { color: #d97706; font-size: 12px; font-weight: 700; margin-bottom: 6px; display: block; }
         .doi-card p { color: #64748b; font-size: 13px; font-weight: 600; margin-bottom: 14px; }
         
-        .btn-chon-doi {
-            background: linear-gradient(135deg, #00c6ff, #0072ff); color: white; border: none;
-            padding: 9px 24px; border-radius: 25px; font-weight: 700; font-size: 13px; cursor: pointer;
-            box-shadow: 0 4px 15px rgba(0, 114, 255, 0.35); transition: 0.2s;
+        .doi-card-actions { display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; }
+        .btn-card-action {
+            padding: 8px 16px; border-radius: 20px; font-weight: 700; font-size: 12px; cursor: pointer; border: none;
+            display: inline-flex; align-items: center; gap: 5px; transition: 0.2s; box-shadow: 0 4px 10px rgba(0,0,0,0.1);
         }
-        .doi-card:hover .btn-chon-doi { transform: scale(1.05); filter: brightness(1.05); }
+        .btn-xem-ds { background: #475569; color: #fff; }
+        .btn-xem-ds:hover { background: #334155; transform: translateY(-2px); }
+        .btn-diem-danh { background: linear-gradient(135deg, #00c6ff, #0072ff); color: #fff; }
+        .btn-diem-danh:hover { transform: translateY(-2px); filter: brightness(1.05); }
 
-        /* KHUNG BẢNG ĐIỂM DANH CHI TIẾT ĐỘI */
+        /* KHUNG BẢNG ĐIỂM DANH & HỒ SƠ CHI TIẾT ĐỘI */
         .diemdanh-detail-section { display: none; }
         .diemdanh-detail-section.active { display: block; }
 
@@ -189,7 +192,6 @@
             background-color: #0f172a !important; color: #f8fafc !important; padding: 10px !important;
         }
 
-        /* NÚT BẤM TO ĐẸP HIỆN ĐẠI TRONG MODAL */
         .btn-modal-action {
             padding: 12px 28px; font-size: 15px; font-weight: 800; border-radius: 50px;
             cursor: pointer; border: none; display: inline-flex; align-items: center; justify-content: center; gap: 8px;
@@ -286,11 +288,11 @@
 
         <!-- GIAO DIỆN CHÍNH: DANH SÁCH CÁC ĐỘI -->
         <div id="danhSachDoiSection">
-            <div class="section-heading"><i class="fa-solid fa-list-check"></i> Danh Sách Các Đội Trong Xứ Đoàn (Bấm vào đội để xem và điểm danh)</div>
+            <div class="section-heading"><i class="fa-solid fa-list-check"></i> Danh Sách Các Đội Trong Xứ Đoàn</div>
             <div class="doi-grid" id="doiGridContainer"></div>
         </div>
 
-        <!-- GIAO DIỆN CHI TIẾT ĐIỂM DANH TỪNG ĐỘI -->
+        <!-- GIAO DIỆN CHI TIẾT ĐIỂM DANH & HỒ SƠ TỪNG ĐỘI -->
         <div class="diemdanh-detail-section" id="chiTietDoiSection">
             <div class="diemdanh-container">
                 <div class="doi-header-bar">
@@ -301,7 +303,7 @@
                     <div class="btn-action-group">
                         <button class="btn-custom-action btn-quay-lai" onclick="quayVeDanhSachDoi()"><i class="fa-solid fa-arrow-left me-1"></i> Quay lại</button>
                         <button id="btnThemNgayLe" class="btn-custom-action btn-them-ngay" style="display:none;" onclick="tuDongTaoNgayHienTai()"><i class="fa-solid fa-calendar-plus me-1"></i> Thêm Ngày Lễ (Hôm nay)</button>
-                        <button id="btnThemThieuNhi" class="btn-custom-action" style="display:none;" onclick="moModalThemThieuNhi()"><i class="fa-solid fa-user-plus me-1"></i> Thêm Thiếu Nhi</button>
+                        <button id="btnThemThieuNhi" class="btn-custom-action" style="display:none;" onclick="moModalThemThieuNhi()"><i class="fa-solid fa-user-plus me-1"></i> Thêm Thành Viên</button>
                     </div>
                 </div>
 
@@ -327,15 +329,54 @@
         </div>
     </div>
 
-    <!-- MODAL THÊM THIẾU NHI -->
+    <!-- MODAL XEM DANH SÁCH CHI TIẾT HỒ SƠ THÀNH VIÊN TRONG ĐỘI -->
+    <div class="modal-overlay" id="modalXemDanhSach" onclick="dongModal('modalXemDanhSach')">
+        <div class="modal-card" style="max-width: 750px;" onclick="event.stopPropagation()">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+                <h3 id="modalXemDsTitle" style="color: #38bdf8; font-weight: 800; margin: 0;">Danh Sách Hồ Sơ Thành Viên</h3>
+                <button class="btn btn-sm btn-success rounded-pill px-3 fw-bold" id="btnModalThemThanhVien" onclick="moModalThemThieuNhiTuModal()"><i class="fa-solid fa-user-plus me-1"></i> Thêm Thành Viên</button>
+            </div>
+            <div class="table-responsive" style="max-height: 400px; overflow-y: auto;">
+                <table class="thieunhi-table">
+                    <thead>
+                        <tr>
+                            <th style="width: 50px;">STT</th>
+                            <th>Thánh Họ Và Tên</th>
+                            <th>Ngày Sinh</th>
+                            <th>Ngành</th>
+                            <th>SĐT Phụ Huynh</th>
+                            <th style="width: 70px; text-align: center;">Xóa</th>
+                        </tr>
+                    </thead>
+                    <tbody id="modalHosoTableBody"></tbody>
+                </table>
+            </div>
+            <div class="d-flex justify-content-end mt-4">
+                <button class="btn-modal-action btn-dismiss" style="flex: initial; padding: 10px 24px;" onclick="dongModal('modalXemDanhSach')">Đóng</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL THÊM THÀNH VIÊN (BẮT BUỘC ĐẦY ĐỦ THÔNG TIN) -->
     <div class="modal-overlay" id="modalThemEm" onclick="dongModal('modalThemEm')">
         <div class="modal-card" onclick="event.stopPropagation()">
-            <h3 style="color: #38bdf8; text-align: center; margin-bottom: 16px; font-weight: 800;">Thêm Thiếu Nhi Vào Đội</h3>
-            <label style="font-size: 13px; font-weight: 700; margin-bottom: 4px; display: block; color: #cbd5e1;">Thánh Họ Và Tên:</label>
+            <h3 style="color: #38bdf8; text-align: center; margin-bottom: 16px; font-weight: 800;">Thêm Thành Viên Mới</h3>
+            
+            <label style="font-size: 13px; font-weight: 700; margin-bottom: 4px; display: block; color: #cbd5e1;">Thánh Họ Và Tên (*):</label>
             <input type="text" id="inputTenEm" class="form-control-custom" placeholder="Ví dụ: Phêrô Đoàn Minh Phát">
+
+            <label style="font-size: 13px; font-weight: 700; margin-bottom: 4px; display: block; color: #cbd5e1;">Ngày Tháng Năm Sinh (*):</label>
+            <input type="text" id="inputNgaySinhEm" class="form-control-custom" placeholder="Ví dụ: 15/05/2012">
+
+            <label style="font-size: 13px; font-weight: 700; margin-bottom: 4px; display: block; color: #cbd5e1;">Ngành (*):</label>
+            <input type="text" id="inputNganhEm" class="form-control-custom" placeholder="Ví dụ: Ngành Thiếu">
+
+            <label style="font-size: 13px; font-weight: 700; margin-bottom: 4px; display: block; color: #cbd5e1;">Số Điện Thoại Phụ Huynh (*):</label>
+            <input type="text" id="inputSdtEm" class="form-control-custom" placeholder="Ví dụ: 0912345678">
+
             <div class="d-flex gap-3 mt-4">
                 <button class="btn-modal-action btn-dismiss" onclick="dongModal('modalThemEm')">Hủy</button>
-                <button class="btn-modal-action btn-confirm" onclick="luuThieuNhiMoi()">Thêm mới</button>
+                <button class="btn-modal-action btn-confirm" onclick="luuThieuNhiMoi()">Lưu thành viên</button>
             </div>
         </div>
     </div>
@@ -566,6 +607,7 @@
         function kiemTraQuyenThaoTacDoi() {
             const btnThemNgay = document.getElementById("btnThemNgayLe");
             const btnThemEm = document.getElementById("btnThemThieuNhi");
+            const btnModalThemEm = document.getElementById("btnModalThemThanhVien");
 
             let duocPhepSua = false;
             if (currentUser.role === "admin") {
@@ -581,11 +623,13 @@
             }
 
             if (duocPhepSua) {
-                btnThemNgay.style.display = "inline-block";
-                btnThemEm.style.display = "inline-block";
+                if(btnThemNgay) btnThemNgay.style.display = "inline-block";
+                if(btnThemEm) btnThemEm.style.display = "inline-block";
+                if(btnModalThemEm) btnModalThemEm.style.display = "inline-block";
             } else {
-                btnThemNgay.style.display = "none";
-                btnThemEm.style.display = "none";
+                if(btnThemNgay) btnThemNgay.style.display = "none";
+                if(btnThemEm) btnThemEm.style.display = "none";
+                if(btnModalThemEm) btnModalThemEm.style.display = "none";
             }
         }
 
@@ -616,9 +660,11 @@
                     <span class="doitruong-lbl"><i class="fa-solid fa-user-tie me-1"></i> ĐT: ${tenDt}</span>
                     <span class="doipho-lbl"><i class="fa-solid fa-user-shield me-1"></i> ĐP: ${tenDp}</span>
                     <p>${doi.nganh || 'Chưa phân ngành'} • Sĩ số: <strong>${siSo} em</strong></p>
-                    <button class="btn-chon-doi"><i class="fa-solid fa-clipboard-user me-1"></i> Điểm danh ngay</button>
+                    <div class="doi-card-actions">
+                        <button class="btn-card-action btn-xem-ds" onclick="moModalXemDanhSach(${doi.id})"><i class="fa-solid fa-address-book"></i> Xem danh sách</button>
+                        <button class="btn-card-action btn-diem-danh" onclick="moChiTietDoi(${doi.id})"><i class="fa-solid fa-clipboard-user"></i> Điểm danh</button>
+                    </div>
                 `;
-                card.onclick = () => moChiTietDoi(doi.id);
                 grid.appendChild(card);
             });
         }
@@ -631,6 +677,72 @@
             document.getElementById("statTongThieuNhi").innerText = `${total} em`;
         }
 
+        // 1. Mở modal xem danh sách hồ sơ chi tiết của đội
+        function moModalXemDanhSach(doiId) {
+            currentSelectedDoi = doiId;
+            const doiObj = danhSachDoi.find(d => d.id === doiId);
+            document.getElementById("modalXemDsTitle").innerText = `Hồ Sơ Thành Viên - ${doiObj ? doiObj.name : ''}`;
+            
+            kiemTraQuyenThaoTacDoi();
+            renderModalHosoTable();
+            document.getElementById("modalXemDanhSach").classList.add("active");
+        }
+
+        function renderModalHosoTable() {
+            const tbody = document.getElementById("modalHosoTableBody");
+            tbody.innerHTML = "";
+            const doiKey = `doi_${currentSelectedDoi}`;
+            const danhSachEm = thieuNhiData[doiKey] || [];
+
+            let duocPhepSua = false;
+            if (currentUser.role === "admin") duocPhepSua = true;
+            else if (currentUser.role === "doitruong") {
+                const info = doiTruongMap[currentSelectedDoi] || {};
+                const myEmail = currentUser.email.toLowerCase().trim();
+                if ((info.emailDt && info.emailDt.toLowerCase().trim() === myEmail) || (info.emailDp && info.emailDp.toLowerCase().trim() === myEmail)) {
+                    duocPhepSua = true;
+                }
+            }
+
+            if (danhSachEm.length === 0) {
+                tbody.innerHTML = `<tr><td colspan="6" class="text-center text-muted py-3">Chưa có thành viên nào trong đội.</td></tr>`;
+                return;
+            }
+
+            danhSachEm.forEach((em, idx) => {
+                const tr = document.createElement("tr");
+                tr.innerHTML = `
+                    <td class="fw-bold text-muted">${idx + 1}</td>
+                    <td><strong style="color: #f8fafc;">${em.hoTen}</strong></td>
+                    <td class="text-info">${em.ngaySinh || 'Chưa cập nhật'}</td>
+                    <td class="text-warning">${em.nganh || 'Chưa cập nhật'}</td>
+                    <td class="text-success">${em.sdtPhuHuynh || 'Chưa cập nhật'}</td>
+                    <td style="text-align: center;">
+                        ${duocPhepSua ? `<button class="btn btn-sm btn-danger px-2 py-1" onclick="xoaThieuNhi(${idx})"><i class="fa-solid fa-trash"></i></button>` : '<span class="text-muted">-</span>'}
+                    </td>
+                `;
+                tbody.appendChild(tr);
+            });
+        }
+
+        function xoaThieuNhi(index) {
+            if (confirm("Bạn có chắc chắn muốn xóa thành viên này khỏi đội không?")) {
+                const doiKey = `doi_${currentSelectedDoi}`;
+                thieuNhiData[doiKey].splice(index, 1);
+                db.ref(`diemDanhThieuNhi/${doiKey}`).set(thieuNhiData[doiKey]).then(() => {
+                    renderModalHosoTable();
+                    khoiTaoTheDoi();
+                    tinhToanTongSoThieuNhi();
+                });
+            }
+        }
+
+        function moModalThemThieuNhiTuModal() {
+            dongModal('modalXemDanhSach');
+            moModalThemThieuNhi();
+        }
+
+        // 2. Mở bảng điểm danh chi tiết đội
         function moChiTietDoi(doiId) {
             currentSelectedDoi = doiId;
             document.getElementById("danhSachDoiSection").style.display = "none";
@@ -648,6 +760,7 @@
         function quayVeDanhSachDoi() {
             document.getElementById("chiTietDoiSection").classList.remove("active");
             document.getElementById("danhSachDoiSection").style.display = "block";
+            khoiTaoTheDoi();
         }
 
         function hienThiChiTietDoi() {
@@ -801,10 +914,46 @@
 
         function moModalThemThieuNhi() {
             document.getElementById("inputTenEm").value = "";
+            document.getElementById("inputNgaySinhEm").value = "";
+            document.getElementById("inputNganhEm").value = "";
+            document.getElementById("inputSdtEm").value = "";
             document.getElementById("modalThemEm").classList.add("active");
         }
 
-        // Modal cấu hình quản lý danh sách đội
+        function luuThieuNhiMoi() {
+            const ten = document.getElementById("inputTenEm").value.trim();
+            const ngaySinh = document.getElementById("inputNgaySinhEm").value.trim();
+            const nganh = document.getElementById("inputNganhEm").value.trim();
+            const sdt = document.getElementById("inputSdtEm").value.trim();
+
+            if (!ten || !ngaySinh || !nganh || !sdt) {
+                alert("Vui lòng nhập đầy đủ tất cả các thông tin bắt buộc (*): Thánh họ tên, Ngày sinh, Ngành, SĐT phụ huynh!");
+                return;
+            }
+
+            const doiKey = `doi_${currentSelectedDoi}`;
+            if (!thieuNhiData[doiKey]) thieuNhiData[doiKey] = [];
+
+            thieuNhiData[doiKey].push({
+                hoTen: ten,
+                ngaySinh: ngaySinh,
+                nganh: nganh,
+                sdtPhuHuynh: sdt,
+                diemDanh: {},
+                lyDoVang: {}
+            });
+
+            db.ref(`diemDanhThieuNhi/${doiKey}`).set(thieuNhiData[doiKey]).then(() => {
+                alert("Đã thêm thành viên mới thành công và đồng bộ dữ liệu!");
+                dongModal('modalThemEm');
+                if (document.getElementById("chiTietDoiSection").classList.contains("active")) {
+                    hienThiChiTietDoi();
+                }
+                tinhToanTongSoThieuNhi();
+                khoiTaoTheDoi();
+            });
+        }
+
         function moModalAdminDoi() {
             renderAdminDoiForm();
             document.getElementById("modalAdminDoi").classList.add("active");
@@ -913,20 +1062,6 @@
 
         function dongModal(id) { document.getElementById(id).classList.remove("active"); }
 
-        function luuThieuNhiMoi() {
-            const ten = document.getElementById("inputTenEm").value.trim();
-            if (!ten) { alert("Vui lòng nhập họ tên thiếu nhi!"); return; }
-
-            const doiKey = `doi_${currentSelectedDoi}`;
-            if (!thieuNhiData[doiKey]) thieuNhiData[doiKey] = [];
-
-            thieuNhiData[doiKey].push({ hoTen: ten, diemDanh: {}, lyDoVang: {} });
-            db.ref(`diemDanhThieuNhi/${doiKey}`).set(thieuNhiData[doiKey]).then(() => {
-                alert("Đã thêm thành công!");
-                dongModal('modalThemEm');
-            });
-        }
-
         function xuLyTimKiemToanDoan() {
             const keyword = document.getElementById("globalSearchInput").value.toLowerCase().trim();
             const container = document.getElementById("globalSearchResultContainer");
@@ -967,7 +1102,7 @@
                 card.innerHTML = `
                     <div>
                         <strong style="color: #0052d4; font-size: 16px;">${item.em.hoTen}</strong>
-                        <div class="small text-muted">${item.doiInfo.name} (${item.doiInfo.nganh || ''})</div>
+                        <div class="small text-muted">${item.doiInfo.name} (${item.doiInfo.nganh || ''}) - SĐT PH: ${item.em.sdtPhuHuynh || 'Chưa có'}</div>
                         <div class="search-result-stats">
                             <span class="badge-s-di">Đi lễ: ${item.stats.di} buổi</span>
                             <span class="badge-s-khongp">Vắng KP: ${item.stats.khongp} buổi</span>
