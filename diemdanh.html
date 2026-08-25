@@ -172,14 +172,14 @@
 
         .lydo-note { font-size: 11px; color: #fbbf24; font-style: italic; display: block; margin-top: 2px; }
 
-        /* MODAL */
+        /* MODAL & NÚT BẤM TO ĐẸP */
         .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(10, 25, 47, 0.8); backdrop-filter: blur(10px); display: flex; align-items: center; justify-content: center; z-index: 9999; opacity: 0; visibility: hidden; transition: 0.25s; padding: 16px; }
         .modal-overlay.active { opacity: 1; visibility: visible; }
         .modal-card {
             background: rgba(15, 23, 42, 0.95); backdrop-filter: blur(30px); border: 1px solid rgba(255, 255, 255, 0.3);
-            width: 100%; max-width: 480px; border-radius: 26px; padding: 26px; box-shadow: 0 25px 60px rgba(0,0,0,0.5); color: #f8fafc;
+            width: 100%; max-width: 580px; border-radius: 28px; padding: 28px; box-shadow: 0 25px 60px rgba(0,0,0,0.5); color: #f8fafc;
         }
-        .form-control-custom { width: 100%; padding: 10px 14px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.2); background: rgba(255,255,255,0.08); color: #fff; font-size: 14px; outline: none; margin-bottom: 12px; }
+        .form-control-custom { width: 100%; padding: 11px 14px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.2); background: rgba(255,255,255,0.08); color: #fff; font-size: 14px; outline: none; margin-bottom: 12px; font-weight: 600; }
         .form-control-custom:focus { border-color: #38bdf8; background: rgba(255,255,255,0.12); }
 
         select.form-control-custom, select.select-dt, select.select-dp {
@@ -188,6 +188,23 @@
         select.form-control-custom option, select.select-dt option, select.select-dp option {
             background-color: #0f172a !important; color: #f8fafc !important; padding: 10px !important;
         }
+
+        /* NÚT BẤM TO ĐẸP HIỆN ĐẠI TRONG MODAL */
+        .btn-modal-action {
+            padding: 12px 28px; font-size: 15px; font-weight: 800; border-radius: 50px;
+            cursor: pointer; border: none; display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+            transition: all 0.3s ease; box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+        }
+        .btn-modal-action.btn-confirm {
+            background: linear-gradient(135deg, #0072ff, #00c6ff); color: #fff;
+            border: 1px solid rgba(255,255,255,0.4); box-shadow: 0 8px 25px rgba(0, 114, 255, 0.45); flex: 1.5;
+        }
+        .btn-modal-action.btn-confirm:hover { transform: translateY(-2px); box-shadow: 0 12px 30px rgba(0, 114, 255, 0.6); filter: brightness(1.1); }
+        .btn-modal-action.btn-dismiss {
+            background: rgba(255, 255, 255, 0.12); color: #f8fafc;
+            border: 1px solid rgba(255, 255, 255, 0.25); flex: 1;
+        }
+        .btn-modal-action.btn-dismiss:hover { background: rgba(255, 255, 255, 0.25); color: #fff; }
     </style>
 </head>
 <body>
@@ -316,9 +333,9 @@
             <h3 style="color: #38bdf8; text-align: center; margin-bottom: 16px; font-weight: 800;">Thêm Thiếu Nhi Vào Đội</h3>
             <label style="font-size: 13px; font-weight: 700; margin-bottom: 4px; display: block; color: #cbd5e1;">Thánh Họ Và Tên:</label>
             <input type="text" id="inputTenEm" class="form-control-custom" placeholder="Ví dụ: Phêrô Đoàn Minh Phát">
-            <div class="d-flex gap-3 mt-2">
-                <button class="btn btn-light flex-grow-1 fw-bold rounded-pill" onclick="dongModal('modalThemEm')">Hủy</button>
-                <button class="btn btn-primary flex-grow-1 fw-bold rounded-pill" style="background: linear-gradient(135deg, #0072ff, #00c6ff); border:none;" onclick="luuThieuNhiMoi()">Thêm mới</button>
+            <div class="d-flex gap-3 mt-4">
+                <button class="btn-modal-action btn-dismiss" onclick="dongModal('modalThemEm')">Hủy</button>
+                <button class="btn-modal-action btn-confirm" onclick="luuThieuNhiMoi()">Thêm mới</button>
             </div>
         </div>
     </div>
@@ -329,25 +346,24 @@
             <h3 style="color: #fbbf24; text-align: center; margin-bottom: 12px; font-weight: 800;">Ghi Nhận Vắng Có Phép</h3>
             <p style="font-size: 13px; color: #cbd5e1; margin-bottom: 10px;" id="lyDoEmName">Đang chọn học sinh...</p>
             <input type="text" id="inputLyDoPhep" class="form-control-custom" placeholder="Nhập lý do vắng (Bận việc, đi khám bệnh...)">
-            <div class="d-flex gap-3 mt-2">
-                <button class="btn btn-light flex-grow-1 fw-bold rounded-pill" onclick="dongModal('modalLyDoVang')">Hủy</button>
-                <button class="btn btn-warning flex-grow-1 fw-bold rounded-pill" style="background: linear-gradient(135deg, #d97706, #fbbf24); border:none; color:#0f172a;" onclick="luuLyDoVang()">Lưu lý do</button>
+            <div class="d-flex gap-3 mt-4">
+                <button class="btn-modal-action btn-dismiss" onclick="dongModal('modalLyDoVang')">Hủy</button>
+                <button class="btn-modal-action btn-confirm" style="background: linear-gradient(135deg, #d97706, #fbbf24);" onclick="luuLyDoVang()">Lưu lý do</button>
             </div>
         </div>
     </div>
 
     <!-- MODAL ADMIN QUẢN LÝ DANH SÁCH ĐỘI & ĐỘI TRƯỞNG/PHÓ -->
     <div class="modal-overlay" id="modalAdminDoi" onclick="dongModal('modalAdminDoi')">
-        <div class="modal-card" style="max-width: 580px;" onclick="event.stopPropagation()">
-            <h3 style="color: #38bdf8; text-align: center; margin-bottom: 16px; font-weight: 800;">Quản Lý & Phân Công Đội</h3>
-            <div class="d-flex justify-content-between mb-3">
-                <span class="small text-muted fw-bold">Danh sách các đội trong hệ thống:</span>
+        <div class="modal-card" style="max-width: 620px;" onclick="event.stopPropagation()">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+                <h3 style="color: #38bdf8; font-weight: 800; margin: 0;">Quản Lý & Phân Công Đội</h3>
                 <button class="btn btn-sm btn-success rounded-pill px-3 fw-bold" onclick="themDoiMoiAdmin()"><i class="fa-solid fa-plus me-1"></i> Thêm đội mới</button>
             </div>
-            <div id="adminDoiFormContainer" style="max-height: 380px; overflow-y: auto; padding-right: 5px;"></div>
-            <div class="d-flex gap-3 mt-3">
-                <button class="btn btn-light flex-grow-1 fw-bold rounded-pill" onclick="dongModal('modalAdminDoi')">Đóng</button>
-                <button class="btn btn-primary flex-grow-1 fw-bold rounded-pill" style="background: linear-gradient(135deg, #059669, #34d399); border:none;" onclick="luuQuanLyDoiAdmin()">Lưu toàn bộ thay đổi</button>
+            <div id="adminDoiFormContainer" style="max-height: 400px; overflow-y: auto; padding-right: 5px;"></div>
+            <div class="d-flex gap-3 mt-4">
+                <button class="btn-modal-action btn-dismiss" onclick="dongModal('modalAdminDoi')">Đóng</button>
+                <button class="btn-modal-action btn-confirm" onclick="luuQuanLyDoiAdmin()">Lưu thay đổi</button>
             </div>
         </div>
     </div>
@@ -370,7 +386,6 @@
         const ADMIN_EMAILS = ["htam00521@gmail.com", "yinsnhuw29@gmail.com"]; 
         const GOOGLE_CLIENT_ID = "262126423881-einke9pok3r8at0d9hrnli04klf68s9q.apps.googleusercontent.com";
 
-        // Danh sách đội mặc định nếu trên Firebase chưa có
         const defaultDanhSachDoi = [
             { id: 1, name: "Đội 1 (Giuse)", nganh: "Ngành Ấu" }, { id: 2, name: "Đội 2 (Maria)", nganh: "Ngành Ấu" },
             { id: 3, name: "Đội 3 (Pêrô)", nganh: "Ngành Ấu" }, { id: 4, name: "Đội 4 (Phao-lô)", nganh: "Ngành Thiếu" },
@@ -789,7 +804,7 @@
             document.getElementById("modalThemEm").classList.add("active");
         }
 
-        // Modal cấu hình quản lý danh sách đội (đổi tên, thêm, xóa, phân công đội trưởng/phó)
+        // Modal cấu hình quản lý danh sách đội
         function moModalAdminDoi() {
             renderAdminDoiForm();
             document.getElementById("modalAdminDoi").classList.add("active");
@@ -808,9 +823,9 @@
                     <div class="d-flex justify-content-between align-items-center mb-2">
                         <div class="d-flex gap-2 align-items-center flex-grow-1">
                             <input type="text" class="form-control-custom name-doi-${doi.id}" value="${doi.name}" placeholder="Tên đội..." style="margin-bottom:0; font-weight:bold; color:#38bdf8;">
-                            <input type="text" class="form-control-custom nganh-doi-${doi.id}" value="${doi.nganh || ''}" placeholder="Ngành..." style="margin-bottom:0; width:130px;">
+                            <input type="text" class="form-control-custom nganh-doi-${doi.id}" value="${doi.nganh || ''}" placeholder="Ngành..." style="margin-bottom:0; width:140px;">
                         </div>
-                        <button class="btn btn-sm btn-danger ms-2" onclick="xoaDoiAdmin(${doi.id})" title="Xóa đội này"><i class="fa-solid fa-trash"></i></button>
+                        <button class="btn btn-sm btn-danger ms-2 px-3 py-1 fw-bold" onclick="xoaDoiAdmin(${doi.id})" title="Xóa đội này"><i class="fa-solid fa-trash"></i> Xóa</button>
                     </div>
                     <div class="row g-2">
                         <div class="col-md-6">
