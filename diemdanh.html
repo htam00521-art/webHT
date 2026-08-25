@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Điểm Danh Đội Thiếu Nhi - Đoàn TNTT Phước Hảo</title>
+    
+    <link rel="icon" type="image/jpeg" href="logo_app.jpg">
+    <!-- Google Fonts & Font Awesome Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    
+    <!-- Google Identity Services & JWT Decode -->
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/jwt-decode@3.1.2/build/jwt-decode.min.js"></script>
+
+    <!-- Firebase SDK (v9 Compat) -->
+    <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-database-compat.js"></script>
+
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Roboto', sans-serif; }
+
+        body {
+            background: linear-gradient(135deg, rgba(224, 242, 254, 0.75), rgba(240, 253, 250, 0.75)),
+                        url('nen1.jpg'), url('bg_church.jpg'), url('backgroud.jpg');
+            background-position: center center;
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            min-height: 100vh;
+            padding: 16px;
+            color: #1e293b;
+        }
+
+        .container { max-width: 1200px; margin: 0 auto; }
+
+        /* THANH ĐIỀU HƯỚNG LIQUID GLASS */
+        .cls-topbar {
+            background: linear-gradient(135deg, rgba(0, 114, 255, 0.85), rgba(0, 198, 255, 0.85) 60%, rgba(56, 239, 125, 0.7));
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            color: #fff; 
+            padding: 0.7rem 1.2rem; 
+            border-radius: 20px; 
+            margin-bottom: 20px;
+            box-shadow: 0 12px 35px rgba(0, 114, 255, 0.25), 0 1px 0 rgba(255, 255, 255, 0.4) inset;
+            display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;
+        }
+        .cls-brand { display: flex; align-items: center; gap: 0.75rem; color: #fff; text-decoration: none; font-weight: 800; font-size: 1.05rem; font-family: 'Nunito', sans-serif; text-shadow: 0 2px 6px rgba(0,0,0,0.25); }
+        .cls-brand img { width: 40px; height: 40px; border-radius: 50%; object-fit: contain; background: #fff; padding: 2px; box-shadow: 0 4px 12px rgba(0,0,0,0.15); }
+        .cls-nav-link { color: rgba(255,255,255,0.95); text-decoration: none; font-weight: 700; font-size: 0.88rem; padding: 0.5rem 1rem; border-radius: 999px; transition: 0.3s; font-family: 'Nunito', sans-serif; background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.3); }
+        .cls-nav-link:hover, .cls-nav-link.active { background: rgba(255,255,255,0.35); color: #fff; transform: translateY(-2px); box-shadow: 0 6px 16px rgba(0,0,0,0.15); }
+
+        /* AUTH BAR LIQUID GLASS */
+        .auth-bar {
+            display: flex; justify-content: space-between; align-items: center;
+            background: rgba(15, 23, 42, 0.65); backdrop-filter: blur(24px) saturate(190%);
+            -webkit-backdrop-filter: blur(24px) saturate(190%);
+            border: 1px solid rgba(255, 255, 255, 0.25); padding: 14px 22px; border-radius: 22px;
+            margin-bottom: 22px; box-shadow: 0 14px 38px rgba(0, 0, 0, 0.25), 0 1px 0 rgba(255, 255, 255, 0.2) inset;
+            flex-wrap: wrap; gap: 10px;
+        }
+        .user-status { font-size: 14px; color: #f8fafc; display: flex; align-items: center; gap: 10px; font-weight: 600; }
+        .user-avatar-mini { width: 36px; height: 36px; border-radius: 50%; object-fit: cover; border: 2px solid #0072ff; }
+        .role-tag { padding: 4px 12px; border-radius: 12px; font-size: 12px; font-weight: 700; color: #fff; }
+        .role-admin { background: #d32f2f; }
+        .role-leader { background: #e65100; }
+        .role-viewer { background: #0072ff; }
+
+        .header-title { text-align: center; color: #ffffff; font-size: 28px; font-weight: 800; margin-bottom: 20px; text-transform: uppercase; text-shadow: 0 2px 12px rgba(0, 0, 0, 0.8); }
+
+        /* THANH CHỌN 13 ĐỘI (CHIP NGANG) */
+        .doi-scroll {
+            display: flex; gap: 10px; overflow-x: auto; padding-bottom: 12px; margin-bottom: 22px;
+            scrollbar-width: thin;
+        }
+        .doi-scroll::-webkit-scrollbar { height: 6px; }
+        .doi-scroll::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.3); border-radius: 10px; }
+        
+        .doi-chip {
+            flex-shrink: 0; background: rgba(15, 23, 42, 0.65); backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.25); color: #f8fafc; padding: 10px 20px;
+            border-radius: 30px; font-weight: 700; font-size: 14px; cursor: pointer; transition: 0.3s;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+        }
+        .doi-chip:hover { background: rgba(56, 189, 248, 0.3); transform: translateY(-2px); }
+        .doi-chip.active {
+            background: linear-gradient(135deg, #0072ff, #00c6ff); border-color: transparent;
+            box-shadow: 0 8px 25px rgba(0, 114, 255, 0.4);
+        }
+
+        /* KHUNG DANH SÁCH THIẾU NHI TRONG ĐỘI (LIQUID GLASS CONTAINER) */
+        .diemdanh-container {
+            background: rgba(15, 23, 42, 0.85);
+            backdrop-filter: blur(26px) saturate(190%);
+            -webkit-backdrop-filter: blur(26px) saturate(190%);
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            border-radius: 26px;
+            padding: 28px;
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.45);
+            color: #f8fafc;
+        }
+
+        .doi-header-bar {
+            display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px;
+            margin-bottom: 20px; padding-bottom: 15px; border-bottom: 1px dashed rgba(255,255,255,0.2);
+        }
+        .doi-header-bar h3 { color: #fde047; font-size: 20px; font-weight: 800; text-shadow: 0 0 10px rgba(253,224,71,0.4); }
+
+        .thieunhi-table { width: 100%; border-collapse: collapse; font-size: 15px; }
+        .thieunhi-table th { background: rgba(255, 255, 255, 0.08); color: #38bdf8; font-weight: 700; padding: 12px 14px; text-align: left; border-bottom: 1px solid rgba(255,255,255,0.15); }
+        .thieunhi-table td { padding: 12px 14px; border-bottom: 1px solid rgba(255, 255, 255, 0.06); vertical-align: middle; }
+        .thieunhi-table tr:hover { background: rgba(255, 255, 255, 0.04); }
+
+        .diemdanh-checkbox { width: 22px; height: 22px; accent-color: #38ef7d; cursor: pointer; }
+        .badge-diemdanh { padding: 4px 10px; border-radius: 10px; font-size: 12px; font-weight: 700; }
+        .badge-co-mặt { background: rgba(56, 239, 125, 0.2); color: #4ade80; border: 1px solid rgba(56, 239, 125, 0.4); }
+        .badge-vang { background: rgba(239, 68, 68, 0.2); color: #f87171; border: 1px solid rgba(239, 68, 68, 0.4); }
+
+        .btn-them-em {
+            background: linear-gradient(135deg, #059669, #34d399); color: white; border: none;
+            padding: 8px 16px; border-radius: 20px; font-weight: 700; font-size: 13px; cursor: pointer;
+            box-shadow: 0 4px 12px rgba(5, 150, 105, 0.3); transition: 0.2s;
+        }
+        .btn-them-em:hover { transform: translateY(-2px); filter: brightness(1.1); }
+
+        /* MODAL THÊM THIẾU NHI */
+        .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(10, 25, 47, 0.8); backdrop-filter: blur(10px); display: flex; align-items: center; justify-content: center; z-index: 9999; opacity: 0; visibility: hidden; transition: 0.25s; padding: 16px; }
+        .modal-overlay.active { opacity: 1; visibility: visible; }
+        .modal-card {
+            background: rgba(15, 23, 42, 0.95); backdrop-filter: blur(30px); border: 1px solid rgba(255, 255, 255, 0.3);
+            width: 100%; max-width: 450px; border-radius: 26px; padding: 26px; box-shadow: 0 25px 60px rgba(0,0,0,0.5); color: #f8fafc;
+        }
+        .form-control-custom { width: 100%; padding: 10px 14px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.2); background: rgba(255,255,255,0.08); color: #fff; font-size: 14px; outline: none; margin-bottom: 14px; }
+        .form-control-custom:focus { border-color: #38bdf8; background: rgba(255,255,255,0.12); }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- TOPBAR NAVIGATION -->
+        <div class="cls-topbar">
+            <a class="cls-brand" href="index.html">
+                <img src="logo_app.jpg" onerror="this.onerror=null; this.src='logo.png';" alt="Logo Phước Hảo">
+                <span>TNTT PHƯỚC HẢO</span>
+            </a>
+            <nav class="d-flex gap-2">
+                <a href="index.html" class="cls-nav-link"><i class="fas fa-home me-1"></i>Trang chủ</a>
+                <a href="classes.html" class="cls-nav-link"><i class="fas fa-users-gear me-1"></i>Huynh Trưởng & Lịch Trực</a>
+                <a href="diemdanh.html" class="cls-nav-link active"><i class="fas fa-clipboard-user me-1"></i>Điểm Danh Đội</a>
+            </nav>
+        </div>
+
+        <h1 class="header-title">Quản Lý & Điểm Danh Thiếu Nhi Theo Đội</h1>
+
+        <!-- THANH CHỌN 13 ĐỘI -->
+        <div class="doi-scroll" id="doiScrollContainer"></div>
+
+        <!-- KHUNG HIỂN THỊ DANH SÁCH THIẾU NHI CỦA ĐỘI ĐƯỢC CHỌN -->
+        <div class="diemdanh-container">
+            <div class="doi-header-bar">
+                <div>
+                    <h3 id="currentDoiName">Đội 1</h3>
+                    <p class="small text-muted mb-0" id="currentDoiStats">Sĩ số: 0 em | Có mặt: 0</p>
+                </div>
+                <button class="btn-them-em" onclick="moModalThemThieuNhi()"><i class="fa-solid fa-user-plus me-1"></i> Thêm Thiếu Nhi</button>
+            </div>
+
+            <div class="table-responsive">
+                <table class="thieunhi-table">
+                    <thead>
+                        <tr>
+                            <th style="width: 50px;">STT</th>
+                            <th>Tên Thánh & Họ Tên Thiếu Nhi</th>
+                            <th>Ngày Sinh</th>
+                            <th style="width: 120px; text-align: center;">Điểm Danh</th>
+                        </tr>
+                    </thead>
+                    <tbody id="thieuNhiTableBody">
+                        <!-- Danh sách thiếu nhi render ở đây -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL THÊM THIẾU NHI VÀO ĐỘI -->
+    <div class="modal-overlay" id="modalThemEm" onclick="dongModalThem()">
+        <div class="modal-card" onclick="event.stopPropagation()">
+            <h3 style="color: #38bdf8; text-align: center; margin-bottom: 16px; font-weight: 800;">Thêm Thiếu Nhi Mới</h3>
+            <label style="font-size: 13px; font-weight: 700; margin-bottom: 4px; display: block; color: #cbd5e1;">Tên Thánh & Họ Tên:</label>
+            <input type="text" id="inputTenEm" class="form-control-custom" placeholder="Ví dụ: Giuse Nguyễn Văn A">
+            
+            <label style="font-size: 13px; font-weight: 700; margin-bottom: 4px; display: block; color: #cbd5e1;">Ngày sinh (hoặc Năm sinh):</label>
+            <input type="text" id="inputNgaySinhEm" class="form-control-custom" placeholder="Ví dụ: 2012">
+
+            <div class="d-flex gap-3 mt-2">
+                <button class="btn btn-light flex-grow-1 fw-bold rounded-pill" onclick="dongModalThem()">Hủy</button>
+                <button class="btn btn-primary flex-grow-1 fw-bold rounded-pill" style="background: linear-gradient(135deg, #0072ff, #00c6ff); border:none;" onclick="luuThieuNhiMoi()">Thêm vào đội</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // ================= CẤU HÌNH FIREBASE =================
+        const firebaseConfig = {
+            apiKey: "AIzaSyC0bD7rkP2C1NS_pKanobfZN23Y3-1WznI",
+            authDomain: "phantruchuynhtruong.firebaseapp.com",
+            databaseURL: "https://phantruchuynhtruong-default-rtdb.asia-southeast1.firebasedatabase.app",
+            projectId: "phantruchuynhtruong",
+            storageBucket: "phantruchuynhtruong.firebasestorage.app",
+            messagingSenderId: "105589587705",
+            appId: "1:105589587705:web:e5673f9dad38c130b56c28",
+            measurementId: "G-YENZE6ZNSW"
+        };
+        firebase.initializeApp(firebaseConfig);
+        const db = firebase.database();
+
+        // 13 Đội chuẩn trong Xứ Đoàn
+        const danhSach13Doi = [
+            { id: 1, name: "Đội 1 (Giuse)" },
+            { id: 2, name: "Đội 2 (Maria)" },
+            { id: 3, name: "Đội 3 (Pêrô)" },
+            { id: 4, name: "Đội 4 (Phao-lô)" },
+            { id: 5, name: "Đội 6 (An-tôn)" },
+            { id: 6, name: "Đội 6 (Agnes)" },
+            { id: 7, name: "Đội 7 (Dominicô)" },
+            { id: 8, name: "Đội 8 (Tê-rê-sa)" },
+            { id: 9, name: "Đội 9 (Gioan)" },
+            { id: 10, name: "Đội 10 (Matta)" },
+            { id: 11, name: "Đội 11 (Phanxicô)" },
+            { id: 12, name: "Đội 12 (Anna)" },
+            { id: 13, name: "Đội 13 (Phêrô & Phaolô)" }
+        ];
+
+        let currentSelectedDoi = 1;
+        let thieuNhiData = {};
+        // Lấy ngày Chủ Nhật tuần hiện tại làm khóa điểm danh (hoặc đổi thành ngày bất kỳ)
+        const homNayKey = new Date().toISOString().slice(0, 10); // YYYY-MM-DD
+
+        // Lắng nghe dữ liệu điểm danh từ Firebase
+        db.ref("diemDanhThieuNhi").on("value", (snapshot) => {
+            thieuNhiData = snapshot.val() || {};
+            hienThiDanhSachThieuNhi();
+        });
+
+        function khoiTaoGiaoDienDoi() {
+            const scrollContainer = document.getElementById("doiScrollContainer");
+            scrollContainer.innerHTML = "";
+            danhSach13Doi.forEach(doi => {
+                const btn = document.createElement("button");
+                btn.className = `doi-chip ${doi.id === currentSelectedDoi ? 'active' : ''}`;
+                btn.innerHTML = `<i class="fa-solid fa-shield-halved me-1"></i> ${doi.name}`;
+                btn.onclick = () => {
+                    currentSelectedDoi = doi.id;
+                    document.querySelectorAll(".doi-chip").forEach(c => c.classList.remove("active"));
+                    btn.classList.add("active");
+                    hienThiDanhSachThieuNhi();
+                };
+                scrollContainer.appendChild(btn);
+            });
+        }
+
+        function hienThiDanhSachThieuNhi() {
+            const doiObj = danhSach13Doi.find(d => d.id === currentSelectedDoi);
+            document.getElementById("currentDoiName").innerText = doiObj ? doiObj.name : `Đội ${currentSelectedDoi}`;
+
+            const tbody = document.getElementById("thieuNhiTableBody");
+            tbody.innerHTML = "";
+
+            const doiKey = `doi_${currentSelectedDoi}`;
+            const danhSachEm = thieuNhiData[doiKey] || [];
+
+            let soCoMat = 0;
+
+            if (danhSachEm.length === 0) {
+                tbody.innerHTML = `<tr><td colspan="4" class="text-center text-muted py-4">Chưa có thiếu nhi nào trong đội này. Nhấn "Thêm Thiếu Nhi" để bắt đầu!</td></tr>`;
+            } else {
+                danhSachEm.forEach((em, idx) => {
+                    // Kiểm tra trạng thái điểm danh theo ngày hôm nay
+                    const diemsDanhMap = em.diemDanh || {};
+                    const isCoMat = diemsDanhMap[homNayKey] === true;
+                    if (isCoMat) soCoMat++;
+
+                    const tr = document.createElement("tr");
+                    tr.innerHTML = `
+                        <td class="fw-bold text-muted">${idx + 1}</td>
+                        <td><span class="fw-bold" style="color: #f8fafc;">${em.hoTen}</span></td>
+                        <td><span class="text-info">${em.ngaySinh || 'Chưa rõ'}</span></td>
+                        <td style="text-align: center;">
+                            <label class="person-check-badge">
+                                <input type="checkbox" class="diemdanh-checkbox" ${isCoMat ? 'checked' : ''} onchange="toggleDiemDanh(${idx})">
+                                <span class="badge-diemdanh ${isCoMat ? 'badge-co-mặt' : 'badge-vang'}">${isCoMat ? 'Có mặt' : 'Vắng'}</span>
+                            </label>
+                        </td>
+                    `;
+                    tbody.appendChild(tr);
+                });
+            }
+
+            document.getElementById("currentDoiStats").innerText = `Sĩ số: ${danhSachEm.length} em | Có mặt ngày ${homNayKey}: ${soCoMat}`;
+        }
+
+        function toggleDiemDanh(index) {
+            const doiKey = `doi_${currentSelectedDoi}`;
+            if (!thieuNhiData[doiKey]) thieuNhiData[doiKey] = [];
+            
+            if (!thieuNhiData[doiKey][index].diemDanh) {
+                thieuNhiData[doiKey][index].diemDanh = {};
+            }
+
+            const currentStatus = thieuNhiData[doiKey][index].diemDanh[homNayKey] === true;
+            thieuNhiData[doiKey][index].diemDanh[homNayKey] = !currentStatus;
+
+            // Đồng bộ lên Firebase
+            db.ref(`diemDanhThieuNhi/${doiKey}`).set(thieuNhiData[doiKey]);
+        }
+
+        function moModalThemThieuNhi() {
+            document.getElementById("inputTenEm").value = "";
+            document.getElementById("inputNgaySinhEm").value = "";
+            document.getElementById("modalThemEm").classList.add("active");
+        }
+
+        function dongModalThem() {
+            document.getElementById("modalThemEm").classList.remove("active");
+        }
+
+        function luuThieuNhiMoi() {
+            const ten = document.getElementById("inputTenEm").value.trim();
+            const ns = document.getElementById("inputNgaySinhEm").value.trim();
+
+            if (!ten) {
+                alert("Vui lòng nhập tên thánh và họ tên thiếu nhi!");
+                return;
+            }
+
+            const doiKey = `doi_${currentSelectedDoi}`;
+            if (!thieuNhiData[doiKey]) thieuNhiData[doiKey] = [];
+
+            thieuNhiData[doiKey].push({
+                hoTen: ten,
+                ngaySinh: ns,
+                diemDanh: {}
+            });
+
+            db.ref(`diemDanhThieuNhi/${doiKey}`).set(thieuNhiData[doiKey]).then(() => {
+                alert("Đã thêm thiếu nhi thành công!");
+                dongModalThem();
+            }).catch(err => {
+                alert("Lỗi: " + err.message);
+            });
+        }
+
+        window.onload = function() {
+            khoiTaoGiaoDienDoi();
+        };
+    </script>
+</body>
+</html>
