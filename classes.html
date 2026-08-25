@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lịch Trực Huynh Trưởng - Năm Phụng Vụ 2025-2026</title>
+    <title>Quản Lý Huynh Trưởng & Lịch Trực - Đoàn TNTT Phước Hảo</title>
     
     <!-- Google Fonts & Font Awesome Icons -->
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     
-    <!-- Google Identity Services & JWT Decode (CHUẨN GỐC TỪ WEB CỦA BẠN) -->
+    <!-- Google Identity Services & JWT Decode (GSI CHUẨN GỐC) -->
     <script src="https://accounts.google.com/gsi/client" async defer></script>
     <script src="https://cdn.jsdelivr.net/npm/jwt-decode@3.1.2/build/jwt-decode.min.js"></script>
 
@@ -44,9 +44,9 @@
             color: #fff; padding: 0.65rem 1rem; border-radius: 12px; margin-bottom: 20px;
             box-shadow: 0 4px 14px rgba(13,71,161,.22); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;
         }
-        .cls-brand { display: flex; align-items: center; gap: 0.65rem; color: #fff; text-decoration: none; font-weight: 800; font-size: 1rem; }
+        .cls-brand { display: flex; align-items: center; gap: 0.65rem; color: #fff; text-decoration: none; font-weight: 800; font-size: 1rem; font-family: 'Nunito', sans-serif; }
         .cls-brand img { width: 38px; height: 38px; border-radius: 50%; object-fit: cover; }
-        .cls-nav-link { color: rgba(255,255,255,.9); text-decoration: none; font-weight: 700; font-size: 0.88rem; padding: 0.45rem 0.85rem; border-radius: 999px; transition: 0.2s; }
+        .cls-nav-link { color: rgba(255,255,255,.9); text-decoration: none; font-weight: 700; font-size: 0.88rem; padding: 0.45rem 0.85rem; border-radius: 999px; transition: 0.2s; font-family: 'Nunito', sans-serif; }
         .cls-nav-link:hover, .cls-nav-link.active { background: rgba(255,255,255,.22); color: #fff; }
 
         /* AUTH BAR */
@@ -245,10 +245,10 @@
         }
 
         .chuc-vu { color: #2E7D32; font-size: 12px; font-weight: bold; }
-        .cap { color: #E65100; font-size: 11px; font-weight: 500; margin-bottom: 6px; }
+        .cap { color: #E65100; font-size: 11px; font-weight: 600; margin-bottom: 6px; }
         .info-row { color: #616161; font-size: 12px; margin-top: 2px; }
 
-        /* BẢNG PHIÊN TRỰC */
+        /* BẢNG PHIÊN TRỰC (GLASSMORPHISM) */
         .duty-wrapper {
             max-width: 680px;
             margin: 0 auto;
@@ -646,7 +646,7 @@
             </nav>
         </div>
 
-        <!-- AUTH BAR (GOOGLE IDENTITY SERVICES CHUẨN) -->
+        <!-- AUTH BAR (GOOGLE IDENTITY SERVICES) -->
         <div class="auth-bar">
             <div class="user-status">
                 <img id="userAvatarMini" class="user-avatar-mini" src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="Avatar">
@@ -1062,7 +1062,6 @@
 
         let currentEditingSlot = { catIdx: null, slotIdx: null, selectedMembers: [] };
 
-        // TỰ ĐỘNG CHUYỂN TUẦN LÚC 6H00 SÁNG THỨ BẢY
         function timIdTuanHienTai() {
             const now = new Date();
 
@@ -1248,6 +1247,7 @@
             return dutyHistoryData[dutyKey];
         }
 
+        // ================= HIỂN THỊ PHIÊN TRỰC (CHECKBOX CHO TỪNG NGƯỜI) =================
         function hienThiPhienTruc() {
             const container = document.getElementById("dutyContent");
             container.innerHTML = "";
@@ -1349,6 +1349,7 @@
             db.ref(`dutyHistory/${dutyKey}`).set(dutyHistoryData[dutyKey]);
         }
 
+        // ================= NHÓM TRƯỞNG & PHÓ CHIA PHIÊN =================
         function moModalChonNguoiTruc(cIdx, sIdx) {
             currentEditingSlot = { catIdx: cIdx, slotIdx: sIdx, selectedMembers: [] };
             const dutyKey = `lit_w${currentSelectedWeek}_g${currentAssignedGroup}`;
