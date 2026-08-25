@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Đoàn TNTT Phước Hảo - Trang Chủ</title>
     
+    <link rel="icon" type="image/png" href="logo.png">
     <!-- Google Fonts & Font Awesome Icons -->
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Crimson+Text:wght@600;700&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -20,7 +21,7 @@
             position: sticky; top: 0; z-index: 100;
         }
         .cls-brand { display: flex; align-items: center; gap: 0.65rem; color: #fff; text-decoration: none; font-weight: 800; font-size: 1.05rem; }
-        .cls-brand img { width: 40px; height: 40px; border-radius: 50%; object-fit: cover; }
+        .cls-brand img { width: 42px; height: 42px; border-radius: 50%; object-fit: contain; background: #fff; padding: 2px; }
         .cls-nav-link {
             color: rgba(255,255,255,.9); text-decoration: none; font-weight: 700; font-size: 0.9rem;
             padding: 0.5rem 1rem; border-radius: 999px; transition: 0.2s;
@@ -29,7 +30,11 @@
 
         .hero-section {
             height: 85vh; min-height: 520px;
-            background: linear-gradient(rgba(0,0,0,0.45), rgba(13,71,161,0.65)), url('bg_church.jpg') center/cover no-repeat fixed;
+            background: linear-gradient(rgba(0,0,0,0.45), rgba(13,71,161,0.65)), url('bg_church.jpg'), url('backgroud.jpg'), url('img/backgroud.jpg');
+            background-position: center center;
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
             display: flex; align-items: center; justify-content: center; text-align: center; color: white; padding: 0 20px;
         }
         .hero-title { font-family: 'Crimson Text', serif; font-size: 3.4rem; font-weight: 700; margin-bottom: 20px; text-shadow: 0 4px 20px rgba(0,0,0,0.6); }
@@ -50,11 +55,10 @@
     </style>
 </head>
 <body>
-    <!-- TOPBAR NAVIGATION -->
     <header class="cls-topbar">
         <div class="container d-flex justify-content-between align-items-center">
             <a class="cls-brand" href="index.html">
-                <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="Logo">
+                <img src="logo.png" onerror="this.onerror=null; this.src='img/logo.png';" alt="Logo">
                 <span>ĐOÀN TNTT PHƯỚC HẢO</span>
             </a>
             <nav class="d-flex gap-2">
@@ -64,7 +68,6 @@
         </div>
     </header>
 
-    <!-- HERO SECTION -->
     <section class="hero-section">
         <div>
             <h1 class="hero-title">ĐOÀN TNTT PHƯỚC HẢO</h1>
@@ -75,7 +78,6 @@
         </div>
     </section>
 
-    <!-- MAIN FEATURES -->
     <main class="container py-5">
         <div class="text-center mb-5">
             <h2 style="font-weight: 800; color: #0d47a1;">Tính Năng Hệ Thống</h2>
@@ -101,7 +103,6 @@
         </div>
     </main>
 
-    <!-- FOOTER -->
     <footer class="modern-footer text-center">
         <div class="container">
             <h4 class="fw-bold">Xứ Đoàn Thiếu Nhi Thánh Thể Phước Hảo</h4>
