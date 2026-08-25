@@ -8,7 +8,7 @@
     <link rel="icon" type="image/jpeg" href="logo_app.jpg">
     <!-- Google Fonts & Font Awesome Icons -->
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     
     <!-- Google Identity Services & JWT Decode -->
     <script src="https://accounts.google.com/gsi/client" async defer></script>
@@ -19,15 +19,10 @@
     <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-database-compat.js"></script>
 
     <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: 'Roboto', sans-serif;
-        }
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Roboto', sans-serif; }
 
         body {
-            background: linear-gradient(rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.4)),
+            background: linear-gradient(rgba(240, 249, 255, 0.65), rgba(240, 253, 250, 0.65)),
                         url('bg_church.jpg'), url('backgroud.jpg'), url('img/backgroud.jpg');
             background-position: center center;
             background-size: cover;
@@ -35,604 +30,237 @@
             background-attachment: fixed;
             min-height: 100vh;
             padding: 16px;
+            color: #1e293b;
         }
 
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
+        .container { max-width: 1200px; margin: 0 auto; }
 
-        /* TOPBAR NAVIGATION */
+        /* THANH ĐIỀU HƯỚNG MÁT MẺ (OCEAN AURORA) */
         .cls-topbar {
-            background: linear-gradient(135deg, #0d47a1, #1565c0 50%, #42a5f5);
-            color: #fff; padding: 0.65rem 1rem; border-radius: 12px; margin-bottom: 20px;
-            box-shadow: 0 4px 14px rgba(13,71,161,.22); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;
+            background: linear-gradient(135deg, rgba(0, 114, 255, 0.88), rgba(0, 198, 255, 0.88) 60%, rgba(56, 239, 125, 0.75));
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+            color: #fff; 
+            padding: 0.7rem 1.2rem; 
+            border-radius: 18px; 
+            margin-bottom: 20px;
+            box-shadow: 0 10px 30px rgba(0, 114, 255, 0.25), 0 1px 0 rgba(255, 255, 255, 0.35) inset;
+            display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;
         }
-        .cls-brand { display: flex; align-items: center; gap: 0.65rem; color: #fff; text-decoration: none; font-weight: 800; font-size: 1rem; font-family: 'Nunito', sans-serif; }
-        .cls-brand img { width: 38px; height: 38px; border-radius: 50%; object-fit: contain; background: #fff; padding: 2px; }
-        .cls-nav-link { color: rgba(255,255,255,.9); text-decoration: none; font-weight: 700; font-size: 0.88rem; padding: 0.45rem 0.85rem; border-radius: 999px; transition: 0.2s; font-family: 'Nunito', sans-serif; }
-        .cls-nav-link:hover, .cls-nav-link.active { background: rgba(255,255,255,.22); color: #fff; }
+        .cls-brand { display: flex; align-items: center; gap: 0.65rem; color: #fff; text-decoration: none; font-weight: 800; font-size: 1.05rem; font-family: 'Nunito', sans-serif; }
+        .cls-brand img { width: 40px; height: 40px; border-radius: 50%; object-fit: contain; background: #fff; padding: 2px; }
+        .cls-nav-link { color: rgba(255,255,255,.95); text-decoration: none; font-weight: 700; font-size: 0.88rem; padding: 0.5rem 1rem; border-radius: 999px; transition: 0.2s; font-family: 'Nunito', sans-serif; background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.25); }
+        .cls-nav-link:hover, .cls-nav-link.active { background: rgba(255,255,255,.32); color: #fff; transform: translateY(-2px); }
 
-        /* AUTH BAR */
+        /* AUTH BAR LIQUID GLASS */
         .auth-bar {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            background: rgba(255, 255, 255, 0.92);
-            backdrop-filter: blur(10px);
-            padding: 10px 18px;
-            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.65);
+            backdrop-filter: blur(20px) saturate(180%);
+            -webkit-backdrop-filter: blur(20px) saturate(180%);
+            border: 1px solid rgba(255, 255, 255, 0.85);
+            padding: 12px 20px;
+            border-radius: 20px;
             margin-bottom: 20px;
-            box-shadow: 0 4px 14px rgba(0,0,0,0.08);
+            box-shadow: 0 12px 32px rgba(0, 114, 255, 0.08), 0 1px 0 rgba(255, 255, 255, 0.9) inset;
             flex-wrap: wrap;
             gap: 10px;
         }
 
-        .user-status {
-            font-size: 14px;
-            color: #333;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .user-avatar-mini {
-            width: 32px;
-            height: 32px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 1px solid #0D47A1;
-        }
-
-        .role-tag {
-            padding: 3px 10px;
-            border-radius: 12px;
-            font-size: 12px;
-            font-weight: 700;
-            color: #fff;
-        }
+        .user-status { font-size: 14px; color: #333; display: flex; align-items: center; gap: 8px; }
+        .user-avatar-mini { width: 34px; height: 34px; border-radius: 50%; object-fit: cover; border: 2px solid #0072ff; }
+        .role-tag { padding: 4px 12px; border-radius: 12px; font-size: 12px; font-weight: 700; color: #fff; }
         .role-admin { background: #d32f2f; }
         .role-leader { background: #e65100; }
-        .role-viewer { background: #1976d2; }
-
-        .auth-actions {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            flex-wrap: wrap;
-        }
+        .role-viewer { background: #0072ff; }
 
         .btn-auth-action {
-            background: #0D47A1;
-            color: #fff;
-            border: none;
-            padding: 7px 14px;
-            border-radius: 20px;
-            cursor: pointer;
-            font-size: 13px;
-            font-weight: 500;
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            transition: 0.2s;
+            background: linear-gradient(135deg, #0072ff, #00c6ff);
+            color: #fff; border: none; padding: 8px 16px; border-radius: 25px;
+            cursor: pointer; font-size: 13px; font-weight: 600; display: inline-flex; align-items: center; gap: 6px;
+            box-shadow: 0 4px 14px rgba(0, 114, 255, 0.3);
+            transition: all 0.25s ease;
         }
-        .btn-auth-action:hover { background: #1565C0; }
-        .btn-logout { background: #546e7a; }
+        .btn-auth-action:hover { transform: translateY(-2px); box-shadow: 0 6px 18px rgba(0, 114, 255, 0.45); }
+        .btn-logout { background: #64748b; }
 
-        /* TABS */
-        .tab-menu {
-            display: flex;
-            justify-content: center;
-            gap: 12px;
-            margin-bottom: 22px;
-        }
-
+        /* TABS LIQUID GLASS */
+        .tab-menu { display: flex; justify-content: center; gap: 14px; margin-bottom: 24px; }
         .tab-btn {
-            background: rgba(255, 255, 255, 0.85);
-            border: none;
-            padding: 10px 24px;
-            font-size: 15px;
-            font-weight: 700;
-            color: #0D47A1;
-            border-radius: 30px;
-            cursor: pointer;
-            transition: 0.3s;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            background: rgba(255, 255, 255, 0.65);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.85);
+            padding: 11px 26px; font-size: 15px; font-weight: 800; color: #0052d4;
+            border-radius: 30px; cursor: pointer; transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 8px 24px rgba(0, 114, 255, 0.08);
         }
-
         .tab-btn.active {
-            background: #0D47A1;
+            background: linear-gradient(135deg, #0072ff, #00c6ff);
             color: #ffffff;
-            box-shadow: 0 4px 12px rgba(13, 71, 161, 0.4);
+            border-color: transparent;
+            transform: translateY(-3px);
+            box-shadow: 0 12px 28px rgba(0, 114, 255, 0.35);
         }
 
         .view-section { display: none; }
         .view-section.active { display: block; }
+        .header-title { text-align: center; color: #0052d4; font-size: 26px; font-weight: 800; margin-bottom: 18px; text-transform: uppercase; text-shadow: 0 2px 8px rgba(255, 255, 255, 0.9); }
 
-        .header-title {
-            text-align: center;
-            color: #0D47A1;
-            font-size: 26px;
-            font-weight: 700;
-            margin-bottom: 16px;
-            text-transform: uppercase;
-            text-shadow: 0 2px 6px rgba(255, 255, 255, 0.95);
-        }
-
-        /* SEARCH BAR */
-        .search-box {
-            position: relative;
-            max-width: 500px;
-            margin: 0 auto 24px;
-        }
-
+        /* SEARCH BOX LIQUID GLASS */
+        .search-box { position: relative; max-width: 520px; margin: 0 auto 26px; }
         .search-box input {
-            width: 100%;
-            padding: 12px 18px 12px 42px;
-            font-size: 15px;
-            border-radius: 25px;
-            border: 1px solid #BBDEFB;
-            background: rgba(255, 255, 255, 0.95);
+            width: 100%; padding: 13px 20px 13px 44px; font-size: 15px; border-radius: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.9);
+            background: rgba(255, 255, 255, 0.75);
+            backdrop-filter: blur(20px);
             outline: none;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            box-shadow: 0 10px 25px rgba(0, 114, 255, 0.08), 0 1px 0 rgba(255,255,255,0.9) inset;
+            transition: all 0.3s ease;
         }
-
-        .search-box i {
-            position: absolute;
-            left: 16px;
-            top: 50%;
-            transform: translateY(-50%);
-            color: #757575;
+        .search-box input:focus {
+            background: rgba(255, 255, 255, 0.95);
+            border-color: #00c6ff;
+            box-shadow: 0 12px 30px rgba(0, 114, 255, 0.2);
         }
+        .search-box i { position: absolute; left: 16px; top: 50%; transform: translateY(-50%); color: #0072ff; }
 
-        /* GRID CARD */
-        .ht-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 18px;
-        }
-
+        /* GRID CARD VỚI HIỆU ỨNG LIQUID GLASS */
+        .ht-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(255px, 1fr)); gap: 20px; }
         .ht-card {
             position: relative;
-            background: rgba(255, 255, 255, 0.94);
-            border-radius: 14px;
-            padding: 18px 14px;
+            background: rgba(255, 255, 255, 0.62);
+            backdrop-filter: blur(20px) saturate(180%);
+            -webkit-backdrop-filter: blur(20px) saturate(180%);
+            border-radius: 22px;
+            border: 1px solid rgba(255, 255, 255, 0.85);
+            padding: 20px 16px;
             text-align: center;
-            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
+            box-shadow: 0 12px 30px rgba(0, 114, 255, 0.08), 0 1px 0 rgba(255,255,255,0.9) inset;
+            display: flex; flex-direction: column; align-items: center;
             cursor: pointer;
-            transition: transform 0.2s, box-shadow 0.2s;
-            user-select: none;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            overflow: hidden;
         }
-
+        .ht-card::before {
+            content: '';
+            position: absolute;
+            top: -50%; left: -50%;
+            width: 200%; height: 200%;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.4) 0%, transparent 60%);
+            transform: rotate(30deg);
+            pointer-events: none;
+            opacity: 0.5;
+            transition: opacity 0.4s ease;
+        }
         .ht-card:hover { 
-            transform: translateY(-5px);
-            box-shadow: 0 8px 22px rgba(13, 71, 161, 0.25);
+            transform: translateY(-8px) scale(1.02); 
+            background: rgba(255, 255, 255, 0.85);
+            border-color: rgba(255, 255, 255, 1);
+            box-shadow: 0 22px 45px rgba(0, 114, 255, 0.2); 
         }
+        .ht-card:hover::before { opacity: 0.9; }
 
         .badge-stt {
-            position: absolute;
-            top: 10px;
-            left: 10px;
-            width: 26px;
-            height: 26px;
-            background-color: #1976D2;
-            color: #fff;
-            font-size: 11px;
-            font-weight: bold;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            position: absolute; top: 12px; left: 12px; width: 28px; height: 28px;
+            background: linear-gradient(135deg, #0072ff, #00c6ff); color: #fff;
+            font-size: 11px; font-weight: bold; border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            box-shadow: 0 4px 10px rgba(0, 114, 255, 0.3);
         }
-
         .avatar {
-            width: 80px;
-            height: 80px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 2px solid #0D47A1;
-            margin-bottom: 10px;
+            width: 84px; height: 84px; border-radius: 50%; object-fit: cover;
+            border: 3px solid #fff; margin-bottom: 12px;
+            box-shadow: 0 6px 18px rgba(0, 114, 255, 0.18);
             background-color: #E3F2FD;
         }
+        .name { color: #0052d4; font-size: 15px; font-weight: 800; min-height: 40px; display: flex; align-items: center; justify-content: center; }
+        .chuc-vu { color: #059669; font-size: 12px; font-weight: 700; }
+        .cap { color: #ea580c; font-size: 11px; font-weight: 700; margin-bottom: 6px; }
+        .info-row { color: #64748b; font-size: 12px; margin-top: 2px; }
 
-        .name {
-            color: #0D47A1;
-            font-size: 14px;
-            font-weight: bold;
-            min-height: 38px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .chuc-vu { color: #2E7D32; font-size: 12px; font-weight: bold; }
-        .cap { color: #E65100; font-size: 11px; font-weight: 500; margin-bottom: 6px; }
-        .info-row { color: #616161; font-size: 12px; margin-top: 2px; }
-
-        /* BẢNG PHIÊN TRỰC */
-        .duty-wrapper {
-            max-width: 680px;
-            margin: 0 auto;
-        }
-
+        /* BẢNG PHIÊN TRỰC LIQUID GLASS */
+        .duty-wrapper { max-width: 680px; margin: 0 auto; }
         .week-control-panel {
-            background: rgba(255, 255, 255, 0.92);
-            backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.7);
-            border-radius: 16px;
-            padding: 16px 20px;
-            margin-bottom: 18px;
-            box-shadow: 0 8px 24px rgba(0,0,0,0.1);
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.9);
+            border-radius: 20px;
+            padding: 18px 22px;
+            margin-bottom: 20px;
+            box-shadow: 0 14px 35px rgba(0, 114, 255, 0.1);
+            display: flex; flex-direction: column; gap: 12px;
         }
-
-        .control-row {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 12px;
-            align-items: center;
-            justify-content: space-between;
-        }
-
-        .control-item {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            font-size: 13px;
-            font-weight: bold;
-            color: #0D47A1;
-            flex: 1;
-            min-width: 240px;
-        }
-
+        .control-row { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; justify-content: space-between; }
+        .control-item { display: flex; align-items: center; gap: 8px; font-size: 13px; font-weight: bold; color: #0052d4; flex: 1; min-width: 240px; }
         .control-item select, .control-item input {
-            width: 100%;
-            padding: 9px 12px;
-            border-radius: 10px;
-            border: 1px solid #90caf9;
-            font-size: 13px;
-            outline: none;
-            color: #0D47A1;
-            font-weight: 600;
-            background: #fff;
+            width: 100%; padding: 10px 14px; border-radius: 12px; border: 1px solid rgba(0, 114, 255, 0.25);
+            font-size: 13px; outline: none; color: #0052d4; font-weight: 700; background: rgba(255, 255, 255, 0.9);
         }
 
         .duty-container {
-            background: rgba(18, 24, 38, 0.88);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            border-radius: 20px;
-            padding: 26px 24px;
-            box-shadow: 0 16px 40px rgba(0, 0, 0, 0.45);
-            color: #f1f1f1;
-        }
-
-        .duty-header-info {
-            text-align: center;
-            padding-bottom: 18px;
-            margin-bottom: 20px;
-            border-bottom: 1px dashed rgba(255, 255, 255, 0.2);
-        }
-
-        .duty-header-info .liturgical-title {
-            font-size: 20px;
-            font-weight: 800;
-            color: #FFE082;
-            text-shadow: 0 0 12px rgba(255, 224, 130, 0.35);
-            text-transform: uppercase;
-            letter-spacing: 0.6px;
-            margin-bottom: 8px;
-        }
-
-        .duty-header-info .group-duty-title {
-            display: inline-block;
-            background: linear-gradient(135deg, rgba(255, 112, 67, 0.25), rgba(255, 183, 77, 0.25));
-            border: 1px solid #FF9E80;
-            color: #FFCCBC;
-            font-size: 15px;
-            font-weight: 700;
-            padding: 5px 16px;
-            border-radius: 20px;
-            margin-bottom: 10px;
-        }
-
-        .duty-header-info .extra-details {
-            font-size: 13px;
-            color: #B0BEC5;
-            line-height: 1.6;
-        }
-
-        .duty-group { 
-            margin-bottom: 22px; 
-            background: rgba(255, 255, 255, 0.04);
-            padding: 12px 16px;
-            border-radius: 14px;
-            border: 1px solid rgba(255, 255, 255, 0.08);
-        }
-
-        .duty-title { 
-            font-size: 16px; 
-            font-weight: 700; 
-            color: #80E5FF;
-            margin-bottom: 8px;
-            padding-bottom: 4px;
-            border-bottom: 1px solid rgba(128, 229, 255, 0.25);
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .duty-item {
-            display: flex;
-            align-items: center;
-            padding: 10px 0;
-            font-size: 15px;
-            line-height: 1.4;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.04);
-            flex-wrap: wrap;
-            gap: 8px;
-        }
-
-        .duty-item:last-child { border-bottom: none; }
-
-        .duty-label-time { 
-            font-weight: 700; 
-            color: #80D8FF; 
-            min-width: 90px; 
-            text-shadow: 0 0 8px rgba(128, 216, 255, 0.3);
-        }
-
-        .duty-persons-container {
-            display: flex;
-            align-items: center;
-            flex-grow: 1;
-            flex-wrap: wrap;
-            gap: 14px;
-        }
-
-        .person-check-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            background: rgba(255, 255, 255, 0.06);
-            padding: 4px 10px;
-            border-radius: 12px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .person-check-badge input[type="checkbox"] {
-            width: 17px;
-            height: 17px;
-            accent-color: #00E676;
-            cursor: pointer;
-        }
-
-        .person-check-badge input[type="checkbox"]:disabled {
-            cursor: not-allowed;
-            opacity: 0.4;
-        }
-
-        .duty-action-btn {
-            background: linear-gradient(135deg, #1E88E5, #1565C0);
-            border: 1px solid #64B5F6;
-            color: #ffffff;
-            cursor: pointer;
-            font-size: 12px;
-            font-weight: 600;
-            padding: 5px 12px;
-            border-radius: 14px;
-            transition: all 0.2s ease;
-            box-shadow: 0 2px 8px rgba(30, 136, 229, 0.35);
-            margin-left: auto;
-        }
-        .duty-action-btn:hover { 
-            background: linear-gradient(135deg, #2196F3, #1E88E5);
-            transform: translateY(-1px);
-        }
-
-        /* MODALS */
-        .modal-overlay {
-            position: fixed;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
-            background: rgba(0, 0, 0, 0.68);
-            backdrop-filter: blur(6px);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 9999;
-            opacity: 0;
-            visibility: hidden;
-            transition: 0.25s;
-            padding: 16px;
-        }
-
-        .modal-overlay.active { opacity: 1; visibility: visible; }
-
-        .modal-card {
-            background: #ffffff;
-            width: 100%;
-            max-width: 480px;
-            border-radius: 20px;
-            box-shadow: 0 14px 40px rgba(0, 0, 0, 0.35);
-            position: relative;
-            padding: 24px;
-            max-height: 90vh;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .modal-card h3 {
-            color: #0D47A1;
-            margin-bottom: 14px;
-            text-align: center;
-        }
-
-        .modal-detail-card {
-            background: #ffffff;
-            width: 100%;
-            max-width: 420px;
+            background: rgba(15, 23, 42, 0.85);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
             border-radius: 24px;
-            overflow: hidden;
-            text-align: center;
-            box-shadow: 0 16px 40px rgba(0, 0, 0, 0.35);
-            position: relative;
-            max-height: 92vh;
-            display: flex;
-            flex-direction: column;
-            padding: 0;
+            padding: 28px 24px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+            color: #f8fafc;
+        }
+        .duty-header-info { text-align: center; padding-bottom: 18px; margin-bottom: 20px; border-bottom: 1px dashed rgba(255, 255, 255, 0.2); }
+        .duty-header-info .liturgical-title { font-size: 20px; font-weight: 800; color: #FFE082; text-shadow: 0 0 14px rgba(255, 224, 130, 0.4); text-transform: uppercase; margin-bottom: 8px; }
+        .duty-header-info .group-duty-title { display: inline-block; background: linear-gradient(135deg, rgba(0, 198, 255, 0.25), rgba(0, 114, 255, 0.25)); border: 1px solid #38ef7d; color: #a7f3d0; font-size: 15px; font-weight: 800; padding: 6px 18px; border-radius: 20px; margin-bottom: 10px; }
+        .duty-group { margin-bottom: 22px; background: rgba(255, 255, 255, 0.05); padding: 14px 18px; border-radius: 16px; border: 1px solid rgba(255, 255, 255, 0.1); }
+        .duty-title { font-size: 16px; font-weight: 700; color: #38ef7d; margin-bottom: 10px; padding-bottom: 4px; border-bottom: 1px solid rgba(56, 239, 125, 0.25); display: flex; align-items: center; gap: 8px; }
+        .duty-item { display: flex; align-items: center; padding: 10px 0; font-size: 15px; border-bottom: 1px solid rgba(255, 255, 255, 0.05); flex-wrap: wrap; gap: 8px; }
+        .duty-item:last-child { border-bottom: none; }
+        .duty-label-time { font-weight: 700; color: #38bdf8; min-width: 90px; text-shadow: 0 0 8px rgba(56, 189, 248, 0.35); }
+        .duty-persons-container { display: flex; align-items: center; flex-grow: 1; flex-wrap: wrap; gap: 14px; }
+        
+        .person-check-badge {
+            display: inline-flex; align-items: center; gap: 6px;
+            background: rgba(255, 255, 255, 0.08); padding: 5px 12px; border-radius: 14px;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+        }
+        .person-check-badge input[type="checkbox"] { width: 17px; height: 17px; accent-color: #38ef7d; cursor: pointer; }
+        .person-check-badge input[type="checkbox"]:disabled { cursor: not-allowed; opacity: 0.4; }
+        .duty-action-btn {
+            background: linear-gradient(135deg, #00c6ff, #0072ff);
+            border: 1px solid rgba(255,255,255,0.4); color: #ffffff; cursor: pointer;
+            font-size: 12px; font-weight: 700; padding: 6px 14px; border-radius: 16px; margin-left: auto;
+            box-shadow: 0 4px 12px rgba(0, 114, 255, 0.35);
         }
 
-        .modal-header-banner {
-            width: 100%;
-            height: 280px;
-            position: relative;
-            background: linear-gradient(180deg, #E3F2FD 0%, #BBDEFB 100%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            overflow: hidden;
+        /* MODALS LIQUID GLASS */
+        .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(10, 25, 47, 0.75); backdrop-filter: blur(8px); display: flex; align-items: center; justify-content: center; z-index: 9999; opacity: 0; visibility: hidden; transition: 0.25s; padding: 16px; }
+        .modal-overlay.active { opacity: 1; visibility: visible; }
+        .modal-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(25px);
+            border: 1px solid rgba(255,255,255,0.9);
+            width: 100%; max-width: 480px; border-radius: 24px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
+            position: relative; padding: 26px; max-height: 90vh; display: flex; flex-direction: column;
         }
-
-        .modal-avatar-full {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-            object-position: center bottom;
-            display: block;
+        .modal-detail-card {
+            background: #ffffff; width: 100%; max-width: 420px; border-radius: 26px;
+            overflow: hidden; text-align: center; box-shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
+            position: relative; max-height: 92vh; display: flex; flex-direction: column;
         }
-
-        .modal-close-btn {
-            position: absolute;
-            top: 14px;
-            right: 14px;
-            width: 36px;
-            height: 36px;
-            background: rgba(255, 255, 255, 0.9);
-            border-radius: 50%;
-            border: 1px solid #CFD8DC;
-            font-size: 16px;
-            color: #333;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 10;
-        }
-        .modal-close-btn:hover { background: #ffebee; color: #d32f2f; }
-
-        .modal-detail-body {
-            padding: 20px 24px 24px;
-            overflow-y: auto;
-            background: #ffffff;
-        }
-
-        .modal-detail-name {
-            color: #0D47A1;
-            font-size: 20px;
-            font-weight: 700;
-            margin-bottom: 12px;
-        }
-
-        .modal-info-list {
-            text-align: left;
-            background: #F8F9FA;
-            border-radius: 16px;
-            padding: 16px 18px;
-            margin-bottom: 16px;
-            border: 1px solid #E9ECEF;
-        }
-
-        .modal-info-item {
-            font-size: 14px;
-            color: #333333;
-            margin-bottom: 10px;
-            display: flex;
-            align-items: flex-start;
-            gap: 10px;
-        }
+        .modal-header-banner { width: 100%; height: 280px; background: linear-gradient(180deg, #E0F2FE 0%, #BAE6FD 100%); display: flex; align-items: center; justify-content: center; overflow: hidden; }
+        .modal-avatar-full { width: 100%; height: 100%; object-fit: contain; object-position: center bottom; }
+        .modal-close-btn { position: absolute; top: 14px; right: 14px; width: 36px; height: 36px; background: rgba(255, 255, 255, 0.95); border-radius: 50%; border: 1px solid #CFD8DC; cursor: pointer; display: flex; align-items: center; justify-content: center; }
+        .modal-detail-body { padding: 20px 24px 24px; overflow-y: auto; }
+        .modal-detail-name { color: #0052d4; font-size: 20px; font-weight: 800; margin-bottom: 12px; }
+        .modal-info-list { text-align: left; background: #F8FAFC; border-radius: 18px; padding: 16px 18px; margin-bottom: 16px; border: 1px solid #E2E8F0; font-size: 14px; }
+        .modal-info-item { margin-bottom: 10px; display: flex; align-items: flex-start; gap: 10px; }
         .modal-info-item:last-child { margin-bottom: 0; }
-        .modal-info-item i {
-            color: #1976D2;
-            width: 18px;
-            margin-top: 2px;
-            text-align: center;
-        }
-
-        .form-group { margin-bottom: 12px; text-align: left; }
-        .form-group label { display: block; font-size: 13px; margin-bottom: 4px; font-weight: bold; color: #333; }
-        .form-group input, .form-group select {
-            width: 100%;
-            padding: 9px 12px;
-            border-radius: 8px;
-            border: 1px solid #ccc;
-            outline: none;
-            font-size: 14px;
-        }
-
-        .member-pick-list {
-            flex-grow: 1;
-            overflow-y: auto;
-            border: 1px solid #e0e0e0;
-            border-radius: 10px;
-            padding: 8px;
-            max-height: 250px;
-            display: flex;
-            flex-direction: column;
-            gap: 6px;
-            margin-bottom: 12px;
-        }
-
-        .member-pick-item {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 8px 12px;
-            border-radius: 8px;
-            background: #f5f5f5;
-            cursor: pointer;
-            transition: 0.2s;
-            user-select: none;
-        }
-
-        .member-pick-item:hover { background: #e3f2fd; }
-
-        .member-pick-item.selected {
-            background: #bbdefb;
-            border: 1px solid #1976d2;
-            font-weight: bold;
-            color: #0d47a1;
-        }
-
-        .modal-actions { display: flex; gap: 10px; margin-top: 8px; }
-        .btn-modal { flex: 1; padding: 10px; border: none; border-radius: 8px; cursor: pointer; font-weight: bold; }
-        .btn-save { background: #0D47A1; color: #fff; }
-        .btn-cancel { background: #e0e0e0; color: #333; }
-
-        .admin-assign-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 6px;
-            max-height: 200px;
-            overflow-y: auto;
-            padding: 6px;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-        }
-
-        .admin-assign-item {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            font-size: 13px;
-            padding: 4px;
-        }
+        .member-pick-list { overflow-y: auto; border: 1px solid #e2e8f0; border-radius: 12px; padding: 8px; max-height: 250px; display: flex; flex-direction: column; gap: 6px; margin-bottom: 12px; }
+        .member-pick-item { display: flex; align-items: center; justify-content: space-between; padding: 9px 14px; border-radius: 10px; background: #f8fafc; cursor: pointer; transition: 0.2s; }
+        .member-pick-item.selected { background: #e0f2fe; border: 1px solid #0284c7; font-weight: bold; color: #0369a1; }
+        .admin-assign-grid { display: grid; grid-template-columns: 1fr; gap: 6px; max-height: 200px; overflow-y: auto; padding: 8px; border: 1px solid #e2e8f0; border-radius: 12px; font-size: 13px; }
     </style>
 </head>
 <body>
@@ -655,12 +283,12 @@
             <div class="user-status">
                 <img id="userAvatarMini" class="user-avatar-mini" src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="Avatar">
                 <div>
-                    <span id="userNameDisplay" style="font-weight: 500;">Khách</span>
+                    <span id="userNameDisplay" style="font-weight: 600;">Khách</span>
                     <span id="roleBadge" class="role-tag role-viewer">Người xem</span>
                 </div>
             </div>
             <div class="auth-actions">
-                <button id="adminManageBtn" class="btn-auth-action" style="display:none; background:#2e7d32;" onclick="moModalAdminChiaNhom()">
+                <button id="adminManageBtn" class="btn-auth-action" style="display:none; background:#059669;" onclick="moModalAdminChiaNhom()">
                     <i class="fa-solid fa-users-gear"></i> Admin: Cấu Hình 4 Nhóm
                 </button>
                 
@@ -673,8 +301,8 @@
 
         <!-- TAB NAVIGATION -->
         <div class="tab-menu">
-            <button class="tab-btn active" onclick="chuyenTab('tab-ds')"><i class="fa-solid fa-address-book"></i> Danh Sách HT</button>
-            <button class="tab-btn" onclick="chuyenTab('tab-truc')"><i class="fa-solid fa-calendar-check"></i> Phân Chia Phiên Trực</button>
+            <button class="tab-btn active" onclick="chuyenTab('tab-ds')"><i class="fa-solid fa-address-book me-1"></i> Danh Sách HT</button>
+            <button class="tab-btn" onclick="chuyenTab('tab-truc')"><i class="fa-solid fa-calendar-check me-1"></i> Phân Chia Phiên Trực</button>
         </div>
 
         <!-- TAB 1: DANH SÁCH HUYNH TRƯỞNG -->
@@ -703,11 +331,11 @@
                     <div class="control-row">
                         <div class="control-item">
                             <i class="fa-solid fa-users"></i>
-                            <input type="text" id="currentGroupDisplay" readonly style="background:#e3f2fd; color:#0d47a1; font-weight:bold;">
+                            <input type="text" id="currentGroupDisplay" readonly style="background:#e0f2fe; color:#0369a1; font-weight:bold;">
                         </div>
                         <div class="control-item">
                             <i class="fa-regular fa-calendar-days"></i>
-                            <input type="text" id="weekDateRangeDisplay" readonly style="background:#f0f4f8; border-color:#cfd8dc;">
+                            <input type="text" id="weekDateRangeDisplay" readonly style="background:#f1f5f9; border-color:#cbd5e1;">
                         </div>
                     </div>
                 </div>
@@ -727,28 +355,13 @@
             <div class="modal-detail-body">
                 <h2 class="modal-detail-name" id="modalTen">Tên Huynh Trưởng</h2>
                 <div class="modal-info-list">
-                    <div class="modal-info-item">
-                        <i class="fa-solid fa-id-badge"></i>
-                        <div><strong>Mã HT:</strong> <span id="modalMaHT">Chưa có</span></div>
-                    </div>
-                    <div class="modal-info-item">
-                        <i class="fa-solid fa-briefcase"></i>
-                        <div><strong>Chức vụ:</strong> <span id="modalChucVu" style="color: #2E7D32; font-weight: 600;">HT</span></div>
-                    </div>
-                    <div class="modal-info-item">
-                        <i class="fa-solid fa-award"></i>
-                        <div><strong>Cấp bậc:</strong> <span id="modalCap" style="color: #E65100; font-weight: 600;">Cấp 1</span></div>
-                    </div>
-                    <div class="modal-info-item">
-                        <i class="fa-solid fa-cake-candles"></i>
-                        <div><strong>Ngày sinh:</strong> <span id="modalNgaySinh">Chưa cập nhật</span></div>
-                    </div>
-                    <div class="modal-info-item">
-                        <i class="fa-solid fa-phone"></i>
-                        <div><strong>Điện thoại:</strong> <span id="modalSDT">Chưa cập nhật</span></div>
-                    </div>
+                    <div class="modal-info-item"><i class="fa-solid fa-id-badge text-primary"></i><div><strong>Mã HT:</strong> <span id="modalMaHT">Chưa có</span></div></div>
+                    <div class="modal-info-item"><i class="fa-solid fa-briefcase text-success"></i><div><strong>Chức vụ:</strong> <span id="modalChucVu" style="color: #059669; font-weight: 700;">HT</span></div></div>
+                    <div class="modal-info-item"><i class="fa-solid fa-award text-warning"></i><div><strong>Cấp bậc:</strong> <span id="modalCap" style="color: #ea580c; font-weight: 700;">Cấp 1</span></div></div>
+                    <div class="modal-info-item"><i class="fa-solid fa-cake-candles text-danger"></i><div><strong>Ngày sinh:</strong> <span id="modalNgaySinh">Chưa cập nhật</span></div></div>
+                    <div class="modal-info-item"><i class="fa-solid fa-phone text-primary"></i><div><strong>Điện thoại:</strong> <span id="modalSDT">Chưa cập nhật</span></div></div>
                 </div>
-                <button class="btn-modal btn-save" style="width: 100%; border-radius: 20px;" onclick="dongModalById('modalDetail')">Đóng</button>
+                <button class="btn btn-primary w-100 rounded-pill fw-bold py-2" onclick="dongModalById('modalDetail')">Đóng</button>
             </div>
         </div>
     </div>
@@ -756,21 +369,16 @@
     <!-- MODAL PHÂN CÔNG CA TRỰC -->
     <div class="modal-overlay" id="modalDutyPick" onclick="dongModalById('modalDutyPick')">
         <div class="modal-card" onclick="event.stopPropagation()">
-            <h3 id="pickModalTitle">Phân Công Ca Trực</h3>
-            <p style="font-size: 13px; color: #666; margin-bottom: 8px;">
-                Nhấp vào tên các thành viên trong nhóm để chọn (chọn 1 hoặc nhiều người):
-            </p>
-            
+            <h3 id="pickModalTitle" style="color: #0052d4; text-align: center; margin-bottom: 12px;">Phân Công Ca Trực</h3>
+            <p style="font-size: 13px; color: #64748b; margin-bottom: 8px;">Nhấp vào tên các thành viên trong nhóm để chọn (chọn 1 hoặc nhiều người):</p>
             <div class="member-pick-list" id="memberPickListContainer"></div>
-
-            <div class="form-group">
-                <label>Đã chọn:</label>
-                <input type="text" id="selectedPersonResult" placeholder="Chưa chọn thành viên nào" readonly>
+            <div class="form-group mb-3">
+                <label style="font-weight: 700; font-size: 13px; margin-bottom: 4px; display: block;">Đã chọn:</label>
+                <input type="text" id="selectedPersonResult" class="form-control" placeholder="Chưa chọn thành viên nào" readonly style="width: 100%; padding: 9px 12px; border-radius: 8px; border: 1px solid #cbd5e1;">
             </div>
-
-            <div class="modal-actions">
-                <button class="btn-modal btn-cancel" type="button" onclick="dongModalById('modalDutyPick')">Hủy</button>
-                <button class="btn-modal btn-save" type="button" onclick="luuPhanCongCaTruc()">Xác nhận phân công</button>
+            <div class="d-flex gap-2">
+                <button class="btn btn-light flex-grow-1 fw-bold rounded-pill" type="button" onclick="dongModalById('modalDutyPick')">Hủy</button>
+                <button class="btn btn-primary flex-grow-1 fw-bold rounded-pill" type="button" onclick="luuPhanCongCaTruc()">Xác nhận phân công</button>
             </div>
         </div>
     </div>
@@ -778,36 +386,31 @@
     <!-- MODAL ADMIN CẤU HÌNH 4 NHÓM -->
     <div class="modal-overlay" id="modalAdminGroups" onclick="dongModalById('modalAdminGroups')">
         <div class="modal-card" style="max-width: 520px;" onclick="event.stopPropagation()">
-            <h3>Cấu Hình 4 Nhóm & Phân Chia Thành Viên</h3>
-            
-            <div class="form-group">
-                <label>Chọn Nhóm cần chỉnh sửa:</label>
-                <select id="adminSelectGroupTab" onchange="taiThongTinNhomAdmin()">
+            <h3 style="color: #0052d4; text-align: center; margin-bottom: 14px;">Cấu Hình 4 Nhóm & Chia Thành Viên</h3>
+            <div class="mb-2">
+                <label style="font-weight: 700; font-size: 13px;">Chọn Nhóm cần chỉnh sửa:</label>
+                <select id="adminSelectGroupTab" class="form-select" onchange="taiThongTinNhomAdmin()" style="width: 100%; padding: 9px; border-radius: 8px; border: 1px solid #cbd5e1;">
                     <option value="1">Nhóm 1</option>
                     <option value="2">Nhóm 2</option>
                     <option value="3">Nhóm 3</option>
                     <option value="4">Nhóm 4</option>
                 </select>
             </div>
-
-            <div class="form-group">
-                <label>Tên Nhóm hiển thị:</label>
-                <input type="text" id="adminGroupNameInput" placeholder="Ví dụ: Nhóm 1">
+            <div class="mb-2">
+                <label style="font-weight: 700; font-size: 13px;">Tên Nhóm hiển thị:</label>
+                <input type="text" id="adminGroupNameInput" class="form-control" style="width: 100%; padding: 9px; border-radius: 8px; border: 1px solid #cbd5e1;">
             </div>
-
-            <div class="form-group">
-                <label>Tên Nhóm trưởng / Nhóm phó:</label>
-                <input type="text" id="adminLeaderNameInput" placeholder="Ví dụ: Duy Lữ (Trưởng), Thảo Vy (Phó)">
+            <div class="mb-2">
+                <label style="font-weight: 700; font-size: 13px;">Tên Nhóm trưởng / Nhóm phó:</label>
+                <input type="text" id="adminLeaderNameInput" class="form-control" style="width: 100%; padding: 9px; border-radius: 8px; border: 1px solid #cbd5e1;">
             </div>
-
-            <div class="form-group">
-                <label>Tích chọn thành viên thuộc Nhóm này:</label>
+            <div class="mb-3">
+                <label style="font-weight: 700; font-size: 13px;">Tích chọn thành viên thuộc Nhóm này:</label>
                 <div class="admin-assign-grid" id="adminHTCheckList"></div>
             </div>
-
-            <div class="modal-actions">
-                <button class="btn-modal btn-cancel" type="button" onclick="dongModalById('modalAdminGroups')">Đóng</button>
-                <button class="btn-modal btn-save" type="button" onclick="luuThongTinNhomAdmin()">Lưu lên hệ thống</button>
+            <div class="d-flex gap-2">
+                <button class="btn btn-light flex-grow-1 fw-bold rounded-pill" type="button" onclick="dongModalById('modalAdminGroups')">Đóng</button>
+                <button class="btn btn-primary flex-grow-1 fw-bold rounded-pill" type="button" onclick="luuThongTinNhomAdmin()">Lưu lên hệ thống</button>
             </div>
         </div>
     </div>
@@ -824,39 +427,18 @@
             appId: "1:105589587705:web:e5673f9dad38c130b56c28",
             measurementId: "G-YENZE6ZNSW"
         };
-
         firebase.initializeApp(firebaseConfig);
         const db = firebase.database();
 
         // ================= 2. CẤU HÌNH GMAIL ADMIN & GOOGLE AUTH =================
         const GOOGLE_CLIENT_ID = "262126423881-einke9pok3r8at0d9hrnli04klf68s9q.apps.googleusercontent.com";
-        
-        const ADMIN_EMAILS = [
-            "htam00521@gmail.com", 
-            "yinsnhuw29@gmail.com"
-        ]; 
+        const ADMIN_EMAILS = ["htam00521@gmail.com", "yinsnhuw29@gmail.com"]; 
 
         const hardcodedGroupEmails = {
-            1: {
-                groupName: "Nhóm 1",
-                leaderName: "Hiếu Nghĩa",
-                leaderEmails: ["nghia1132009852009@gmail.com", "nguyenxhuyvu70@gmail.com", "ltam54127@gmail.com"]
-            },
-            2: {
-                groupName: "Nhóm 2",
-                leaderName: "Ngọc Trâm",
-                leaderEmails: ["ngoctramtv2006@gmail.com", "haut7238@gmail.com"]
-            },
-            3: {
-                groupName: "Nhóm 3",
-                leaderName: "Minh Vũ",
-                leaderEmails: ["ngminhvu2000@gmail.com", "pherokhoa0707@gmail.com"]
-            },
-            4: {
-                groupName: "Nhóm 4",
-                leaderName: "Thịnh Đạt",
-                leaderEmails: ["tranbuithinhdatph@gmail.com", "diemthy352026@gmail.com"]
-            }
+            1: { groupName: "Nhóm 1", leaderName: "Hiếu Nghĩa", leaderEmails: ["nghia1132009852009@gmail.com", "nguyenxhuyvu70@gmail.com", "ltam54127@gmail.com"] },
+            2: { groupName: "Nhóm 2", leaderName: "Ngọc Trâm", leaderEmails: ["ngoctramtv2006@gmail.com", "haut7238@gmail.com"] },
+            3: { groupName: "Nhóm 3", leaderName: "Minh Vũ", leaderEmails: ["ngminhvu2000@gmail.com", "pherokhoa0707@gmail.com"] },
+            4: { groupName: "Nhóm 4", leaderName: "Thịnh Đạt", leaderEmails: ["tranbuithinhdatph@gmail.com", "diemthy352026@gmail.com"] }
         };
 
         // ================= 3. DANH SÁCH 53 TUẦN NĂM PHỤNG VỤ 2025-2026 =================
@@ -1068,12 +650,10 @@
 
         function timIdTuanHienTai() {
             const now = new Date();
-
             let targetDate = new Date(now);
             if (now.getDay() === 6 && now.getHours() >= 6) {
                 targetDate.setDate(targetDate.getDate() + 1);
             }
-
             targetDate.setHours(0, 0, 0, 0);
 
             for (let item of danhSachTuanPhungVu) {
@@ -1251,7 +831,6 @@
             return dutyHistoryData[dutyKey];
         }
 
-        // ================= HIỂN THỊ PHIÊN TRỰC (CHECKBOX CHO TỪNG NGƯỜI) =================
         function hienThiPhienTruc() {
             const container = document.getElementById("dutyContent");
             container.innerHTML = "";
@@ -1353,7 +932,6 @@
             db.ref(`dutyHistory/${dutyKey}`).set(dutyHistoryData[dutyKey]);
         }
 
-        // ================= NHÓM TRƯỞNG & PHÓ CHIA PHIÊN =================
         function moModalChonNguoiTruc(cIdx, sIdx) {
             currentEditingSlot = { catIdx: cIdx, slotIdx: sIdx, selectedMembers: [] };
             const dutyKey = `lit_w${currentSelectedWeek}_g${currentAssignedGroup}`;
@@ -1381,7 +959,7 @@
                     if (currentPersons.includes(memName)) {
                         item.classList.add("selected");
                         item.querySelector(".check-icon").className = "fa-solid fa-circle-check check-icon";
-                        item.querySelector(".check-icon").style.color = "#1976D2";
+                        item.querySelector(".check-icon").style.color = "#0072ff";
                         currentEditingSlot.selectedMembers.push(memName);
                     }
 
@@ -1395,7 +973,7 @@
                             currentEditingSlot.selectedMembers.push(memName);
                             item.classList.add("selected");
                             item.querySelector(".check-icon").className = "fa-solid fa-circle-check check-icon";
-                            item.querySelector(".check-icon").style.color = "#1976D2";
+                            item.querySelector(".check-icon").style.color = "#0072ff";
                         }
                         capNhatResultInput();
                     };
@@ -1471,13 +1049,12 @@
             }).catch(err => alert("Lỗi lưu Firebase: " + err.message));
         }
 
-        // ================= HIỂN THỊ DANH SÁCH HT & XỬ LÝ ẢNH =================
         function hienThiDanhSach(list) {
             const grid = document.getElementById("htGrid");
             grid.innerHTML = "";
 
             if (list.length === 0) {
-                grid.innerHTML = `<div style="text-align:center; padding:30px; grid-column:1/-1; color:#0D47A1; font-weight:bold;">Không tìm thấy Huynh Trưởng!</div>`;
+                grid.innerHTML = `<div style="text-align:center; padding:30px; grid-column:1/-1; color:#0052d4; font-weight:bold;">Không tìm thấy Huynh Trưởng!</div>`;
                 return;
             }
 
