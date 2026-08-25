@@ -6,10 +6,10 @@
     <title>Lịch Trực Huynh Trưởng - Năm Phụng Vụ 2025-2026</title>
     
     <!-- Google Fonts & Font Awesome Icons -->
-    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
-    <!-- Google Identity Services & JWT Decode (GIỐNG WEB CŨ) -->
+    <!-- Google Identity Services & JWT Decode (CHUẨN GỐC TỪ WEB CỦA BẠN) -->
     <script src="https://accounts.google.com/gsi/client" async defer></script>
     <script src="https://cdn.jsdelivr.net/npm/jwt-decode@3.1.2/build/jwt-decode.min.js"></script>
 
@@ -44,9 +44,9 @@
             color: #fff; padding: 0.65rem 1rem; border-radius: 12px; margin-bottom: 20px;
             box-shadow: 0 4px 14px rgba(13,71,161,.22); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;
         }
-        .cls-brand { display: flex; align-items: center; gap: 0.65rem; color: #fff; text-decoration: none; font-weight: 800; font-size: 1rem; font-family: 'Nunito', sans-serif; }
+        .cls-brand { display: flex; align-items: center; gap: 0.65rem; color: #fff; text-decoration: none; font-weight: 800; font-size: 1rem; }
         .cls-brand img { width: 38px; height: 38px; border-radius: 50%; object-fit: cover; }
-        .cls-nav-link { color: rgba(255,255,255,.9); text-decoration: none; font-weight: 700; font-size: 0.88rem; padding: 0.45rem 0.85rem; border-radius: 999px; transition: 0.2s; font-family: 'Nunito', sans-serif; }
+        .cls-nav-link { color: rgba(255,255,255,.9); text-decoration: none; font-weight: 700; font-size: 0.88rem; padding: 0.45rem 0.85rem; border-radius: 999px; transition: 0.2s; }
         .cls-nav-link:hover, .cls-nav-link.active { background: rgba(255,255,255,.22); color: #fff; }
 
         /* AUTH BAR */
@@ -248,7 +248,7 @@
         .cap { color: #E65100; font-size: 11px; font-weight: 500; margin-bottom: 6px; }
         .info-row { color: #616161; font-size: 12px; margin-top: 2px; }
 
-        /* BẢNG PHIÊN TRỰC (GLASSMORPHISM) */
+        /* BẢNG PHIÊN TRỰC */
         .duty-wrapper {
             max-width: 680px;
             margin: 0 auto;
@@ -646,7 +646,7 @@
             </nav>
         </div>
 
-        <!-- AUTH BAR (GIỐNG WEB CŨ) -->
+        <!-- AUTH BAR (GOOGLE IDENTITY SERVICES CHUẨN) -->
         <div class="auth-bar">
             <div class="user-status">
                 <img id="userAvatarMini" class="user-avatar-mini" src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="Avatar">
@@ -912,7 +912,7 @@
             { id: 53, name: " CN XXXIV TN - ĐỨC GIÊSU KITÔ VUA VŨ TRỤ", dates: "22/11 - 28/11/2026", season: "Kết Thúc Năm Phụng Vụ A" }
         ];
 
-        // DANH SÁCH HUYNH TRƯỞNG GỐC
+        // DANH SÁCH 53 HUYNH TRƯỞNG GỐC
         const danhSachGoc = [
             { thanhHoTen: "Patriciô Nguyễn Thiên Ân", chucVu: "Trưởng Huynh Trưởng - Ban Điều Hành", cap: "Huynh Trưởng Cấp 2", ngaySinh: "21/01/2004", sdt: "0395800581", hinhAnhUrl: "thienan" },
             { thanhHoTen: "Phêrô Lê Huỳnh Hiếu Tâm", chucVu: "Phó Huynh Trưởng, Thủ Quỹ - Ban Điều Hành", cap: "Huynh Trưởng Cấp 2", ngaySinh: "25/02/2005", sdt: "0921786312", hinhAnhUrl: "hieutam" },
@@ -1130,7 +1130,7 @@
             document.getElementById("currentGroupDisplay").value = `Nhóm ${currentAssignedGroup} Trực`;
         }
 
-        // ================= XỬ LÝ GOOGLE SIGN-IN (GIỐNG WEB CŨ) =================
+        // ================= XỬ LÝ GOOGLE SIGN-IN =================
         function handleCredentialResponse(response) {
             try {
                 const payload = jwt_decode(response.credential);
@@ -1248,7 +1248,6 @@
             return dutyHistoryData[dutyKey];
         }
 
-        // ================= HIỂN THỊ PHIÊN TRỰC (CHECKBOX CHO TỪNG NGƯỜI) =================
         function hienThiPhienTruc() {
             const container = document.getElementById("dutyContent");
             container.innerHTML = "";
@@ -1350,7 +1349,6 @@
             db.ref(`dutyHistory/${dutyKey}`).set(dutyHistoryData[dutyKey]);
         }
 
-        // ================= NHÓM TRƯỞNG & PHÓ CHIA PHIÊN =================
         function moModalChonNguoiTruc(cIdx, sIdx) {
             currentEditingSlot = { catIdx: cIdx, slotIdx: sIdx, selectedMembers: [] };
             const dutyKey = `lit_w${currentSelectedWeek}_g${currentAssignedGroup}`;
